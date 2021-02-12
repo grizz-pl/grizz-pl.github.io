@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://www.grizz.pl/</loc>
+    <lastmod>2021-02-12T16:45:05+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/categories/</loc>
+    <lastmod>2021-02-12T16:45:05+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/eksport-wpisow-z-bazy-danych-drupala-do-pliku-tekstowego/</loc>
+    <lastmod>2021-02-08T16:30:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/posts/</loc>
+    <lastmod>2021-02-12T16:45:05+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tags/sql/</loc>
+    <lastmod>2021-02-08T16:30:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tags/</loc>
+    <lastmod>2021-02-12T16:45:05+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tags/tech/</loc>
+    <lastmod>2021-02-12T16:45:05+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tech/</loc>
+    <lastmod>2021-02-12T16:45:05+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tags/www/</loc>
+    <lastmod>2021-02-08T16:30:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tags/napotkane/</loc>
+    <lastmod>2021-01-24T18:03:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/napotkane/</loc>
+    <lastmod>2021-01-24T18:03:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/n003/</loc>
+    <lastmod>2021-01-24T18:03:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/n002/</loc>
+    <lastmod>2021-01-08T14:23:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/n001/</loc>
+    <lastmod>2020-12-30T20:20:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/polityka-prywatnosci/</loc>
+    <lastmod>2015-04-20T20:20:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/rozne/</loc>
+    <lastmod>2015-05-04T06:05:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tags/strona/</loc>
+    <lastmod>2015-04-20T20:20:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tags/grafika/</loc>
+    <lastmod>2014-11-03T20:20:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/konwersja-jpg-gif-do-pdf/</loc>
+    <lastmod>2014-11-03T20:20:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tags/linux/</loc>
+    <lastmod>2014-11-03T20:20:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tags/oprogramowanie/</loc>
+    <lastmod>2014-11-03T20:20:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tags/programowanie/</loc>
+    <lastmod>2014-11-03T20:20:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tags/shell/</loc>
+    <lastmod>2014-11-03T20:20:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tags/git/</loc>
+    <lastmod>2014-10-27T20:20:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/zsh-i-git-wyswietlanie-galezi-brancha-i-zmian/</loc>
+    <lastmod>2014-10-27T20:20:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/google-inbox-i-google-wave/</loc>
+    <lastmod>2014-10-23T20:20:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tags/krotko/</loc>
+    <lastmod>2014-10-23T20:20:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tags/przemyslenia/</loc>
+    <lastmod>2014-10-23T20:20:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/kwadratowe-miniatury-python-pil-i-imagemagick-wydajnosc/</loc>
+    <lastmod>2014-10-21T20:20:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tags/python/</loc>
+    <lastmod>2014-10-21T20:20:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/aliasy-czyli-jak-ulatwic-sobie-prace-w-konsoli/</loc>
+    <lastmod>2014-10-14T20:20:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tags/sieci/</loc>
+    <lastmod>2014-10-06T20:20:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/sshfs-podmontowywanie-katalogow-z-innych-komputerow/</loc>
+    <lastmod>2014-09-28T20:20:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tags/rozrywka/</loc>
+    <lastmod>2015-05-04T06:05:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tags/rozne/</loc>
+    <lastmod>2015-05-04T06:05:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/star-wars-w-wersji-ascii/</loc>
+    <lastmod>2013-01-13T20:20:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/skroty-klawiszowe-w-konsoli/</loc>
+    <lastmod>2013-01-04T15:10:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tags/android/</loc>
+    <lastmod>2012-12-17T20:20:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/polski-slownik-dla-androida-lista-najpopularniejszych-slow-jezyka-polskiego/</loc>
+    <lastmod>2012-12-17T20:20:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/nowe-zycie-htc-g1/</loc>
+    <lastmod>2011-03-05T11:32:48+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tags/foto/</loc>
+    <lastmod>2010-05-15T10:33:14+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/gfo-gallery-generator/</loc>
+    <lastmod>2010-05-15T10:33:14+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/star-wars-day/</loc>
+    <lastmod>2015-05-04T06:05:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tags/arch/</loc>
+    <lastmod>2008-06-03T17:39:38+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/arch-pld/</loc>
+    <lastmod>2008-06-03T17:39:38+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tags/pld/</loc>
+    <lastmod>2008-06-03T17:39:38+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/pld-arch/</loc>
+    <lastmod>2007-03-12T22:23:35+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/kradziez-bezprzewodowego-dostepu-do-internetu/</loc>
+    <lastmod>2014-10-06T20:20:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tags/ahk/</loc>
+    <lastmod>2021-02-12T16:45:05+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/ahk/</loc>
+    <lastmod>2021-02-12T16:45:05+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tags/software/</loc>
+    <lastmod>2021-02-12T16:45:05+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.grizz.pl/tags/windows/</loc>
+    <lastmod>2021-02-12T16:45:05+01:00</lastmod>
+  </url>
+  
+</urlset>

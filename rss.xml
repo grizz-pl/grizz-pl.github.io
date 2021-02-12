@@ -1,0 +1,2468 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+
+
+
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title># grizz.pl</title>
+        <link>https://www.grizz.pl/</link>
+        <description># grizz.pl - blog o różnościach napotkanych…</description>
+        <generator>Hugo 0.79.0 https://gohugo.io/</generator>
+        
+            <language>pl</language>
+        
+        
+        
+        
+            <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+        
+        <lastBuildDate>Fri, 12 Feb 2021 16:46:06 &#43;0100</lastBuildDate>
+        
+            <atom:link rel="self" type="application/rss&#43;xml" href="https://www.grizz.pl/rss.xml" />
+        
+        
+            <item>
+                <title>Eksport wpisów z bazy danych drupala do pliku tekstowego</title>
+                <link>https://www.grizz.pl/eksport-wpisow-z-bazy-danych-drupala-do-pliku-tekstowego/</link>
+                <guid isPermaLink="true">https://www.grizz.pl/eksport-wpisow-z-bazy-danych-drupala-do-pliku-tekstowego/</guid>
+                <pubDate>Mon, 08 Feb 2021 16:30:23 &#43;0100</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;p&gt;Moja strona działała kiedyś na drupalu (potem na bloggerze, potem na pelicanie :) ) Stąd zaistniała potrzeba wyciągnięcia starych wpisów i przywrócenia tych co ciekawszych.
+W tym celu powstał krótki skrypt SQL.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;
+&lt;span class=&#34;c1&#34;&gt;-- drupal-to-plainfile.sql
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;-- ver. 0.1 by Witold Firlej (https://www.grizz.pl; https://github.com/grizz-pl)
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;-- get drupal nodes into plain text records with frontmatter
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;-- after execution just export results to txt/markdown file 
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;DISTINCT&lt;/span&gt; 
+	&lt;span class=&#34;n&#34;&gt;CONCAT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+	    &lt;span class=&#34;n&#34;&gt;nr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;-&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;REPLACE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;-&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+		&lt;span class=&#34;s1&#34;&gt;&amp;#39;\n---&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+		&lt;span class=&#34;s1&#34;&gt;&amp;#39;\nnid: &amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+	    &lt;span class=&#34;s1&#34;&gt;&amp;#39;\nverID: &amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+	    &lt;span class=&#34;s1&#34;&gt;&amp;#39;\ntitle: &amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+	    &lt;span class=&#34;s1&#34;&gt;&amp;#39;\nformat: &amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ff&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+	    &lt;span class=&#34;s1&#34;&gt;&amp;#39;\ntags: &amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;CONCAT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;\n  - &amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tags&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+	    &lt;span class=&#34;s1&#34;&gt;&amp;#39;\ncreated: &amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FROM_UNIXTIME&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;created&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+	    &lt;span class=&#34;s1&#34;&gt;&amp;#39;\nlastmod: &amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FROM_UNIXTIME&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;changed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+	    &lt;span class=&#34;s1&#34;&gt;&amp;#39;\n---\n&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;body&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;wpis&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;FROM&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;node_revisions&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nr&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;JOIN&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;term_node&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tn&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;ON&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;nr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nid&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;JOIN&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;node&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;ON&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vid&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;JOIN&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;tn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nid&lt;/span&gt;
+		&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vid&lt;/span&gt;
+		&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;GROUP_CONCAT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+			&lt;span class=&#34;n&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SEPARATOR&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;\n  - &amp;#39;&lt;/span&gt;
+		&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tags&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;FROM&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;term_data&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;td&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;JOIN&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;term_node&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tn&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;ON&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;td&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tid&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;JOIN&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;node&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;ON&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vid&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;GROUP&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;BY&lt;/span&gt;
+		&lt;span class=&#34;n&#34;&gt;nid&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;ON&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nid&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;JOIN&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;filter_format&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ff&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;ON&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;nr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;format&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ff&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;format&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;ORDER&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;BY&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Skrypt jest bardzo prosty. Wynikową tabelę, praktycznie w każdym narzędziu (polecam &lt;a href=&#34;https://dbeaver.io/&#34;&gt;DBeaver&lt;/a&gt;) można wyeksportować do pliku tekstowego.&lt;/p&gt;
+&lt;p&gt;co da nam np.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;46
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;47
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;48
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;49
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;50
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;51
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;52
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;53
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-md&#34; data-lang=&#34;md&#34;&gt;299-gfo-gallery-generator
+---
+nid: 299
+verID: 793
+title: gfo gallery generator
+format: Markdown
+tags: 
+  &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Internet/Sieci
+  &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Foto
+  &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; gfo
+  &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Python
+  &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Programowanie
+  &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Oprogramowanie
+  &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Linux
+  &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Komputery
+created: 2009-10-02 18:24:53
+lastmod: 2010-05-15 10:33:14
+---
+gfo gallery generator to prosty skrypt pythona generujący galerię opartą na [highslide][] na podstawie zdjęć znajdujących się w podanych katalogach.  Skrypt zrobiony na potrzeby mojej galerii: &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;http:&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;galeria&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;firlej&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;org&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- Links --&amp;gt;&lt;/span&gt;
+[highslide]: http://highslide.com/
+&lt;span class=&#34;c&#34;&gt;&amp;lt;!--break--&amp;gt;&lt;/span&gt;
+Możliwości
+----------
+
+&lt;span class=&#34;k&#34;&gt;*&lt;/span&gt;   generowanie wieloalbumowej galerii
+&lt;span class=&#34;k&#34;&gt;*&lt;/span&gt;   obsługa szablonów
+&lt;span class=&#34;k&#34;&gt;*&lt;/span&gt;   osobna strona tytułowa
+
+HowTo
+-----
+
+&lt;span class=&#34;k&#34;&gt;1.&lt;/span&gt;   Ściągamy skrypt z &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;http:&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;github&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;com&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;grizz-pl&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;gfo-gallery-generator&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;downloads&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt; bądź za pomocą &lt;span class=&#34;gs&#34;&gt;**gita:**&lt;/span&gt;
+
+    git clone git://github.com/grizz-pl/gfo-gallery-generator.git  
+
+&lt;span class=&#34;k&#34;&gt;1.&lt;/span&gt;   Ściągamy [highslide][] i rozpakowujemy go do katalogu &lt;span class=&#34;gs&#34;&gt;***highslide/**&lt;/span&gt;* w głównym katalogu &lt;span class=&#34;gs&#34;&gt;**gfo**&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;1.&lt;/span&gt;   tworzymy katalog &lt;span class=&#34;gs&#34;&gt;***static/**&lt;/span&gt;*, w którym umieszczamy pliki &lt;span class=&#34;gs&#34;&gt;***logo.png**&lt;/span&gt;* (logo naszej galerii) i &lt;span class=&#34;gs&#34;&gt;***intro.png**&lt;/span&gt;* (zdjecie na stronie głównej)
+&lt;span class=&#34;k&#34;&gt;1.&lt;/span&gt;   Modyfikujemy plik &lt;span class=&#34;gs&#34;&gt;***gfo.conf**&lt;/span&gt;*
+&lt;span class=&#34;k&#34;&gt;1.&lt;/span&gt;   Odpalamy &lt;span class=&#34;gs&#34;&gt;***./gfo.py**&lt;/span&gt;* (z opcją &lt;span class=&#34;gs&#34;&gt;**-v**&lt;/span&gt; uzyskamy wysyp informacji o generowanym kodzie)
+
+Program dla każdej podanej sekcji w pliku konfiguracyjnym (co równa się też osobnemu katalogowi) tworzy stronę z albumem + dodatkowo główną stronę dużym zdjęciem.
+
+Projekt - sugestie i problemy:
+------------------------------
+
+Strona projektu na &lt;span class=&#34;gs&#34;&gt;**githubie**&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;http:&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;github&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;com&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;grizz-pl&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;gfo-gallery-generator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;  
+Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie: &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;http:&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;github&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;com&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;grizz-pl&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;gfo-gallery-generator&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;issues&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+
+
+
+&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- Links --&amp;gt;&lt;/span&gt;
+[highslide]: http://highslide.com/
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Jeżeli skrypt będzie rozwijany, to zmiany znajdziecie na githubie - &lt;a href=&#34;https://github.com/grizz-pl/drupal-to-plainfile&#34;&gt;https://github.com/grizz-pl/drupal-to-plainfile&lt;/a&gt; - jednak, to co jest - działa, więc pewnie roszad nie będę wprowadzał.&lt;/p&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tech/">tech</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/tech/">tech</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/sql/">sql</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/www/">www</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Napotkane [003]</title>
+                <link>https://www.grizz.pl/n003/</link>
+                <guid isPermaLink="true">https://www.grizz.pl/n003/</guid>
+                <pubDate>Sun, 24 Jan 2021 18:03:23 &#43;0100</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;Napotkane&lt;/strong&gt;&lt;/em&gt; to zbiór linków wraz z krótkim opisem - rozliczne rzeczy, na które natrafiłem podczas codziennych prasówek. Nie tylko nowości, ale i wpisy, które nadal są ciekawe mimo upływu czasu. Mocno subiektywne.&lt;/p&gt;
+&lt;p&gt;Kolorowe średniowiecze, python i analiza zdjęć.&lt;/p&gt;
+&lt;h2 id=&#34;tech&#34;&gt;Tech&lt;/h2&gt;
+&lt;h3 id=&#34;programowanie&#34;&gt;Programowanie&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.pythonkitchen.com/legally-free-python-books-list/&#34;&gt;Free Python Books List - Python kitchen&lt;/a&gt; [EN] Lista darmowych książek na temat progranowania w pythonie.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;linux&#34;&gt;Linux&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://linuxcommandlibrary.com/basic/oneliners.html&#34;&gt;| Basic | Cheat sheet | Linux Command Library&lt;/a&gt; [EN] Baza poleceń linii komend - Linux.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.commandlinefu.com/commands/browse&#34;&gt;All commands&lt;/a&gt; [EN] i jeszcze jedna.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;różne&#34;&gt;Różne&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://imgur.com/a/0RmF7&#34;&gt;1,138 behind the scenes photos of the Star Wars Trilogy - Album on Imgur&lt;/a&gt; Ponad 1000 zdjeć zza kulis Gwiezdnych Wojen.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.churchpop.com/2015/02/23/medieval-cathedrals-color/&#34;&gt;Wow! Medieval Cathedrals Used to Be Full of Brilliant Colors | ChurchPOP&lt;/a&gt; [EN] [2015] Średniowieczne katedry zachwycały nie tylko wielkością. Były kolorowe. Bardzo.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=nJgD6gyi0Wk&#34;&gt;Karlův most - Stavba pilíře a klenebního pole ve 14. století&lt;/a&gt; Animacja - Jak były budowane mosty w średniowieczu.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;foto&#34;&gt;Foto&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://fotoforensics.com/&#34;&gt;http://fotoforensics.com/&lt;/a&gt; [EN] Narzędzie umożliwiające analizę zdjęć. Czy noszą ślady przerabiania, wyciąganie metadanych. Przeczytajcie FAQ pod kątem prywatności przed wysłaniem prywatnych zdjęć :)&lt;/li&gt;
+&lt;/ol&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/napotkane/">napotkane</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/napotkane/">napotkane</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Napotkane [002]</title>
+                <link>https://www.grizz.pl/n002/</link>
+                <guid isPermaLink="true">https://www.grizz.pl/n002/</guid>
+                <pubDate>Fri, 08 Jan 2021 13:28:23 &#43;0100</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;Napotkane&lt;/strong&gt;&lt;/em&gt; to zbiór linków wraz z krótkim opisem - rozliczne rzeczy, na które natrafiłem podczas codziennych prasówek. Nie tylko nowości, ale i wpisy, które nadal są ciekawe mimo upływu czasu. Mocno subiektywne.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.grizz.pl/015/apollo-as11-44-6553.jpg&#34; alt=&#34;Project Apollo Archive’s&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;tech&#34;&gt;Tech&lt;/h2&gt;
+&lt;h3 id=&#34;linux&#34;&gt;Linux&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://pointieststick.com/2020/12/31/highlights-from-2020/&#34;&gt;Highlights from 2020&lt;/a&gt; [EN] Blog na którym, znajdziemy m.in cotygodniowe podsumowanie zmian wprowadzanych w KDE. Tutaj bezpośrednio odesłanie do podsumowania zmian w 2020.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;różne&#34;&gt;Różne&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://imgur.com/a/wUAcl&#34;&gt;How some cool silent film effects were done - Album on Imgur&lt;/a&gt; [EN] Jak kiedyś robiono efekty specjalne. Opisy i przykłady wizualne.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.flickr.com/photos/projectapolloarchive/albums&#34;&gt;Project Apollo Archive’s albums | Flickr - Photo Sharing!&lt;/a&gt; [EN] Archiwalne zdjęcia projektu Apollo. W domenie publicznej!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;podróże&#34;&gt;Podróże&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://thruhikes.net/&#34;&gt;Thruhikes&lt;/a&gt; [EN] Lista długodystansowych szlaków na całym świecie.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pl.wikipedia.org/wiki/Europejskie_szlaki_w%C4%99dr%C3%B3wkowe&#34;&gt;Europejskie szlaki wędrówkowe – Wikipedia, wolna encyklopedia&lt;/a&gt; [PL] Lista 11 pieszych znakowanych szlaków turystycznych, prowadzących przez kraje Europy&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_long-distance_footpaths&#34;&gt;List of long-distance footpaths - Wikipedia&lt;/a&gt; [EN] Lista szlaków długodystansowych na całym świecie.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hiking.waymarkedtrails.org/&#34;&gt;Waymarked Trails - Hiking&lt;/a&gt; [PL] [EN] Interaktywna mapa z oznakowanymi szlakami turystycznymi na całym świecie.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;foto&#34;&gt;Foto&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://tomaszpluszczyk.pl/zarzadzanie-barwa-oprogramowanie-stanowisko-obrobki-zdjec/&#34;&gt;Stanowisko komputerowe do obróbki zdjęć - oświetlenie itd.&lt;/a&gt; [PL] Kompleksowy artykuł. Zacytuję spis treści:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Po co specjalnie oświetlać stanowisko komputerowe&lt;/li&gt;
+&lt;li&gt;Podstawowe zasady oświetlenia stanowiska komputerowego do obróbki zdjęć&lt;/li&gt;
+&lt;li&gt;Walka z odblaskami w ekranie&lt;/li&gt;
+&lt;li&gt;Mocno oświetlone stanowisko, czy słabiej?&lt;/li&gt;
+&lt;li&gt;Lampa na suficie lub za monitorem&lt;/li&gt;
+&lt;li&gt;Typy lamp&lt;/li&gt;
+&lt;li&gt;Moje doświadczenia, czyli prowizorka goniąca prowizorkę&lt;/li&gt;
+&lt;li&gt;Podsumowanie&lt;/li&gt;
+&lt;li&gt;F.A.Q. czyli odpowiedzi na najczęściej zadawane pytania&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/napotkane/">napotkane</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/napotkane/">napotkane</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Napotkane [001]</title>
+                <link>https://www.grizz.pl/n001/</link>
+                <guid isPermaLink="true">https://www.grizz.pl/n001/</guid>
+                <pubDate>Wed, 30 Dec 2020 20:20:23 &#43;0100</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;Napotkane&lt;/strong&gt;&lt;/em&gt; to zbiór linków wraz z krótkim opisem - rozliczne rzeczy, na które natrafiłem podczas codziennych prasówek. Nie tylko nowości, ale i wpisy, które nadal są ciekawe mimo upływu czasu. Mocno subiektywne.&lt;/p&gt;
+&lt;p&gt;W pierwszym odcinku:&lt;/p&gt;
+&lt;h2 id=&#34;tech&#34;&gt;Tech&lt;/h2&gt;
+&lt;h3 id=&#34;narzędzia&#34;&gt;Narzędzia&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://regexr.com/&#34;&gt;RegExr&lt;/a&gt; [EN] Narzędzie online do nauki, budowania i testowania wyrażeń regularnych. Podgląd na żywo, rozliczne przykłady, podpowiedzi. Cofnij/ponów.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://regex101.com/&#34;&gt;Regex101&lt;/a&gt; [EN] konkurencja do powyższego. Nie mam preferencji, co do wyboru.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://dendron.so/&#34;&gt;Dendron&lt;/a&gt; [EN] Narzędzie do robienia notatek i ich organizowania. Działa jako wtyczka do VSCode, w oparciu o pliki tekstowe (markdown). Bardzo wygodne rozwiązanie, zwłaszcza dla korzystających z samego VSCode.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/xwmx/nb&#34;&gt;nb&lt;/a&gt; [EN] a tutaj narzędzie samodzielne, działające z poziomu terminala. Notatki, zakładki, archiwizacja. Szyfrowane.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;czytanie&#34;&gt;Czytanie&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://zaufanatrzeciastrona.pl/post/wyznania-administratora-czyli-bezpieczenstwo-kancelarii-prawnych-od-srodka/&#34;&gt;Wyznania administratora czyli bezpieczeństwo kancelarii prawnych od środka&lt;/a&gt; [PL] [2015] Cytując: „Na fali ostatnich informacji o skutecznych atakach na polskie kancelarie prawnicze dostajemy sporo komentarzy i opowieści o tym, jak wygląda poziom zabezpieczeń w niektórych firmach. Oto opowieść administratora w jednej z kancelarii.” Nadal aktualne.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;różne&#34;&gt;Różne&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://thetruesize.com&#34;&gt;The true size of &amp;hellip;&lt;/a&gt; [EN] Interaktywna mapa pozwalająca porównać wielkość krajów - Czyli jak wygląda Polska i Kolumbia na tle Grenlandii bez uroków &lt;a href=&#34;https://pl.wikipedia.org/wiki/Odwzorowanie_walcowe_r%C3%B3wnok%C4%85tne&#34;&gt;odwzorowania Merkatora&lt;/a&gt;? Spoiler! Tak:
+&lt;img src=&#34;https://www.grizz.pl/014/true-size.png&#34; alt=&#34;true size screenshot&#34;&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://kulturawplot.pl/2018/03/28/zabytki-rekonstrukcja/&#34;&gt;Zabytki starożytności. Jak wyglądały naprawdę?&lt;/a&gt; [PL] [2018] - jak w tytule.&lt;/li&gt;
+&lt;/ol&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/napotkane/">napotkane</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/napotkane/">napotkane</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Konwersja jpg gif do pdf - jak okiełznać zeskanowaną książkę</title>
+                <link>https://www.grizz.pl/konwersja-jpg-gif-do-pdf/</link>
+                <guid isPermaLink="true">https://www.grizz.pl/konwersja-jpg-gif-do-pdf/</guid>
+                <pubDate>Mon, 03 Nov 2014 20:20:31 &#43;0100</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;p&gt;Jak zrobić ładnego pdfa ze zeskanowanej, bądź sfotografowanej książki?&lt;/p&gt;
+&lt;p&gt;Zaprezentowany sposób nie jest idealny - średnio nadaje się do beletrystyki czy czytania na komórkach i czytnikach - tam zdecydowanie lepiej sprawdzi się program OCR. Jednak metoda w przypadku wszelakiej maści podręczników, zwłaszcza ze schematami/rysunkami jest świetna. Idealna do czytania na komputerze czy tablecie.&lt;/p&gt;
+&lt;p&gt;Dwa kroki do wykonania (a jak chcemy na szybko to i jeden):&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Przedkrok&lt;/strong&gt; - instalujemy pakiet imagemagick&lt;br&gt;
+&lt;strong&gt;Raz&lt;/strong&gt;. Zamieniamy jpegi na gify z kilkoma parametrami dodatkowymi. Dlaczego gif? - lepiej nadaje się do przechowywania czarno białego tekstu ;) m.in mniejszy rozmiar.&lt;/p&gt;
+&lt;p&gt;Skrypcik:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/bin/bash
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;mkdir gotowe
+&lt;span class=&#34;nv&#34;&gt;MAX&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;find ./ -name &lt;span class=&#34;s2&#34;&gt;&amp;#34;*.jpg&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; wc -l&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;COUNT&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;start&amp;#34;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; i in *.jpg
+        &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;
+                convert &lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt; -colors &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; -scale 50% -normalize gotowe/&lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt;.gif
+                &lt;span class=&#34;c1&#34;&gt;#Inne przykładowe ustawienia:&lt;/span&gt;
+                &lt;span class=&#34;c1&#34;&gt;#convert $i -colors 16 -scale 50% -normalize -unsharp 1.5×1.0+1.5+0.02 gotowe/$i.jpg&lt;/span&gt;
+                &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; &amp;gt;&amp;gt;&amp;gt;done &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$COUNT&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; from &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$MAX&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;lt;&amp;lt;&amp;lt;&amp;#34;&lt;/span&gt;
+                &lt;span class=&#34;nb&#34;&gt;let&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;COUNT&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;COUNT+1
+        &lt;span class=&#34;k&#34;&gt;done&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;lt;&amp;lt;&amp;lt;&amp;gt;&amp;gt;&amp;gt; &amp;gt;&amp;gt;&amp;gt;ALL is DONE!&amp;lt;&amp;lt;&amp;lt; &amp;lt;&amp;lt;&amp;lt;&amp;gt;&amp;gt;&amp;gt;&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Oczywiście powyżej założenie do ksiażki czarnobiałej - parametr -colors.&lt;br&gt;
+Opcje -scale również najlepiej dobrać pod konkretny przyadek w zależności od wielkości pliku wejściowego.&lt;/p&gt;
+&lt;p&gt;Dwa. Zamieniamy nasze pliki na pdf&amp;rsquo;a (tak samo możemy przeprowadzić konwersję wprost z plików *.jpg - wystarczy zmienić rozszerzenie)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;convert *.gif ksiazka.pdf
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Gotowe.&lt;/p&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tech/">tech</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/tech/">tech</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/shell/">shell</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/linux/">linux</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/oprogramowanie/">oprogramowanie</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/programowanie/">programowanie</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/grafika/">grafika</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Zsh i git - wyświetlanie gałęzi (brancha) i zmian</title>
+                <link>https://www.grizz.pl/zsh-i-git-wyswietlanie-galezi-brancha-i-zmian/</link>
+                <guid isPermaLink="true">https://www.grizz.pl/zsh-i-git-wyswietlanie-galezi-brancha-i-zmian/</guid>
+                <pubDate>Mon, 27 Oct 2014 20:20:31 &#43;0100</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;p&gt;Pracując z gitem, często zapominamy na jakiej aktualnie gałęzi (brancha) się znajdujemy, zaś wpisywanie git branch jest po prostu meczące. Oczywiście możemy to obejść jakimś dwuliterowym, zgrabnym aliasem &lt;a href=&#34;https://www.grizz.pl/aliasy-czyli-jak-ulatwic-sobie-prace-w-konsoli/&#34;&gt;(tutaj artykuł o nich)&lt;/a&gt;, jednak wygodniej skorzystać z dobrodziejstwa zsh i otrzymać bezpośrednio i automatycznie ładną informację o tym w jakiej gałęzi się znajdujemy, oraz o tym czy nastąpiły jakieś niezatwierdzone zmiany.&lt;/p&gt;
+&lt;h2 id=&#34;przykłady&#34;&gt;Przykłady&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.grizz.pl/012/zsh-git-1.png&#34; alt=&#34;Przykład działania informacji w git&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.grizz.pl/012/zsh-git-2.png&#34; alt=&#34;Przykład działania informacji w git - zmiana brancha&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.grizz.pl/012/zsh-git-3.png&#34; alt=&#34;Przykład działania informacji w git - zaznaczenie istnienia zmian&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;konfiguracja&#34;&gt;Konfiguracja&lt;/h2&gt;
+&lt;p&gt;Konfiguracja bazuje na tej z artykułu Floriana Krienera &lt;a href=&#34;http://kriener.org/articles/2009/06/04/zsh-prompt-magic&#34;&gt;http://kriener.org/articles/2009/06/04/zsh-prompt-magic&lt;/a&gt; (strona już niedostępna - kopia na &lt;a href=&#34;http://web.archive.org/web/20100706035606/http://kriener.org/articles/2009/06/04/zsh-prompt-magic&#34;&gt;web.archive.org&lt;/a&gt;), jednak zaaplikowałem kilka zmian:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;używanie jedynie prawej strony PROMPTa&lt;/li&gt;
+&lt;li&gt;możliwość działania z (prawie) dowolnym promptem zsh (np. widoczny na zrzutach prompt fire)&lt;/li&gt;
+&lt;li&gt;wyświetlanie tylko kluczowych informacji dla gita (choć całość mechanizmu obsługuje również inne VCSy)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Zmiany umieszczamy w &lt;em&gt;~/.zshrc&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;46
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;47
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;48
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;49
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;50
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;51
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;52
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;53
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;54
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;55
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;56
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;57
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;58
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;59
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;60
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;61
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-zsh&#34; data-lang=&#34;zsh&#34;&gt; &lt;span class=&#34;c1&#34;&gt;################# git prompt ######################&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;# based on: http://kriener.org/articles/2009/06/04/zsh-prompt-magic&lt;/span&gt;
+
+setopt prompt_subst
+autoload colors
+colors
+autoload -Uz vcs_info
+
+&lt;span class=&#34;c1&#34;&gt;# set some colors&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; COLOR in RED GREEN YELLOW WHITE BLACK CYAN&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;eval&lt;/span&gt; PR_&lt;span class=&#34;nv&#34;&gt;$COLOR&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;%{$fg[${(L)COLOR}]%}&amp;#39;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;eval&lt;/span&gt; PR_BRIGHT_&lt;span class=&#34;nv&#34;&gt;$COLOR&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;%{$fg_bold[${(L)COLOR}]%}&amp;#39;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;done&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;PR_RESET&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;%{&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;reset_color&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;%}&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;# set formats&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# %b - branchname&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# %u - unstagedstr (see below)&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# %c - stangedstr (see below)&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# %a - action (e.g. rebase-i)&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# %R - repository path&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# %S - path in the repository&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;FMT_BRANCH&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;PR_GREEN&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;%s::%b%u%c&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;PR_RESET&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# e.g. master¹²&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;FMT_ACTION&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;(&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;PR_CYAN&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;%a&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;PR_RESET&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;%)&amp;#34;&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;# e.g. (rebase-i)&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;FMT_PATH&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;%R&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;PR_YELLOW&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;/%S&amp;#34;&lt;/span&gt;              &lt;span class=&#34;c1&#34;&gt;# e.g. ~/repo/subdir&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;# check-for-changes can be really slow.&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# you should disable it, if you work with large repositories&lt;/span&gt;
+zstyle &lt;span class=&#34;s1&#34;&gt;&amp;#39;:vcs_info:*:prompt:*&amp;#39;&lt;/span&gt; check-for-changes &lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
+zstyle &lt;span class=&#34;s1&#34;&gt;&amp;#39;:vcs_info:*:prompt:*&amp;#39;&lt;/span&gt; unstagedstr &lt;span class=&#34;s1&#34;&gt;&amp;#39;¹&amp;#39;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# display ¹ if there are unstaged changes&lt;/span&gt;
+zstyle &lt;span class=&#34;s1&#34;&gt;&amp;#39;:vcs_info:*:prompt:*&amp;#39;&lt;/span&gt; stagedstr &lt;span class=&#34;s1&#34;&gt;&amp;#39;²&amp;#39;&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;# display ² if there are staged changes&lt;/span&gt;
+zstyle &lt;span class=&#34;s1&#34;&gt;&amp;#39;:vcs_info:*:prompt:*&amp;#39;&lt;/span&gt; actionformats &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;FMT_BRANCH&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;FMT_ACTION&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;//&amp;#34;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;FMT_PATH&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+zstyle &lt;span class=&#34;s1&#34;&gt;&amp;#39;:vcs_info:*:prompt:*&amp;#39;&lt;/span&gt; formats       &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;FMT_BRANCH&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;              &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;FMT_PATH&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+zstyle &lt;span class=&#34;s1&#34;&gt;&amp;#39;:vcs_info:*:prompt:*&amp;#39;&lt;/span&gt; nvcsformats   &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;                             &lt;span class=&#34;s2&#34;&gt;&amp;#34;%~&amp;#34;&lt;/span&gt;
+
+
+&lt;span class=&#34;k&#34;&gt;function&lt;/span&gt; precmd &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+    vcs_info &lt;span class=&#34;s1&#34;&gt;&amp;#39;prompt&amp;#39;&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;function&lt;/span&gt; rprompt &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;local&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;brackets&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$1&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;local&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;color1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$2&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;local&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;color2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$3&lt;/span&gt;
+
+    &lt;span class=&#34;nb&#34;&gt;local&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;bracket_open&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;color1&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;brackets&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[1]&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;PR_RESET&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;local&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;bracket_close&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;color1&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;brackets&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[2]&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;PR_RESET&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;local&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;colon&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;color1&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;:&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;local&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;at&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;color1&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;PR_RESET&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+
+    &lt;span class=&#34;nb&#34;&gt;local&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;user_host&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;color2&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;%n&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;at&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;color2&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;%m&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;local&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;vcs_cwd&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;${${vcs_info_msg_1_%%.}/$HOME/~}&amp;#39;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;local&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;cwd&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;color2&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;%B%20&amp;lt;..&amp;lt;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;vcs_cwd&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;%&amp;lt;&amp;lt;%b&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;local&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;inner&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;local&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;git&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$vcs_info_msg_0_&amp;#39;&lt;/span&gt;
+
+        &lt;span class=&#34;nv&#34;&gt;RPROMPT&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;PR_RESET&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;bracket_open&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;inner&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;git&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;bracket_close&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;PR_RESET&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+
+rprompt &lt;span class=&#34;s1&#34;&gt;&amp;#39;  &amp;#39;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$BR_BRIGHT_BLACK&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$PR_WHITE&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Cała moja konfiguracja zsh: &lt;a href=&#34;http://github.com/grizz-pl/zshrc&#34;&gt;http://github.com/grizz-pl/zshrc&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;inne-vcsy&#34;&gt;Inne VCSy&lt;/h2&gt;
+&lt;p&gt;Jak wspominałem, skupiłem się na gitcie, ale vcs_info obsługuje równiez inne systemy kontroli wersji, takie jak:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;bzr&lt;/li&gt;
+&lt;li&gt;cdv&lt;/li&gt;
+&lt;li&gt;cvs&lt;/li&gt;
+&lt;li&gt;darcs&lt;/li&gt;
+&lt;li&gt;git&lt;/li&gt;
+&lt;li&gt;hg&lt;/li&gt;
+&lt;li&gt;mtn&lt;/li&gt;
+&lt;li&gt;p4&lt;/li&gt;
+&lt;li&gt;svk&lt;/li&gt;
+&lt;li&gt;svn&lt;/li&gt;
+&lt;li&gt;tla&lt;/li&gt;
+&lt;/ul&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tech/">tech</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/tech/">tech</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/linux/">linux</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/oprogramowanie/">oprogramowanie</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/programowanie/">programowanie</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/shell/">shell</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/git/">git</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Google inbox i google wave</title>
+                <link>https://www.grizz.pl/google-inbox-i-google-wave/</link>
+                <guid isPermaLink="true">https://www.grizz.pl/google-inbox-i-google-wave/</guid>
+                <pubDate>Thu, 23 Oct 2014 20:20:31 &#43;0100</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;p&gt;Krótko - na kanwie dzisiejszego zachwytu nad nową usługą Google - Inbox i przeglądając archiwum strony, trafiłem na taki to wpis:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Mam kilka zaproszeń do google wave.
+Prześlę 8 osobom, które podadzą maila w komentarzach(albo wyślą komentarz &amp;ldquo;zaklepujący&amp;rdquo;, a maila prześlą przez formularz kontaktowy).&lt;br&gt;
+edit: komentarze wyłaczone, by nie rozpowszechniać maili, bo całą rzesza osób podała je w treści zamiast w odpowiednim polu.&lt;br&gt;
+grizz, śr., 2009-11-11 21:18&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Łezka się w oku kręci – nieprawdaż?&lt;/p&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tech/">tech</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/tech/">tech</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/przemyslenia/">przemyślenia</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/krotko/">krótko</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Kwadratowe miniatury - python PIL i ImageMagick - wydajność</title>
+                <link>https://www.grizz.pl/kwadratowe-miniatury-python-pil-i-imagemagick-wydajnosc/</link>
+                <guid isPermaLink="true">https://www.grizz.pl/kwadratowe-miniatury-python-pil-i-imagemagick-wydajnosc/</guid>
+                <pubDate>Tue, 21 Oct 2014 20:20:31 &#43;0100</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;p&gt;Na etapie tworzenia mini-silnika do własnej galerii i wymyśliłem sobie, że chce mieć w niej miniatury kwadratowe, oczywiście wycięte ładnie ze środka.
+Googlając za rozwiązaniem trafiłem na implementacje zarówno z wykorzystaniem ImageMagicka jak i PIL
+Oba rozwiązania działają i tworzą to co mają tworzyć, z ciekawości jednak, stworzyłem bliźniacze skrypty i sprawdziłem wydajność obu rozwiązań.&lt;/p&gt;
+&lt;h2 id=&#34;wyniki-porównania&#34;&gt;Wyniki porównania&lt;/h2&gt;
+&lt;h3 id=&#34;80-plików-o-rozmiarach-750568&#34;&gt;80 plików o rozmiarach 750*568&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;~/temp/misc/ &lt;span class=&#34;nb&#34;&gt;time&lt;/span&gt; python generate_thumb_pil.py 
+python generate_thumb_pil.py  6,02s user 0,09s system 98% cpu 6,175 total
+
+~/temp/misc1_1/ &lt;span class=&#34;nb&#34;&gt;time&lt;/span&gt; python generate_thumb_im.py 
+python generate_thumb_im.py  11,28s user 1,50s system 119% cpu 10,650 total
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;100-plików-o-rozmiarach-25601920-każdy-plik-o-wadze-ok-11mb&#34;&gt;100 plików o rozmiarach 2560*1920 każdy plik o wadze ok. 1,1MB&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;~/temp/im/ &lt;span class=&#34;nb&#34;&gt;time&lt;/span&gt; python generate_thumb_im.py
+python generate_thumb_im.py  58,80s user 9,70s system 116% cpu 58,739 total
+
+
+~/temp/pil/ &lt;span class=&#34;nb&#34;&gt;time&lt;/span&gt; python generate_thumb_pil.py
+python generate_thumb_pil.py  60,22s user 1,62s system 98% cpu 1:02,73 total
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;100-plików-o-rozmiarach-25601920-każdy-plik-o-wadze-ok-30mb&#34;&gt;100 plików o rozmiarach 2560*1920 każdy plik o wadze ok. 3,0MB&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;~/temp/im2/ &lt;span class=&#34;nb&#34;&gt;time&lt;/span&gt; python generate_thumb_im.py
+python generate_thumb_im.py  69,18s user 9,69s system 116% cpu 1:07,48 total
+
+~/temp/pil2/ &lt;span class=&#34;nb&#34;&gt;time&lt;/span&gt; python generate_thumb_pil.py
+python generate_thumb_pil.py  67,58s user 1,42s system 99% cpu 1:09,69 total
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;O ile pierwszy wynik potwierdza test riklaunima, to dwa kolejne (pliki o znacznie większej rozdzielczości) wskazują na delikatną przewagę ImageMagicka&lt;/p&gt;
+&lt;h2 id=&#34;skrypty&#34;&gt;Skrypty&lt;/h2&gt;
+&lt;h3 id=&#34;wersja-z-wykorzystaniem-imagemagick&#34;&gt;wersja z wykorzystaniem ImageMagick&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;ch&#34;&gt;#!/usr/bin/env python&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;#generate thumb im by grizz - Witek Firlej http://grizz.pl&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;__project__&lt;/span&gt;      &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;generate thumb im&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;__author__&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Witold Firlej (http://grizz.pl)&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;__license__&lt;/span&gt;   &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;GPL&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;__copyright__&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Witold Firlej&amp;#34;&lt;/span&gt;
+
+&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;glob&lt;/span&gt;
+&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;os&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;THUMB_SIZE&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;125&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;infile&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;glob&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;glob&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;*.jpg&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;outfile&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;infile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;_thumb.jpg&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;cmd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;convert &amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;infile&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34; -thumbnail x&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;THUMB_SIZE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34; -resize &lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\&amp;#39;&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;THUMB_SIZE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;x&amp;lt;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\&amp;#39;&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; -resize 50&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;% -g&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;ravity center -crop &amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;THUMB_SIZE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;x&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;THUMB_SIZE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;+0+0 +repage -format jpg -quality 91 &amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;outfile&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;#   print cmd&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;os&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;system&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cmd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;wersja-z-wykorzystaniem-python-imaging-library&#34;&gt;wersja z wykorzystaniem Python Imaging Library&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;ch&#34;&gt;#!/usr/bin/env python&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;#generate thumb pil by grizz - Witek Firlej http://grizz.pl&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;__project__&lt;/span&gt;      &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;generate thumb pil&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;__author__&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Witold Firlej (http://grizz.pl)&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;__license__&lt;/span&gt;   &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;GPL&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;__copyright__&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Witold Firlej&amp;#34;&lt;/span&gt;
+
+&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;glob&lt;/span&gt;
+&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;Image&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;THUMB_SIZE&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;125&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;125&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;infile&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;glob&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;glob&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;*.jpg&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;img&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Image&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;open&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;infile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;width&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;height&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;img&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;
+
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;width&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;height&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;delta&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;width&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;height&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;left&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;delta&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;upper&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;right&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;height&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;left&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;lower&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;height&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;delta&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;height&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;width&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;left&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;upper&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;delta&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;right&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;width&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;lower&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;width&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;upper&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;img&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;img&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;crop&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;left&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;upper&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;right&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;lower&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;img&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;thumbnail&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;THUMB_SIZE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Image&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ANTIALIAS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;outfile&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;infile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;_thumb.jpg&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;#print infile + &amp;#34; ==&amp;gt; &amp;#34; + outfile&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;img&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;save&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;outfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;JPEG&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Dostępne:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git clone git://github.com/grizz-pl/generatesquarethumbs.git&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Wersja imagemagick jest w osobnej gałęzi, a więc po ściągnięciu:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; generatesquarethumbs
+git checkout -b imagemagick origin/imagemagick
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;podsumowanie&#34;&gt;Podsumowanie&lt;/h2&gt;
+&lt;p&gt;Szybkość, szybkością, ale przejrzystość kodu to dopiero zaleta rozwiązania z użyciem PILa. W tym wypadku, tak miło się składa, ze zarówno wydajność jak i przejrzystość idą w parze. Oczywiście przy dużych plikach, PIL jest minimalnie mniej wydajny, ale dla celów galerii jaką tworzę (nie będę w niej zamieszczał plików o tak dużej rozdzielczości) jest idealny.&lt;/p&gt;
+&lt;p&gt;Efekt galerii mozna zobaczyć tutaj: &lt;a href=&#34;http://galeria.firlej.org/&#34;&gt;http://galeria.firlej.org/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;linki&#34;&gt;Linki&lt;/h2&gt;
+&lt;p&gt;W powyższych skryptach korzystałem z rozwiązań pochodzących z:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.randomsequence.com/articles/making-square-thumbnails-with-imagemagick/&#34;&gt;http://www.randomsequence.com/articles/making-square-thumbnails-with-imagemagick/&lt;/a&gt;
+&lt;a href=&#34;http://javiergodinez.blogspot.com/2008/03/square-thumbnail-with-python-image.html&#34;&gt;http://javiergodinez.blogspot.com/2008/03/square-thumbnail-with-python-image.html&lt;/a&gt;&lt;/p&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tech/">tech</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/tech/">tech</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/python/">python</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/linux/">linux</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/shell/">shell</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/programowanie/">programowanie</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/grafika/">grafika</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Aliasy - czyli jak ułatwić sobie pracę w konsoli</title>
+                <link>https://www.grizz.pl/aliasy-czyli-jak-ulatwic-sobie-prace-w-konsoli/</link>
+                <guid isPermaLink="true">https://www.grizz.pl/aliasy-czyli-jak-ulatwic-sobie-prace-w-konsoli/</guid>
+                <pubDate>Tue, 14 Oct 2014 20:20:31 &#43;0100</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;p&gt;Podczas pracy w terminalu często powtarzamy określone operacje - wpisujemy dane komendy czasami z dość rozbudowanymi parametrami.
+O ile już samo zsh znacznie przyśpiesza pracę dzięki kapitalnemu systemowi uzupełniania - umożliwiając przeszukiwanie historii tylko dla określonego polecenia, to pracę możemy przyśpieszyć jeszcze bardziej, dzięki aliasom. (oczywiście działają również w bashu ).&lt;/p&gt;
+&lt;h2 id=&#34;tryb-ad-hoc&#34;&gt;Tryb ad hoc&lt;/h2&gt;
+&lt;p&gt;Dla aktualnej sesji alias ustawiamy następująco:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;~/ &lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;hello&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;echo &amp;#39;Hello World&amp;#39;&amp;#34;&lt;/span&gt;
+~/ hello
+Hello World
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Dostępne aliasy wypisujemy wydając polecenie &lt;code&gt;alias&lt;/code&gt; bez parametrów.&lt;/p&gt;
+&lt;h2 id=&#34;aliasy-na-stałe&#34;&gt;Aliasy na stałe&lt;/h2&gt;
+&lt;p&gt;By aliasy działały po każdym uruchomieniu powłoki umieszczamy je w pliku konfiguracyjnym &lt;em&gt;~/.zshrc&lt;/em&gt; bądź &lt;em&gt;~/.bashrc&lt;/em&gt; Poniżej kilka przydatnych aliasów, które używam.&lt;/p&gt;
+&lt;h3 id=&#34;ogólne&#34;&gt;Ogólne&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ls&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;ls --color=auto&amp;#39;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ll&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;ls -lh --color=auto&amp;#39;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# Listuje jeden plik w linii podając rozmiary w sposób przyjazny dla oka ;)&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;sensors |grep Core&amp;#34;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# Temperatura rdzeni&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt;    -g    &lt;span class=&#34;nv&#34;&gt;L&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;|most &amp;#39;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt;    -g    &lt;span class=&#34;nv&#34;&gt;G&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;|grep &amp;#39;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# BAAARDZO PRZYDATNE :D&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt;    -g    &lt;span class=&#34;nv&#34;&gt;S&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;|sort&amp;#39;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;rm&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;rm -I&amp;#34;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# Zabezpiecza przed pochopnym skasowaniem danych&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;w&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;w -f&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;aria2cSl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;aria2c -s 5 --max-download-limit=200K&amp;#34;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# pobieranie równoległe - 5 połączeń + limit danych&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;aria2cS&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;aria2c -s 5&amp;#34;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# j.w. ale bez limitu&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;du&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;du -h&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;DU&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;du -sh *&amp;#34;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# wyświetla rozmiar katalogów&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt;   &lt;span class=&#34;nv&#34;&gt;Sshfsm&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;sshfs mirley@192.168.1.2:/home/mirley/ /home/users/grizz/mnt/mirley&amp;#39;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# Podmontowanie zdalnego systemu plików - niżej link z objaśnieniami&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;EDITOR&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;gvim&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$EDITOR&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;uptime &amp;amp;&amp;amp; echo \&amp;#34;--\\n\&amp;#34; &amp;amp;&amp;amp; free -m &amp;amp;&amp;amp; echo \&amp;#34;--\\n\&amp;#34; &amp;amp;&amp;amp; t &amp;amp;&amp;amp; echo \&amp;#34;--\\n\&amp;#34; &amp;amp;&amp;amp; sensors G CPU &amp;amp;&amp;amp; echo \&amp;#34;--\\n\&amp;#34; &amp;amp;&amp;amp; /usr/sbin/hddtemp -q /dev/sda &amp;amp;&amp;amp; /usr/sbin/hddtemp -q /dev/sdb # potworek, ale przydatny daje wynik jak poniżej:
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Artykuł o &lt;a href=&#34;%7Bfilename%7D/articles/14-09-28-sshfs-podmontowywanie-katalogow-z-innych-komputerow.md&#34;&gt;sshfs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Wynik aliasu &lt;code&gt;s&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;~/ s
+09:07:20 up  2:17,  &lt;span class=&#34;m&#34;&gt;9&lt;/span&gt; users,  load average: 0.28, 0.33, 0.39
+--
+
+             total       used       free     shared    buffers     cached
+Mem:          &lt;span class=&#34;m&#34;&gt;2002&lt;/span&gt;       &lt;span class=&#34;m&#34;&gt;1868&lt;/span&gt;        &lt;span class=&#34;m&#34;&gt;134&lt;/span&gt;          &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;          &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;       &lt;span class=&#34;m&#34;&gt;1150&lt;/span&gt;
+-/+ buffers/cache:        &lt;span class=&#34;m&#34;&gt;718&lt;/span&gt;       &lt;span class=&#34;m&#34;&gt;1284&lt;/span&gt;
+Swap:         &lt;span class=&#34;m&#34;&gt;2098&lt;/span&gt;          &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;       &lt;span class=&#34;m&#34;&gt;2098&lt;/span&gt;
+--
+
+Core 0:      +48.0°C  &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;high&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; +86.0°C, &lt;span class=&#34;nv&#34;&gt;crit&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; +100.0°C&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+Core 1:      +48.0°C  &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;high&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; +86.0°C, &lt;span class=&#34;nv&#34;&gt;crit&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; +100.0°C&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+VCore:       +1.23 V  &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;min&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;  +0.00 V, &lt;span class=&#34;nv&#34;&gt;max&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;  +1.74 V&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+--
+
+CPU Fan:    &lt;span class=&#34;m&#34;&gt;1454&lt;/span&gt; RPM  &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;min&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1095&lt;/span&gt; RPM, &lt;span class=&#34;nv&#34;&gt;div&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; 8&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+CPU Temp:    +26.5°C  &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;high&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; +80.0°C, &lt;span class=&#34;nv&#34;&gt;hyst&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; +75.0°C&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;nv&#34;&gt;sensor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; diode
+--
+
+/dev/sda: ST3160815AS                             �: 41°C
+/dev/sdb: WDC WD1600AAJS-07PSA0                   �:  38°C lub °F
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Inna wersja aliasu &lt;code&gt;s&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nv&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;uptime ; echo &amp;#34;--&amp;#34; ; free -m ; echo &amp;#34;--&amp;#34; ; t ; grep &amp;#34;cpu MHz&amp;#34; /proc/cpuinfo ; cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor ; sensors G CPU  ; /usr/sbin/hddtemp -q /dev/sda ; echo -ne &amp;#34;GeForce temp: &amp;#34; ; nvidia-settings -q gpucoretemp -t&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Otrzymamy&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;~/ s                                                                                                                                                  
+ 19:22:19 up  3:25,  &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; users,  load average: 0,40, 0,49, 0,54
+--
+             total       used       free     shared    buffers     cached
+Mem:          &lt;span class=&#34;m&#34;&gt;5968&lt;/span&gt;       &lt;span class=&#34;m&#34;&gt;5727&lt;/span&gt;        &lt;span class=&#34;m&#34;&gt;240&lt;/span&gt;         &lt;span class=&#34;m&#34;&gt;33&lt;/span&gt;        &lt;span class=&#34;m&#34;&gt;150&lt;/span&gt;       &lt;span class=&#34;m&#34;&gt;2482&lt;/span&gt;
+-/+ buffers/cache:       &lt;span class=&#34;m&#34;&gt;3094&lt;/span&gt;       &lt;span class=&#34;m&#34;&gt;2874&lt;/span&gt;
+Swap:         &lt;span class=&#34;m&#34;&gt;9215&lt;/span&gt;          &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;       &lt;span class=&#34;m&#34;&gt;9215&lt;/span&gt;
+--
+Core 0:       +54.0°C  &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;high&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; +82.0°C, &lt;span class=&#34;nv&#34;&gt;crit&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; +100.0°C&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+Core 1:       +54.0°C  &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;high&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; +82.0°C, &lt;span class=&#34;nv&#34;&gt;crit&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; +100.0°C&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+Core 2:       +52.0°C  &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;high&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; +82.0°C, &lt;span class=&#34;nv&#34;&gt;crit&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; +100.0°C&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+Core 3:       +51.0°C  &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;high&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; +82.0°C, &lt;span class=&#34;nv&#34;&gt;crit&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; +100.0°C&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+cpu MHz         : 1596.000
+cpu MHz         : 1596.000
+cpu MHz         : 1596.000
+cpu MHz         : 1596.000
+ondemand
+ondemand
+ondemand
+ondemand
+CPU FAN Speed:     &lt;span class=&#34;m&#34;&gt;1939&lt;/span&gt; RPM  &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;min&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;800&lt;/span&gt; RPM, &lt;span class=&#34;nv&#34;&gt;max&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;7200&lt;/span&gt; RPM&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+CPU Temperature:    +45.0°C  &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;high&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; +60.0°C, &lt;span class=&#34;nv&#34;&gt;crit&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; +95.0°C&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+/dev/sda: ST1000DM003-9YN162: 37°C
+GeForce temp: &lt;span class=&#34;m&#34;&gt;57&lt;/span&gt;
+&lt;span class=&#34;m&#34;&gt;57&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;pld&#34;&gt;PLD&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pu&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;poldek --up&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pllu&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;ipoldek llu&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pul&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;pu &amp;amp;&amp;amp; pllu&amp;#34;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#tricky :P # aktualizuje indeksy i wypisuje pakiety do aktualizacji&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pud&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;poldek --upgrade-dist&amp;#34;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# aktualizuje dystrybucje, najpierw dać `pu` - nie używam już, wolę `pul`&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pth&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;poldek -n th-test -n titanium -n titanium-test -n th -n th-ready&amp;#34;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# repozytoria PLD Th - na codzień używam Titanium&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pula&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;pth --up &amp;amp;&amp;amp; pul &amp;amp;&amp;amp; pth --shcmd &amp;#39;llu kde* gtk2-theme-engine-*&amp;#39;&amp;#34;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# aktualizuje indeksy Th i Ti, wypisuje wszystkie aktualizacje dla Titanium i aktualizacje kde dla TH - po prostu w Ti nie ma jeszcze kde4&lt;/span&gt;
+ 
+&lt;span class=&#34;c1&#34;&gt;# Przydatne do budowania pakietów - do wykonywania na plikach .spec&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;Sv&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;grep Version&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;Ss&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;grep Sum&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;Su&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;grep URL&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;bb&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;time ./builder -bb&amp;#39;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;bbak&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;time ./builder -bb --define alt_kernel desktop&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;archlinux&#34;&gt;Archlinux&lt;/h3&gt;
+&lt;p&gt;Już bez komentarzy. nie pamiętam co dana opcja robiła - Archa nie używam od długiego czasu. Aliasy zaczynają się od pc bo wcześniej operowały na pacmanie :)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pcs&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;yaourt -S&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pcsb&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;yaourt -Sb&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pcsu&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;yaourt -Su&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pcsy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;yaourt -Sy&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pcsyu&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;yaourt -Syu&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pcr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;yaourt -R&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pcq&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;yaourt -Q&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pcqi&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;yaourt -Qi&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pcql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;yaourt -Ql&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pcqo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;yaourt -Qo&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pcqs&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;yaourt -Qs&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pcu&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;yaourt -U&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Całość mojej konfiguracji zsh:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git clone git://github.com/grizz-pl/zshrc.git&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://github.com/grizz-pl/zshrc&#34;&gt;http://github.com/grizz-pl/zshrc&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;ubuntukubuntu-i-pochodne&#34;&gt;Ubuntu/Kubuntu i pochodne&lt;/h3&gt;
+&lt;p&gt;Wstyd, czy nie wstyd od czasu PLD i Archa nic specjalnie w konfiguracji nie zmieniałem. Zdecydowanie opieram się na historii zsh i tym co powyżej.&lt;/p&gt;
+&lt;h2 id=&#34;posłowie&#34;&gt;Posłowie&lt;/h2&gt;
+&lt;p&gt;Dysponujesz jakimś ciekawym czy pożytecznym aliasem?
+Podziel się nim w komentarzu. Dziękuję.&lt;/p&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tech/">tech</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/linux/">linux</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/oprogramowanie/">oprogramowanie</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/tech/">tech</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/shell/">shell</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>sshfs - podmontowywanie katalogów z innych komputerów</title>
+                <link>https://www.grizz.pl/sshfs-podmontowywanie-katalogow-z-innych-komputerow/</link>
+                <guid isPermaLink="true">https://www.grizz.pl/sshfs-podmontowywanie-katalogow-z-innych-komputerow/</guid>
+                <pubDate>Sun, 28 Sep 2014 20:20:31 &#43;0100</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;h2 id=&#34;a-co-to&#34;&gt;A. Co to?&lt;/h2&gt;
+&lt;p&gt;Sshfs umożliwia nam podmontowanie zdalnego systemu plików pod własny, lokalny. Do połączenia wykorzystywane jest ssh.&lt;/p&gt;
+&lt;h2 id=&#34;b-po-co&#34;&gt;B. Po co?&lt;/h2&gt;
+&lt;p&gt;Wygoda :) Montujemy raz, a potem korzystamy nawet nie zastanawiając się, czy działamy na systemie lokalnym czy zdalnym.&lt;/p&gt;
+&lt;p&gt;Bezpieczeństwo. Transmisja odbywa się via ssh, a nie np. nieszyfrowanym ftp.&lt;/p&gt;
+&lt;h2 id=&#34;c-różnice-w-porównaniu-do-sftp&#34;&gt;C. Różnice w porównaniu do sftp&lt;/h2&gt;
+&lt;p&gt;Jedna zasadnicza - działamy bezpośrednio na zdalnym systemie plików.&lt;/p&gt;
+&lt;p&gt;Łatwo przerabiamy domowy routerek na serwer plików.&lt;/p&gt;
+&lt;p&gt;Nie musimy, więc ściągać np. filmu do siebie, lecz odtwarzamy go w locie. Wystarczy nam magazynowanie mp3 w jednym miejscu, czy też bardziej ambitnie - mozemy trzymać na zdalnym serwerze konfiguracje programów&lt;/p&gt;
+&lt;h2 id=&#34;d-wymagania&#34;&gt;D. Wymagania&lt;/h2&gt;
+&lt;p&gt;W PLD, będzie to paczka &lt;strong&gt;sshfs-fuse&lt;/strong&gt;, w Archu &lt;strong&gt;extra/sshfs&lt;/strong&gt;, W Ubuntu i pochodnych &lt;strong&gt;sshfs&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Oczywiście wraz z zależnościami.&lt;/p&gt;
+&lt;h2 id=&#34;e-how-to&#34;&gt;E. How-to&lt;/h2&gt;
+&lt;h3 id=&#34;instalujemy-potrzebne-paczki&#34;&gt;Instalujemy potrzebne paczki&lt;/h3&gt;
+&lt;p&gt;Np. w Ubuntu czy Debianie&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt-get install sshfs
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;ładujemy-moduł-fuse&#34;&gt;Ładujemy moduł fuse&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;modprobe fuse
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Możemy go oczywiście dodać, do odpowiedniego pliku konfiguracyjnego, żeby był ładowany automatycznie przy starcie (PLD: &lt;em&gt;/etc/modules&lt;/em&gt;, Arch:&lt;em&gt;/etc/rc.conf&lt;/em&gt;, Ubuntu czary mary powinno dokonać z automatu)&lt;/p&gt;
+&lt;h3 id=&#34;montowanie&#34;&gt;Montowanie&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sshfs uzytkownik@serwer:/home/uzytkownik/jakis_katalog/ /home/users/moj_uzytkownik/katalog_w_ktorym_zamontujemy/
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;W jednej linii oczywiście.
+Voila!&lt;/p&gt;
+&lt;h3 id=&#34;odmontowywanie&#34;&gt;Odmontowywanie&lt;/h3&gt;
+&lt;p&gt;Musimy być w grupie &lt;em&gt;fuse&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;usermod -A fuse moj_uzytkownik
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;fusermount -u /home/users/moj_uzytkownik/katalog_w_ktorym_zamontujemy/
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;f-automatyczne-montowanie-przy-starcie-systemu&#34;&gt;F. Automatyczne montowanie przy starcie systemu&lt;/h2&gt;
+&lt;h3 id=&#34;moduł-fuse-musi-być-załadowany-pkt-e1&#34;&gt;moduł fuse musi być załadowany (pkt E1)&lt;/h3&gt;
+&lt;h3 id=&#34;generujemy-klucze-do-automatycznego-uwierzytelniania&#34;&gt;generujemy klucze do automatycznego uwierzytelniania&lt;/h3&gt;
+&lt;p&gt;Jak to zrobić? &lt;a href=&#34;http://jakilinux.org/uncategorized/sztuczki-z-ssh/&#34;&gt;http://jakilinux.org/uncategorized/sztuczki-z-ssh/&lt;/a&gt;
+Edytujemy &lt;em&gt;/etc/fstab&lt;/em&gt; dopisując linię:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-file&#34; data-lang=&#34;file&#34;&gt;sshfs#sshfs uzytkownik@serwer:/home/uzytkownik/jakis_katalog/ /home/users/moj_uzytkownik/katalog_w_ktorym_zamontujemy/ uid=1001,gid=100,umask=0,allow_other 0 0
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;gdzie &lt;strong&gt;uid&lt;/strong&gt; oczywiście równy uid&amp;rsquo;owi naszego użytkownika, lub &lt;strong&gt;gid&lt;/strong&gt; równy grupie która ma miec dostęp do zamontowanych zasobów.&lt;/p&gt;
+&lt;h2 id=&#34;g-problemy&#34;&gt;G. Problemy&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;/dev/fuse&lt;/em&gt; powinno mieć następujące uprawnienia:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ls -l /dev/fuse
+crw-rw-rw- &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root fuse 10, &lt;span class=&#34;m&#34;&gt;229&lt;/span&gt; 2008-02-21 10:25 /dev/fuse
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Jednak udev woli nadawać im uprawnienia &lt;strong&gt;root:root&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Jak temu zaradzić?&lt;/p&gt;
+&lt;p&gt;Nauczyć udeva ;p (jako root lub z sudo na początku)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;KERNEL&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;==&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\\\&amp;#34;&lt;/span&gt;fuse&lt;span class=&#34;se&#34;&gt;\\\&amp;#34;&lt;/span&gt;, &lt;span class=&#34;nv&#34;&gt;GROUP&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\\\&amp;#34;&lt;/span&gt;fuse&lt;span class=&#34;se&#34;&gt;\\\&amp;#34;\&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /etc/udev/rules.d/91-permissions.rules
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tech/">tech</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/tech/">tech</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/linux/">linux</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/sieci/">sieci</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/shell/">shell</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/oprogramowanie/">oprogramowanie</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>STAR WARS w wersji ASCII</title>
+                <link>https://www.grizz.pl/star-wars-w-wersji-ascii/</link>
+                <guid isPermaLink="true">https://www.grizz.pl/star-wars-w-wersji-ascii/</guid>
+                <pubDate>Sun, 13 Jan 2013 20:20:31 &#43;0100</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;p&gt;Krótko. Wklepujemy:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;telnet towel.blinkenlights.nl
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;I cieszymy się znakową wersją naszego ulubionego filmu.&lt;/p&gt;
+&lt;p&gt;(posiadacze windowsa: Start-&amp;gt;Uruchom… i wpisać to co wyżej)&lt;br&gt;
+(posiadacze linuxa zainstalować odpowiednią paczkę)&lt;/p&gt;
+&lt;p&gt;Dla łączenia po &lt;strong&gt;ipv6&lt;/strong&gt; otrzymamy bogatszą wersję - nawet z kolorami :).&lt;/p&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/rozne/">rożne</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/linux/">linux</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/oprogramowanie/">oprogramowanie</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/tech/">tech</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/shell/">shell</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/rozne/">różne</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/rozrywka/">rozrywka</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/krotko/">krótko</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Skróty klawiszowe w konsoli</title>
+                <link>https://www.grizz.pl/skroty-klawiszowe-w-konsoli/</link>
+                <guid isPermaLink="true">https://www.grizz.pl/skroty-klawiszowe-w-konsoli/</guid>
+                <pubDate>Fri, 04 Jan 2013 15:10:31 &#43;0100</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;p&gt;Kilka przydatnych skrótów, które bardzo ułatwiają pracę w terminalu. Działają też w takich aplikacjach jak &lt;strong&gt;irssi&lt;/strong&gt; czy &lt;strong&gt;ekg2&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;przemieszczanie-się&#34;&gt;Przemieszczanie się&lt;/h2&gt;
+&lt;dl&gt;
+&lt;dt&gt;Alt+B&lt;/dt&gt;
+&lt;dd&gt;Przeskakujemy jedno słowo w tył&lt;/dd&gt;
+&lt;dt&gt;Alt+F&lt;/dt&gt;
+&lt;dd&gt;Przeskakujemy jedno słowo do przodu&lt;/dd&gt;
+&lt;dt&gt;Ctrl+E&lt;/dt&gt;
+&lt;dd&gt;Przeskakujemy na koniec linii&lt;/dd&gt;
+&lt;dt&gt;Ctrl + A&lt;/dt&gt;
+&lt;dd&gt;Przeskakujemy na początek linii&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;h2 id=&#34;kasowanie&#34;&gt;Kasowanie&lt;/h2&gt;
+&lt;dl&gt;
+&lt;dt&gt;Ctrl+W&lt;/dt&gt;
+&lt;dd&gt;Skasuj jedno słowo na lewo od kursora&lt;/dd&gt;
+&lt;dt&gt;Alt+D&lt;/dt&gt;
+&lt;dd&gt;Skasuj jedno słowo na prawo od kursora&lt;/dd&gt;
+&lt;dt&gt;Ctrl+U&lt;/dt&gt;
+&lt;dd&gt;Skasuj wszystko na lewo od kursora (w zsh kasuje całą linię)&lt;/dd&gt;
+&lt;dt&gt;Ctrl+K&lt;/dt&gt;
+&lt;dd&gt;Skasuj wszystko na prawo od kursora&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;h2 id=&#34;zamiana-znaków&#34;&gt;Zamiana znaków&lt;/h2&gt;
+&lt;dl&gt;
+&lt;dt&gt;Alt+C&lt;/dt&gt;
+&lt;dd&gt;Zamień pierwszą literę w wyrazie na Wielką, a kolejne na małe.&lt;/dd&gt;
+&lt;dt&gt;Alt+L&lt;/dt&gt;
+&lt;dd&gt;Zamień wszystkie znaki w wyrazie na prawo od kursora na małe litery&lt;/dd&gt;
+&lt;dt&gt;Alt+U&lt;/dt&gt;
+&lt;dd&gt;Zamień wszystkie znaki w wyrazie na prawo od kursora na Wielkie litery&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;h2 id=&#34;przeszukiwanie-i-dopełnianie&#34;&gt;Przeszukiwanie i dopełnianie&lt;/h2&gt;
+&lt;dl&gt;
+&lt;dt&gt;Ctrl+R&lt;/dt&gt;
+&lt;dd&gt;Przeszukaj historię. Ponowne wciśnięcie kombinacji przeskakuje do kolejnego wyniku&lt;/dd&gt;
+&lt;dt&gt;Alt+P(Esc, P) Alt+N(Esc, N)&lt;/dt&gt;
+&lt;dd&gt;[W &lt;strong&gt;zsh&lt;/strong&gt;] Dopełnij daną komendę z historii.  &lt;strong&gt;Bardzo pomocne!&lt;/strong&gt; Kolejne wciśnięcia poruszają się po historii danej komendy.
+Pomocne jest ustawienie w &lt;em&gt;.zshrc&lt;/em&gt; podpięcie tych komend do strzałek w górę / w dół&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-zsh&#34; data-lang=&#34;zsh&#34;&gt;bindkey &lt;span class=&#34;s2&#34;&gt;&amp;#34;^[[A&amp;#34;&lt;/span&gt; history-search-backward  
+bindkey &lt;span class=&#34;s2&#34;&gt;&amp;#34;^[[B&amp;#34;&lt;/span&gt; history-search-forward
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tech/">tech</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/linux/">linux</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/oprogramowanie/">oprogramowanie</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/tech/">tech</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/shell/">shell</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Polski słownik dla androida - lista najpopularniejszych słów języka polskiego</title>
+                <link>https://www.grizz.pl/polski-slownik-dla-androida-lista-najpopularniejszych-slow-jezyka-polskiego/</link>
+                <guid isPermaLink="true">https://www.grizz.pl/polski-slownik-dla-androida-lista-najpopularniejszych-slow-jezyka-polskiego/</guid>
+                <pubDate>Mon, 17 Dec 2012 20:20:31 &#43;0100</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;p&gt;Jako, że nie każdy ma na swoim androidzie polski słownik, podaje przepis jak w prosty sposób go uzyskać.&lt;/p&gt;
+&lt;h2 id=&#34;wymagania&#34;&gt;Wymagania&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;User Dictionary Manager (UDM) &lt;a href=&#34;https://play.google.com/store/apps/details?id=com.usr.dict.mgr&#34;&gt;https://play.google.com/store/apps/details?id=com.usr.dict.mgr&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Lista najpopularniejszych słów w j.polskim (Słownik frekwencyjny języka polskiego) &lt;a href=&#34;http://www.slowniki.org.pl/i27.html&#34;&gt;http://www.slowniki.org.pl/i27.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Linux/cygwin lub coś co pozwoli wykonać poniższe komendy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;instrukcja&#34;&gt;Instrukcja&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Ściągamy i rozpakowujemy słownik.&lt;/li&gt;
+&lt;li&gt;Zmieniamy mu nazwę na przyjemniejszą np. lista.txt&lt;/li&gt;
+&lt;li&gt;Wywalamy z początku tekstu zbędne linie - opis i licencję.&lt;/li&gt;
+&lt;li&gt;Sortujemy listę słów po częstotliwości występowania&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sort -nr -k2 -t &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; lista.txt &amp;gt; lista2.txt
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol&gt;
+&lt;li&gt;Doprowadzamy listę do wymaganego przez UDM formatu - jedno słowo w linii&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;cat lista2.txt &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;cut -d &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; -f &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &amp;gt; lista3.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol&gt;
+&lt;li&gt;Wycinamy z pliku tyle linii ile chcemy, pamiętając, że zbyt duża liczba powoduje zawieszenie UDM. Dobrą liczbą na początek jest np. 3000 (Patrz pkt. 7.)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;head -n &lt;span class=&#34;m&#34;&gt;3000&lt;/span&gt; lista3.txt &amp;gt; lista4.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol&gt;
+&lt;li&gt;Zgrywamy na kartę i importujemy za pomocą UDM-a.Przy wspomnianych trzech tysiącach słów import trwał długo. Kilkakrotnie trzeba było klikać w czekaj. Lepiej też nie dopuszczać do przejścia telefonu w stan uśpienia.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;uwagi&#34;&gt;Uwagi&lt;/h2&gt;
+&lt;p&gt;Gdy chcemy mieć bogatszy słownik tworzymy po prostu kilka kolejnych plików zamiast jednego wielkiego. Czynimy to modyfikując punkt 7 następująco (dla plików po 1000 słów):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sed -n &lt;span class=&#34;s1&#34;&gt;&amp;#39;1,1000 p&amp;#39;&lt;/span&gt; lista3.txt &amp;gt; lista4-1.txt
+sed -n &lt;span class=&#34;s1&#34;&gt;&amp;#39;1001,2000 p&amp;#39;&lt;/span&gt; lista3.txt &amp;gt; lista4-2.txt itd.
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Wersja bez polskich znaków
+Dla uzyskania wersji smsowej (bez krzaczków) wykonujemy komendę na pliku końcowym:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;iconv -f utf-8 -t ascii//translit -o lista4sms.txt lista4.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Możemy też wgrać obie listy i potem w UDM-ie użyć opcji „clear” dla usunięcia &amp;ldquo;duplikatów&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Oczywiście analogicznie możemy zrobić sobie słowniki dla angielskiego, niemieckiego, francuskiego, quenya czy też klingońskiego.&lt;/p&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tech/">tech</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/linux/">linux</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/oprogramowanie/">oprogramowanie</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/tech/">tech</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/android/">android</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Nowe życie htc g1 - Android</title>
+                <link>https://www.grizz.pl/nowe-zycie-htc-g1/</link>
+                <guid isPermaLink="true">https://www.grizz.pl/nowe-zycie-htc-g1/</guid>
+                <pubDate>Sat, 05 Mar 2011 11:32:48 &#43;0100</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;p&gt;Krótkie przemyślenie&amp;hellip;
+Klikam ostatnio na rozliczne statystyki i&amp;hellip; stwierdzam, że Android wymiata poprzez swoją otwartość&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Ze starego telefonu (htc g1), po instalcji najnowszego cyanogen moda (6.1) + jajka od ezterry, dwuletni staruszek:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;działa szaleńczo żwawo i stabilnie (testowane już 3. miesiąc),&lt;/li&gt;
+&lt;li&gt;uzyskał dostęp do najnowszych aplikacji,&lt;/li&gt;
+&lt;li&gt;długość życia baterii kolosalnie się wydłużyła ~ 100% jak wcześniej (cm5, cm6, jak i od nowości na oficjalnym romie) trzymał do 2 dni, to teraz 3-4 spokojnie, a 5 przy lżejszym używaniu. (Oczywiście jak go katujemy non stop włączonym ekranem, czy wifi, to 3 dni nie pociągnie).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Jakaż szkoda, że w innych urządzeniach nie można tak łatwo manipulować softem. Zwłaszcza aparaty fotograficzne mogły by pokazać niesamowity pazur, gdyby można było go dopieścić pod własne potrzeby&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&amp;hellip;inna sprawa - kto by wtedy nowsze modele kupował&amp;hellip;&lt;/p&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tech/">tech</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/oprogramowanie/">oprogramowanie</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/tech/">tech</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/android/">android</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>gfo gallery generator</title>
+                <link>https://www.grizz.pl/gfo-gallery-generator/</link>
+                <guid isPermaLink="true">https://www.grizz.pl/gfo-gallery-generator/</guid>
+                <pubDate>Fri, 02 Oct 2009 18:24:53 &#43;0100</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;p&gt;gfo gallery generator to prosty skrypt pythona generujący galerię opartą na &lt;a href=&#34;http://highslide.com/&#34;&gt;highslide&lt;/a&gt; na podstawie zdjęć znajdujących się w podanych katalogach.  Skrypt zrobiony na potrzeby mojej galerii: &lt;a href=&#34;https://galeria.firlej.org&#34;&gt;https://galeria.firlej.org&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;możliwości&#34;&gt;Możliwości&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;generowanie wieloalbumowej galerii&lt;/li&gt;
+&lt;li&gt;obsługa szablonów&lt;/li&gt;
+&lt;li&gt;osobna strona tytułowa&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;howto&#34;&gt;HowTo&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Ściągamy skrypt z &lt;a href=&#34;http://github.com/grizz-pl/gfo-gallery-generator/&#34;&gt;http://github.com/grizz-pl/gfo-gallery-generator/&lt;/a&gt; bądź za pomocą &lt;strong&gt;gita:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;git clone git://github.com/grizz-pl/gfo-gallery-generator.git&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ściągamy &lt;a href=&#34;http://highslide.com/&#34;&gt;highslide&lt;/a&gt; i rozpakowujemy go do katalogu &lt;em&gt;&lt;strong&gt;highslide/&lt;/strong&gt;&lt;/em&gt; w głównym katalogu &lt;strong&gt;gfo&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;tworzymy katalog &lt;em&gt;&lt;strong&gt;static/&lt;/strong&gt;&lt;/em&gt;, w którym umieszczamy pliki &lt;em&gt;&lt;strong&gt;logo.png&lt;/strong&gt;&lt;/em&gt; (logo naszej galerii) i &lt;em&gt;&lt;strong&gt;intro.png&lt;/strong&gt;&lt;/em&gt; (zdjecie na stronie głównej)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Modyfikujemy plik &lt;em&gt;&lt;strong&gt;gfo.conf&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Odpalamy &lt;em&gt;&lt;strong&gt;./gfo.py&lt;/strong&gt;&lt;/em&gt; (z opcją &lt;strong&gt;-v&lt;/strong&gt; uzyskamy wysyp informacji o generowanym kodzie)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Program dla każdej podanej sekcji w pliku konfiguracyjnym (co równa się też osobnemu katalogowi) tworzy stronę z albumem + dodatkowo główną stronę dużym zdjęciem.&lt;/p&gt;
+&lt;h2 id=&#34;projekt---sugestie-i-problemy&#34;&gt;Projekt - sugestie i problemy&lt;/h2&gt;
+&lt;p&gt;Strona projektu na &lt;strong&gt;githubie&lt;/strong&gt; &lt;a href=&#34;http://github.com/grizz-pl/gfo-gallery-generator&#34;&gt;http://github.com/grizz-pl/gfo-gallery-generator&lt;/a&gt;&lt;br&gt;
+Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie: &lt;a href=&#34;http://github.com/grizz-pl/gfo-gallery-generator/issues&#34;&gt;http://github.com/grizz-pl/gfo-gallery-generator/issues&lt;/a&gt;&lt;/p&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tech/">tech</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/programowanie/">programowanie</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/tech/">tech</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/foto/">foto</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/python/">python</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>STAR WARS DAY!</title>
+                <link>https://www.grizz.pl/star-wars-day/</link>
+                <guid isPermaLink="true">https://www.grizz.pl/star-wars-day/</guid>
+                <pubDate>Mon, 04 May 2009 20:20:31 &#43;0100</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;p&gt;Dzisiaj obchodzimy
+&lt;strong&gt;STAR WARS DAY!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Co zasługuje na większe wyróżnienie niż tylko wpis na mikroblogu.&lt;/p&gt;
+&lt;p&gt;Za &lt;img src=&#34;http://en.wikipedia.org/wiki/Star_Wars_Day&#34; alt=&#34;wikipedią&#34;&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;May 4 is called Star Wars Day because of a pun or play on words based on the similarity between &amp;ldquo;May the 4th be with you&amp;rdquo; and &amp;ldquo;May the force be with you&amp;rdquo;, a phrase often spoken in the Star Wars movies.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A zatem:
+&lt;strong&gt;May the force be with you&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;uwagi-do-wpisów-z-poprzednich-lat&#34;&gt;Uwagi do wpisów z poprzednich lat&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;2009: W sumie jakoś w polskiej sieci o tym cicho&amp;hellip; (a twitter głośno piszczy ;)&lt;br&gt;
+2010: Święto znacznie głośniejsze&amp;hellip;nawet tvp go zauważyło puszczając stosowny film :D&lt;br&gt;
+2011: Znów cisza&amp;hellip; ale pamiętamy! Wesołego!&lt;br&gt;
+2012: May the 4th be with you&lt;br&gt;
+2013: May the 4th be with you&lt;br&gt;
+2014: May the 4th be with you&lt;br&gt;
+2015: May the 4th be with you&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/rozne/">rożne</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/rozne/">różne</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/rozrywka/">rozrywka</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Arch→PLD</title>
+                <link>https://www.grizz.pl/arch-pld/</link>
+                <guid isPermaLink="true">https://www.grizz.pl/arch-pld/</guid>
+                <pubDate>Sun, 17 Feb 2008 19:47:04 &#43;0100</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;p&gt;&lt;a href=&#34;%7Bfilename%7D/articles/000-07-03-12-pld-arch.md&#34;&gt;Jedenaście miesięcy temu&lt;/a&gt; zastąpiłem na mojej stacji roboczej PLD Ac - Archem&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Jednak PLD ma &amp;ldquo;coś&amp;rdquo; w sobie ;p  I tak znów system pracuje pod kontrolą bociana, a konkretniej nieoficjalnej jego gałęzi stworzonej przez hawk&amp;rsquo;a - PLD Titanium.&lt;/p&gt;
+&lt;p&gt;Migracja bezproblemowa (poza ręcznym tworzeniem initrd). Założenia PLD Ti odpowiadają mi bardzo - dystrybucja w ciągłym rozwoju, czyli jak Arch (:)), jednak z nastawieniem na stabilność, a nie ładowaniem nowych pakietów na siłę.&lt;/p&gt;
+&lt;p&gt;W repozytorium pakietów nie ma jeszcze tyle co w PLD Th, jednak skrypt buildera działa bez zarzutów - zresztą wystarczy napisać maila do Hawka&amp;rsquo;a a spec powędruje na publiczny builder i wyląduje na ftp.&lt;/p&gt;
+&lt;p&gt;W skrócie - znów witamy rozdrobnione pakiety (/ zajmuje około 50% tego co pod Archem) i poldka :)&lt;/p&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tech/">tech</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/linux/">linux</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/pld/">pld</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/arch/">arch</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>PLD→Arch</title>
+                <link>https://www.grizz.pl/pld-arch/</link>
+                <guid isPermaLink="true">https://www.grizz.pl/pld-arch/</guid>
+                <pubDate>Mon, 12 Mar 2007 22:23:35 &#43;0100</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;p&gt;Ostatnio coś zaczęły pakiety w PLD nawalać, a raczej ich budowanie, znaczna część pakietów typowo desktopowych, których używam nie buduje się na AC (chyba deweloperzy myślą już tylko o TH:/).&lt;/p&gt;
+&lt;p&gt;Przesidłem się właśnie na Archa&amp;hellip;&lt;/p&gt;
+&lt;p&gt;(wcześniej sprawdzonego na laptopie Mojej Lubej :D) może paczki tylko na i686, a nie athlona, ale z ich dostępnością jest znacznie lepiej - choć znaczna ich liczba istnieje na publicznym builderze co zapewne wpływa na bezpieczeństwo, ale moja maszyna to nie serwer.&lt;/p&gt;
+&lt;p&gt;Migracja bezproblemowa&amp;hellip;
+Wszystkie ustawienia z KDE przeniesione
+Jak na razie tylko jedna rzecz jest denerwująca&amp;hellip; menadżer pakietów&amp;hellip; niestety pacman nie dorasta pod względem funkcjonalności (zwłaszcza &amp;ldquo;ergonomii&amp;rdquo;) do poldka :/&lt;/p&gt;
+&lt;p&gt;No cóż&amp;hellip; mam nadzieję, ze wszystko będzie działać i to z jak najlepszymi efektami, przynajmniej do czasu, aż TH uzyska stabilność/funkcjonalność AC sprzed roku, kiedy to zainstalowałem PLD.\&lt;/p&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tech/">tech</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/linux/">linux</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/pld/">pld</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/arch/">arch</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Kradzież bezprzewodowego dostepu do Internetu</title>
+                <link>https://www.grizz.pl/kradziez-bezprzewodowego-dostepu-do-internetu/</link>
+                <guid isPermaLink="true">https://www.grizz.pl/kradziez-bezprzewodowego-dostepu-do-internetu/</guid>
+                <pubDate>Wed, 09 Aug 2006 21:25:04 &#43;0100</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;p&gt;Dzisiaj krótko - odnośnik do strony z instrukcją (leciwą, ale nadal wesołą) na to jak wesoło możemy się zabawić jeżeli, ktoś buszuje po naszej sieci… czy to domownik, czy może sąsiad bawi się w hackera i wchodzi w naszą sieć (bo stawialiśmy ją po spożyciu, na szybko i trudno było myśleć wtedy o włączeniu szyfrowania - przecież innych sposobów, żebyśmy ustawili niezabezpieczoną sieć, nie ma  - prawda?).&lt;/p&gt;
+&lt;p&gt;Po zastosowaniu, intruz otrzyma wszystkie grafiki w odbiciu lustrzanym ;)&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.ex-parrot.com/~pete/upside-down-ternet.html&#34;&gt;http://www.ex-parrot.com/~pete/upside-down-ternet.html&lt;/a&gt;&lt;/p&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tech/">tech</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/tech/">tech</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/krotko/">krótko</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/linux/">linux</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/rozrywka/">rozrywka</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/sieci/">sieci</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/oprogramowanie/">oprogramowanie</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>AutoHotkey - wstęp</title>
+                <link>https://www.grizz.pl/ahk/</link>
+                <guid isPermaLink="true">https://www.grizz.pl/ahk/</guid>
+                <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;p&gt;&lt;a href=&#34;https://www.autohotkey.com/&#34;&gt;AutoHotkey&lt;/a&gt; to jak sam się przedstawia - Potężny. Łatwy do nauki. Najlepszy język skryptowy do automatyzacji dla systemu Windows - zdecydowanie zgodzę się z tym pierwszym. Co do reszty, to poglądy są różne, ale nie zmienia to faktu, że jest to dla mnie jedno z kluczowych narzędzi na Windowsa, które pozwala ułatwić codzienną pracę w stopniu niezmiernym.&lt;/p&gt;
+&lt;p&gt;AHK może:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Usprawnić wpisywanie tekstu np. zamiast &lt;em&gt;o ile dobrze pamiętam&lt;/em&gt; wystarczy wpisać &lt;em&gt;]oidp&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Budować skróty klawiszowe(obsługuje też mysz) - proste np. zamknięcie okna klawiszem &lt;code&gt;F4&lt;/code&gt; jak i bardziej zaawansowane np. &lt;code&gt;CAPSLOCK&lt;/code&gt;+&lt;code&gt;G&lt;/code&gt; przywoła nam przeglądarkę i przełączy na kartę Gmaila, a jeżeli ta jest aktywna, to zminimalizuje okno; &lt;code&gt;RButton&lt;/code&gt;&amp;amp;&lt;code&gt;WheelUp&lt;/code&gt; - Przytrzymanie prawego przycisku myszki i ruch rolką w górę, przełączy kartę przeglądarki.&lt;/li&gt;
+&lt;li&gt;Tworzyć proste interfejsy użytkownika np. okienko dodawania do pliku tekstowego - dla błyskawicznych notatek, wybór tekstu do wpisania z listy.&lt;/li&gt;
+&lt;li&gt;Operować uruchomionymi programami i oknami - np. automatycznie zmienić położenie i rozmiar okna.&lt;/li&gt;
+&lt;li&gt;Automatyzować powtarzalne czynności - np. otworzyć stronę, błyskawicznie wypełnić na niej pola, wysłać dane i zamknąć okno.&lt;/li&gt;
+&lt;li&gt;Sterować ustawieniami systemowymi - np. wprowadzić push to talk - automatyczne wyciszenie mikrofonu o ile nie trzymamy określonego klawisza.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Poniżej przedstawię kilka założeń ogólnych dla zachęty, jednak nie jest moja intencją tworzenie tutoriala, bo &lt;a href=&#34;https://www.autohotkey.com/docs/Tutorial.htm&#34;&gt;dokumentacja AHK&lt;/a&gt; jest bardzo przystępna, a wpisanie w Google &lt;code&gt;ahk problem X&lt;/code&gt; przeważnie daje nam konkretne rozwiązania.&lt;/p&gt;
+&lt;p&gt;W kolejnych artykułach postaram się pokazać praktyczne przykłady zastosowania AHK. Skróty, które sprawdziły się u mnie w boju.&lt;/p&gt;
+&lt;p&gt;Wszystkie przykłady z artykułów, wraz z komentarzami będą uaktualniane w &lt;a href=&#34;https://github.com/grizz-pl/autohotkey-scripts&#34;&gt;repozytorium na GitHubie&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;instalacja&#34;&gt;Instalacja&lt;/h2&gt;
+&lt;p&gt;Program można pobrać stąd &lt;a href=&#34;https://www.autohotkey.com/download/&#34;&gt;https://www.autohotkey.com/download/&lt;/a&gt; instalacja nie jest wymagana, wystarczy rozpakować archiwum zip.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Jeszcze lepszym pomysłem jest skorzystanie z programu &lt;a href=&#34;https://scoop.sh/&#34;&gt;scoop&lt;/a&gt; wydajemy polecenie &lt;code&gt;scoop install autohotkey&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;hotstringi-i-hotkeye&#34;&gt;Hotstringi i hotkeye&lt;/h2&gt;
+&lt;p&gt;Skrypty AHK opierają się na dwóch głównych składowych:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;hotstring&lt;/strong&gt; - rozwinięcie/zastąpienie wpisywanego tekstu, np. wpisanie &lt;code&gt;@@&lt;/code&gt; zostanie zamienione na &lt;em&gt;&lt;a href=&#34;mailto:Jan.Kowalski@mojadomena12.pl&#34;&gt;Jan.Kowalski@mojadomena12.pl&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;hotkey&lt;/strong&gt; - skrót klawiszowy, np wciśnięcie &lt;code&gt;ALT&lt;/code&gt;+&lt;code&gt;.&lt;/code&gt; wpisze &lt;em&gt;…&lt;/em&gt; (wielokropek) a wciśnięcie &lt;code&gt;F1&lt;/code&gt; przełączy kartę w firefoxie czy chrome na wcześniejszą (wygodniejsze rozwiązanie niż łamanie palców na &lt;code&gt;CTRL&lt;/code&gt;+&lt;code&gt;SHIFT&lt;/code&gt;+&lt;code&gt;TAB&lt;/code&gt;)&lt;/p&gt;
+&lt;h2 id=&#34;pierwszy-skrypt&#34;&gt;Pierwszy skrypt&lt;/h2&gt;
+&lt;h3 id=&#34;hotstring&#34;&gt;Hotstring&lt;/h3&gt;
+&lt;p&gt;Tworzymy plik &lt;code&gt;main.ahk&lt;/code&gt; o zawartości:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-autohotkey&#34; data-lang=&#34;autohotkey&#34;&gt;::]c::  ;;Cześć
+(
+Cześć,
+
+)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Zapisujemy i odpalamy go. Jeżeli używamy aplikacji z rozpakowanego archiwum, do otwarcia wskażmy &lt;code&gt;AutoHotkeyU64.exe&lt;/code&gt;. Skrypt odpali się i będzie rezydował w zasobniku (trayu).&lt;/p&gt;
+&lt;p&gt;Następnie otwórzmy np. notatnik i wpiszmy w nim &lt;code&gt;]c&lt;/code&gt; a następnie &lt;strong&gt;spację&lt;/strong&gt; lub &lt;strong&gt;enter&lt;/strong&gt;. Wpisany tekst &lt;em&gt;]c&lt;/em&gt; zostanie zastąpiony przez &lt;em&gt;Cześć&lt;/em&gt; i linię odstępu. Tym sposobem mamy skrót do rozpoczynania maili. Dla kompletu dodajmy jeszcze zakończenie.&lt;/p&gt;
+&lt;p&gt;Hotstringi dobrze jest rozpoczynać w określony sposób, żeby uniknąć ich przypadkowego aktywowania. Ja zaczynam je jak widać od zamykającej klamry kwadratowej &lt;em&gt;]c&lt;/em&gt; popularne jest też stosowanie  średnika &lt;em&gt;;c&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.grizz.pl/018/ahk1.png&#34; alt=&#34;AHK tray&#34;&gt;
+Klikamy prawym przyciskiem myszy na na ikonce w trayu i z menu wybieramy &lt;strong&gt;Edit This Script&lt;/strong&gt;. Otworzy się notatnik ze skryptem (domyślny program możemy zmienić w standardowy sposób - przypisując inny program do plików z tym rozszerzeniem).&lt;/p&gt;
+&lt;p&gt;dodajemy do skryptu:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-autohotkey&#34; data-lang=&#34;autohotkey&#34;&gt;::]p::  ;;Pozdrawiam Jk
+(
+
+Pozdrawiam
+  Jan Kowaski
+)
+:*:@@::Jan.Kowalski@mojadomena12.pl ;; mail
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;i tu jeszcze wyjaśnienie zastosowanej składni:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;()&lt;/code&gt; Objęcie wyrażenia w nawiasy okrągłe pozwala nam wstawiać wyrażenia wieloliniowe.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:*:&lt;/code&gt; dodanie gwiazdki przy definiowaniu hotstringa powoduje, ze jego aktywowanie nastąpi automatycznie po wpisaniu ostatniego znaku. Nie trzeba wciskać spacji czy entera. Wpisanie &lt;code&gt;@@&lt;/code&gt; podstawi adres e-mail.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;;&lt;/code&gt; Od średnika zaczynamy komentarze. W powyższym przykładzie podwójny średnik nie jest przypadkiem - wyjaśnię to w kolejnych artykułach.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Zapisujemy plik i klikamy prawym przyciskiem myszy na na ikonce w trayu i z menu wybieramy &lt;strong&gt;Reload This Script&lt;/strong&gt;. Od tego momentu działają zmiany, które wprowadziliśmy.&lt;/p&gt;
+&lt;h3 id=&#34;hotkey&#34;&gt;Hotkey&lt;/h3&gt;
+&lt;p&gt;Dodajemy do pliku&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-ahk&#34; data-lang=&#34;ahk&#34;&gt;!.::  ;; wielokropek
+Send …
+Return
+
+F1::Send {Ctrl Down}{PgUp}{Ctrl Up} ;;ff - poprzednia karta
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Przeładowujemy skrypt i teraz:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;wciśnięcie &lt;code&gt;ALT&lt;/code&gt;+&lt;code&gt;.&lt;/code&gt; (alt i kropka) wpisze &lt;em&gt;…&lt;/em&gt; (wielokropek). Opis modyfikatorów klawiszy niżej.&lt;/li&gt;
+&lt;li&gt;wciśnięcie &lt;code&gt;F1&lt;/code&gt; przełączy kartę na wcześniejszą (wygodniejsze rozwiązanie niż łamanie palców na &lt;code&gt;CTRL&lt;/code&gt;+&lt;code&gt;SHIFT&lt;/code&gt;+&lt;code&gt;TAB&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Skróty zadziałają we wszystkich programach - potem przedstawię, jak limitować działanie skrótu tylko do obrębu jednej aplikacji, albo tylko jednego okna.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tutaj też widzimy jedną z bolączek AHK - składnia lubi być dziwaczna i niejednoznaczna - możemy pisać polecenia w jednej linii, albo kolejnej, ale kończymy je za pomocą &lt;em&gt;Return&lt;/em&gt; - możemy też stosować nawiasy klamrowe. Czasami po poleceniach wpisujemy przecinek, czasami nie, przy zmiennych może pojawiać się &lt;em&gt;%&lt;/em&gt; albo i nie. Jako, że większość rozwiązań tworzyłem, wyszukiwałem, przerabiałem ad-hoc to nie pilnowałem składni. Działa, więc po co ruszać :).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;modyfikatory-klawiszy&#34;&gt;Modyfikatory klawiszy&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Skrót&lt;/th&gt;
+&lt;th&gt;klawisz&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;#&lt;/td&gt;
+&lt;td&gt;Win&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;!&lt;/td&gt;
+&lt;td&gt;Alt&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;^&lt;/td&gt;
+&lt;td&gt;Ctrl&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;+&lt;/td&gt;
+&lt;td&gt;Shift&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Czyli &lt;code&gt;^+w::Hello World!&lt;/code&gt; oznacza - wciśnięcie &lt;code&gt;CTRL&lt;/code&gt;+&lt;code&gt;SHIFT&lt;/code&gt;+&lt;code&gt;w&lt;/code&gt; wypisze &lt;em&gt;Hello World&lt;/em&gt;!*&lt;/p&gt;
+&lt;p&gt;Pełna lista klawiszy dostępna jest w &lt;a href=&#34;https://www.autohotkey.com/docs/commands/Send.htm#keynames&#34;&gt;dokumentacji&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;kompilacja-skryptu-do-pliku-wykonywalnego-exe&#34;&gt;Kompilacja skryptu do pliku wykonywalnego exe&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.grizz.pl/018/ahk2.png&#34; alt=&#34;AHK kompilacja&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Do działania skryptu potrzebujemy jedynie pliku wykonywalnego AHK (wspomniany wyżej &lt;code&gt;AutoHotkeyU64.exe&lt;/code&gt;) i pliku skryptu, ale możemy również kliknąć prawym przyciskiem myszy na pliku skryptu i wybrać opcję &lt;strong&gt;Compile script&lt;/strong&gt; w wyniku czego otrzymamy nasz skrypt w postaci pojedynczego pliku &lt;strong&gt;.exe&lt;/strong&gt;!&lt;/p&gt;
+&lt;h2 id=&#34;repozytorium-z-przykładami---github&#34;&gt;Repozytorium z przykładami - github&lt;/h2&gt;
+&lt;p&gt;Jak już zaznaczyłem wyżej, wszystkie przykłady z artykułów, wraz z komentarzami będą uaktualniane w &lt;a href=&#34;https://github.com/grizz-pl/autohotkey-scripts&#34;&gt;repozytorium na GitHubie&lt;/a&gt;.&lt;/p&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tech/">tech</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/tech/">tech</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/ahk/">ahk</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/windows/">windows</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://www.grizz.pl/tags/software/">software</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+    </channel>
+</rss>
