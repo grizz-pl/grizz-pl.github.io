@@ -4,20 +4,180 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="pl">
     <title type="text"># grizz.pl</title>
     <subtitle type="html"># grizz.pl - blog o różnościach napotkanych…</subtitle>
-    <updated>2021-02-12T16:46:06&#43;01:00</updated>
-    <id>https://www.grizz.pl/</id>
-    <link rel="alternate" type="text/html" href="https://www.grizz.pl/" />
-    <link rel="self" type="application/atom&#43;xml" href="https://www.grizz.pl/atom.xml" />
+    <updated>2021-02-18T16:23:09&#43;01:00</updated>
+    <id>https://grizz.pl/</id>
+    <link rel="alternate" type="text/html" href="https://grizz.pl/" />
+    <link rel="self" type="application/atom&#43;xml" href="https://grizz.pl/atom.xml" />
     <author>
             <name>grizz</name>
-            <uri>https://www.grizz.pl/</uri>
+            <uri>https://grizz.pl/</uri>
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</rights>
     <generator uri="https://gohugo.io/" version="0.79.0">Hugo</generator>
         <entry>
+            <title type="text">AutoHotkey - wstęp</title>
+            <link rel="alternate" type="text/html" href="https://grizz.pl/ahk/" />
+            <id>https://grizz.pl/ahk/</id>
+            <updated>2021-02-12T16:44:35&#43;01:00</updated>
+            <published>2021-02-12T16:44:35&#43;01:00</published>
+            <author>
+                    <name>grizz</name>
+                    <uri>https://www.grizz.pl/</uri>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</rights><summary type="html">&lt;p&gt;&lt;a href=&#34;https://www.autohotkey.com/&#34;&gt;AutoHotkey&lt;/a&gt; to jak sam się przedstawia - Potężny. Łatwy do nauki. Najlepszy język skryptowy do automatyzacji dla systemu Windows - zdecydowanie zgodzę się z tym pierwszym. Co do reszty, to poglądy są różne, ale nie zmienia to faktu, że jest to dla mnie jedno z kluczowych narzędzi na Windowsa, które pozwala ułatwić codzienną pracę w stopniu niezmiernym.&lt;/p&gt;
+&lt;p&gt;AHK może:&lt;/p&gt;</summary>
+            
+                <content type="html">&lt;p&gt;&lt;a href=&#34;https://www.autohotkey.com/&#34;&gt;AutoHotkey&lt;/a&gt; to jak sam się przedstawia - Potężny. Łatwy do nauki. Najlepszy język skryptowy do automatyzacji dla systemu Windows - zdecydowanie zgodzę się z tym pierwszym. Co do reszty, to poglądy są różne, ale nie zmienia to faktu, że jest to dla mnie jedno z kluczowych narzędzi na Windowsa, które pozwala ułatwić codzienną pracę w stopniu niezmiernym.&lt;/p&gt;
+&lt;p&gt;AHK może:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Usprawnić wpisywanie tekstu np. zamiast &lt;em&gt;o ile dobrze pamiętam&lt;/em&gt; wystarczy wpisać &lt;em&gt;]oidp&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Budować skróty klawiszowe(obsługuje też mysz) - proste np. zamknięcie okna klawiszem &lt;code&gt;F4&lt;/code&gt; jak i bardziej zaawansowane np. &lt;code&gt;CAPSLOCK&lt;/code&gt;+&lt;code&gt;G&lt;/code&gt; przywoła nam przeglądarkę i przełączy na kartę Gmaila, a jeżeli ta jest aktywna, to zminimalizuje okno; &lt;code&gt;RButton&lt;/code&gt;&amp;amp;&lt;code&gt;WheelUp&lt;/code&gt; - Przytrzymanie prawego przycisku myszki i ruch rolką w górę, przełączy kartę przeglądarki.&lt;/li&gt;
+&lt;li&gt;Tworzyć proste interfejsy użytkownika np. okienko dodawania do pliku tekstowego - dla błyskawicznych notatek, wybór tekstu do wpisania z listy.&lt;/li&gt;
+&lt;li&gt;Operować uruchomionymi programami i oknami - np. automatycznie zmienić położenie i rozmiar okna.&lt;/li&gt;
+&lt;li&gt;Automatyzować powtarzalne czynności - np. otworzyć stronę, błyskawicznie wypełnić na niej pola, wysłać dane i zamknąć okno.&lt;/li&gt;
+&lt;li&gt;Sterować ustawieniami systemowymi - np. wprowadzić push to talk - automatyczne wyciszenie mikrofonu o ile nie trzymamy określonego klawisza.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Poniżej przedstawię kilka założeń ogólnych dla zachęty, jednak nie jest moja intencją tworzenie tutoriala, bo &lt;a href=&#34;https://www.autohotkey.com/docs/Tutorial.htm&#34;&gt;dokumentacja AHK&lt;/a&gt; jest bardzo przystępna, a wpisanie w Google &lt;code&gt;ahk problem X&lt;/code&gt; przeważnie daje nam konkretne rozwiązania.&lt;/p&gt;
+&lt;p&gt;W kolejnych artykułach postaram się pokazać praktyczne przykłady zastosowania AHK. Skróty, które sprawdziły się u mnie w boju.&lt;/p&gt;
+&lt;p&gt;Wszystkie przykłady z artykułów, wraz z komentarzami będą uaktualniane w &lt;a href=&#34;https://github.com/grizz-pl/autohotkey-scripts&#34;&gt;repozytorium na GitHubie&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;instalacja&#34;&gt;Instalacja&lt;/h2&gt;
+&lt;p&gt;Program można pobrać stąd &lt;a href=&#34;https://www.autohotkey.com/download/&#34;&gt;https://www.autohotkey.com/download/&lt;/a&gt; instalacja nie jest wymagana, wystarczy rozpakować archiwum zip.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Jeszcze lepszym pomysłem jest skorzystanie z programu &lt;a href=&#34;https://scoop.sh/&#34;&gt;scoop&lt;/a&gt; wydajemy polecenie &lt;code&gt;scoop install autohotkey&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;hotstringi-i-hotkeye&#34;&gt;Hotstringi i hotkeye&lt;/h2&gt;
+&lt;p&gt;Skrypty AHK opierają się na dwóch głównych składowych:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;hotstring&lt;/strong&gt; - rozwinięcie/zastąpienie wpisywanego tekstu, np. wpisanie &lt;code&gt;@@&lt;/code&gt; zostanie zamienione na &lt;em&gt;&lt;a href=&#34;mailto:Jan.Kowalski@mojadomena12.pl&#34;&gt;Jan.Kowalski@mojadomena12.pl&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;hotkey&lt;/strong&gt; - skrót klawiszowy, np wciśnięcie &lt;code&gt;ALT&lt;/code&gt;+&lt;code&gt;.&lt;/code&gt; wpisze &lt;em&gt;…&lt;/em&gt; (wielokropek) a wciśnięcie &lt;code&gt;F1&lt;/code&gt; przełączy kartę w firefoxie czy chrome na wcześniejszą (wygodniejsze rozwiązanie niż łamanie palców na &lt;code&gt;CTRL&lt;/code&gt;+&lt;code&gt;SHIFT&lt;/code&gt;+&lt;code&gt;TAB&lt;/code&gt;)&lt;/p&gt;
+&lt;h2 id=&#34;pierwszy-skrypt&#34;&gt;Pierwszy skrypt&lt;/h2&gt;
+&lt;h3 id=&#34;hotstring&#34;&gt;Hotstring&lt;/h3&gt;
+&lt;p&gt;Tworzymy plik &lt;code&gt;main.ahk&lt;/code&gt; o zawartości:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-autohotkey&#34; data-lang=&#34;autohotkey&#34;&gt;::]c::  ;;Cześć
+(
+Cześć,
+
+)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Zapisujemy i odpalamy go. Jeżeli używamy aplikacji z rozpakowanego archiwum, do otwarcia wskażmy &lt;code&gt;AutoHotkeyU64.exe&lt;/code&gt;. Skrypt odpali się i będzie rezydował w zasobniku (trayu).&lt;/p&gt;
+&lt;p&gt;Następnie otwórzmy np. notatnik i wpiszmy w nim &lt;code&gt;]c&lt;/code&gt; a następnie &lt;strong&gt;spację&lt;/strong&gt; lub &lt;strong&gt;enter&lt;/strong&gt;. Wpisany tekst &lt;em&gt;]c&lt;/em&gt; zostanie zastąpiony przez &lt;em&gt;Cześć&lt;/em&gt; i linię odstępu. Tym sposobem mamy skrót do rozpoczynania maili. Dla kompletu dodajmy jeszcze zakończenie.&lt;/p&gt;
+&lt;p&gt;Hotstringi dobrze jest rozpoczynać w określony sposób, żeby uniknąć ich przypadkowego aktywowania. Ja zaczynam je jak widać od zamykającej klamry kwadratowej &lt;em&gt;]c&lt;/em&gt; popularne jest też stosowanie  średnika &lt;em&gt;;c&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://grizz.pl/018/ahk1.png&#34; alt=&#34;AHK tray&#34;&gt;
+Klikamy prawym przyciskiem myszy na na ikonce w trayu i z menu wybieramy &lt;strong&gt;Edit This Script&lt;/strong&gt;. Otworzy się notatnik ze skryptem (domyślny program możemy zmienić w standardowy sposób - przypisując inny program do plików z tym rozszerzeniem).&lt;/p&gt;
+&lt;p&gt;dodajemy do skryptu:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-autohotkey&#34; data-lang=&#34;autohotkey&#34;&gt;::]p::  ;;Pozdrawiam Jk
+(
+
+Pozdrawiam
+  Jan Kowaski
+)
+:*:@@::Jan.Kowalski@mojadomena12.pl ;; mail
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;i tu jeszcze wyjaśnienie zastosowanej składni:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;()&lt;/code&gt; Objęcie wyrażenia w nawiasy okrągłe pozwala nam wstawiać wyrażenia wieloliniowe.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:*:&lt;/code&gt; dodanie gwiazdki przy definiowaniu hotstringa powoduje, ze jego aktywowanie nastąpi automatycznie po wpisaniu ostatniego znaku. Nie trzeba wciskać spacji czy entera. Wpisanie &lt;code&gt;@@&lt;/code&gt; podstawi adres e-mail.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;;&lt;/code&gt; Od średnika zaczynamy komentarze. W powyższym przykładzie podwójny średnik nie jest przypadkiem - wyjaśnię to w kolejnych artykułach.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Zapisujemy plik i klikamy prawym przyciskiem myszy na na ikonce w trayu i z menu wybieramy &lt;strong&gt;Reload This Script&lt;/strong&gt;. Od tego momentu działają zmiany, które wprowadziliśmy.&lt;/p&gt;
+&lt;h3 id=&#34;hotkey&#34;&gt;Hotkey&lt;/h3&gt;
+&lt;p&gt;Dodajemy do pliku&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-ahk&#34; data-lang=&#34;ahk&#34;&gt;!.::  ;; wielokropek
+Send …
+Return
+
+F1::Send {Ctrl Down}{PgUp}{Ctrl Up} ;;ff - poprzednia karta
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Przeładowujemy skrypt i teraz:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;wciśnięcie &lt;code&gt;ALT&lt;/code&gt;+&lt;code&gt;.&lt;/code&gt; (alt i kropka) wpisze &lt;em&gt;…&lt;/em&gt; (wielokropek). Opis modyfikatorów klawiszy niżej.&lt;/li&gt;
+&lt;li&gt;wciśnięcie &lt;code&gt;F1&lt;/code&gt; przełączy kartę na wcześniejszą (wygodniejsze rozwiązanie niż łamanie palców na &lt;code&gt;CTRL&lt;/code&gt;+&lt;code&gt;SHIFT&lt;/code&gt;+&lt;code&gt;TAB&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Skróty zadziałają we wszystkich programach - potem przedstawię, jak limitować działanie skrótu tylko do obrębu jednej aplikacji, albo tylko jednego okna.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tutaj też widzimy jedną z bolączek AHK - składnia lubi być dziwaczna i niejednoznaczna - możemy pisać polecenia w jednej linii, albo kolejnej, ale kończymy je za pomocą &lt;em&gt;Return&lt;/em&gt; - możemy też stosować nawiasy klamrowe. Czasami po poleceniach wpisujemy przecinek, czasami nie, przy zmiennych może pojawiać się &lt;em&gt;%&lt;/em&gt; albo i nie. Jako, że większość rozwiązań tworzyłem, wyszukiwałem, przerabiałem ad-hoc to nie pilnowałem składni. Działa, więc po co ruszać :).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;modyfikatory-klawiszy&#34;&gt;Modyfikatory klawiszy&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Skrót&lt;/th&gt;
+&lt;th&gt;klawisz&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;#&lt;/td&gt;
+&lt;td&gt;Win&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;!&lt;/td&gt;
+&lt;td&gt;Alt&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;^&lt;/td&gt;
+&lt;td&gt;Ctrl&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;+&lt;/td&gt;
+&lt;td&gt;Shift&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Czyli &lt;code&gt;^+w::Hello World!&lt;/code&gt; oznacza - wciśnięcie &lt;code&gt;CTRL&lt;/code&gt;+&lt;code&gt;SHIFT&lt;/code&gt;+&lt;code&gt;w&lt;/code&gt; wypisze &lt;em&gt;Hello World&lt;/em&gt;!*&lt;/p&gt;
+&lt;p&gt;Pełna lista klawiszy dostępna jest w &lt;a href=&#34;https://www.autohotkey.com/docs/commands/Send.htm#keynames&#34;&gt;dokumentacji&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;kompilacja-skryptu-do-pliku-wykonywalnego-exe&#34;&gt;Kompilacja skryptu do pliku wykonywalnego exe&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://grizz.pl/018/ahk2.png&#34; alt=&#34;AHK kompilacja&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Do działania skryptu potrzebujemy jedynie pliku wykonywalnego AHK (wspomniany wyżej &lt;code&gt;AutoHotkeyU64.exe&lt;/code&gt;) i pliku skryptu, ale możemy również kliknąć prawym przyciskiem myszy na pliku skryptu i wybrać opcję &lt;strong&gt;Compile script&lt;/strong&gt; w wyniku czego otrzymamy nasz skrypt w postaci pojedynczego pliku &lt;strong&gt;.exe&lt;/strong&gt;!&lt;/p&gt;
+&lt;h2 id=&#34;repozytorium-z-przykładami---github&#34;&gt;Repozytorium z przykładami - github&lt;/h2&gt;
+&lt;p&gt;Jak już zaznaczyłem wyżej, wszystkie przykłady z artykułów, wraz z komentarzami będą uaktualniane w &lt;a href=&#34;https://github.com/grizz-pl/autohotkey-scripts&#34;&gt;repozytorium na GitHubie&lt;/a&gt;.&lt;/p&gt;</content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://grizz.pl/tech/" term="tech" label="tech" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://grizz.pl/tags/tech/" term="tech" label="tech" />
+                            
+                        
+                            
+                            
+                            
+                                <category scheme="https://grizz.pl/tags/ahk/" term="ahk" label="ahk" />
+                            
+                        
+                            
+                            
+                            
+                                <category scheme="https://grizz.pl/tags/windows/" term="windows" label="windows" />
+                            
+                        
+                            
+                            
+                            
+                                <category scheme="https://grizz.pl/tags/software/" term="software" label="software" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        <entry>
             <title type="text">Eksport wpisów z bazy danych drupala do pliku tekstowego</title>
-            <link rel="alternate" type="text/html" href="https://www.grizz.pl/eksport-wpisow-z-bazy-danych-drupala-do-pliku-tekstowego/" />
-            <id>https://www.grizz.pl/eksport-wpisow-z-bazy-danych-drupala-do-pliku-tekstowego/</id>
+            <link rel="alternate" type="text/html" href="https://grizz.pl/eksport-wpisow-z-bazy-danych-drupala-do-pliku-tekstowego/" />
+            <id>https://grizz.pl/eksport-wpisow-z-bazy-danych-drupala-do-pliku-tekstowego/</id>
             <updated>2021-02-08T16:30:23&#43;01:00</updated>
             <published>2021-02-08T16:30:23&#43;01:00</published>
             <author>
@@ -249,7 +409,7 @@ Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tech/" term="tech" label="tech" />
                             
                         
                     
@@ -259,19 +419,19 @@ Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tags/tech/" term="tech" label="tech" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/sql/" term="sql" label="sql" />
+                                <category scheme="https://grizz.pl/tags/sql/" term="sql" label="sql" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/www/" term="www" label="www" />
+                                <category scheme="https://grizz.pl/tags/www/" term="www" label="www" />
                             
                         
                     
@@ -281,8 +441,8 @@ Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie
     
         <entry>
             <title type="text">Napotkane [003]</title>
-            <link rel="alternate" type="text/html" href="https://www.grizz.pl/n003/" />
-            <id>https://www.grizz.pl/n003/</id>
+            <link rel="alternate" type="text/html" href="https://grizz.pl/n003/" />
+            <id>https://grizz.pl/n003/</id>
             <updated>2021-01-24T18:03:23&#43;01:00</updated>
             <published>2021-01-24T18:03:23&#43;01:00</published>
             <author>
@@ -325,7 +485,7 @@ Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/napotkane/" term="napotkane" label="napotkane" />
+                                <category scheme="https://grizz.pl/napotkane/" term="napotkane" label="napotkane" />
                             
                         
                     
@@ -335,7 +495,7 @@ Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/napotkane/" term="napotkane" label="napotkane" />
+                                <category scheme="https://grizz.pl/tags/napotkane/" term="napotkane" label="napotkane" />
                             
                         
                     
@@ -345,8 +505,8 @@ Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie
     
         <entry>
             <title type="text">Napotkane [002]</title>
-            <link rel="alternate" type="text/html" href="https://www.grizz.pl/n002/" />
-            <id>https://www.grizz.pl/n002/</id>
+            <link rel="alternate" type="text/html" href="https://grizz.pl/n002/" />
+            <id>https://grizz.pl/n002/</id>
             <updated>2021-01-08T14:23:23&#43;01:00</updated>
             <published>2021-01-08T13:28:23&#43;01:00</published>
             <author>
@@ -354,10 +514,10 @@ Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie
                     <uri>https://www.grizz.pl/</uri>
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</rights><summary type="html">&lt;p&gt;&lt;em&gt;&lt;strong&gt;Napotkane&lt;/strong&gt;&lt;/em&gt; to zbiór linków wraz z krótkim opisem - rozliczne rzeczy, na które natrafiłem podczas codziennych prasówek. Nie tylko nowości, ale i wpisy, które nadal są ciekawe mimo upływu czasu. Mocno subiektywne.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.grizz.pl/015/apollo-as11-44-6553.jpg&#34; alt=&#34;Project Apollo Archive’s&#34;&gt;&lt;/p&gt;</summary>
+&lt;p&gt;&lt;img src=&#34;https://grizz.pl/015/apollo-as11-44-6553.jpg&#34; alt=&#34;Project Apollo Archive’s&#34;&gt;&lt;/p&gt;</summary>
             
                 <content type="html">&lt;p&gt;&lt;em&gt;&lt;strong&gt;Napotkane&lt;/strong&gt;&lt;/em&gt; to zbiór linków wraz z krótkim opisem - rozliczne rzeczy, na które natrafiłem podczas codziennych prasówek. Nie tylko nowości, ale i wpisy, które nadal są ciekawe mimo upływu czasu. Mocno subiektywne.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.grizz.pl/015/apollo-as11-44-6553.jpg&#34; alt=&#34;Project Apollo Archive’s&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://grizz.pl/015/apollo-as11-44-6553.jpg&#34; alt=&#34;Project Apollo Archive’s&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;tech&#34;&gt;Tech&lt;/h2&gt;
 &lt;h3 id=&#34;linux&#34;&gt;Linux&lt;/h3&gt;
 &lt;ol&gt;
@@ -405,7 +565,7 @@ Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/napotkane/" term="napotkane" label="napotkane" />
+                                <category scheme="https://grizz.pl/napotkane/" term="napotkane" label="napotkane" />
                             
                         
                     
@@ -415,7 +575,7 @@ Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/napotkane/" term="napotkane" label="napotkane" />
+                                <category scheme="https://grizz.pl/tags/napotkane/" term="napotkane" label="napotkane" />
                             
                         
                     
@@ -425,8 +585,8 @@ Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie
     
         <entry>
             <title type="text">Napotkane [001]</title>
-            <link rel="alternate" type="text/html" href="https://www.grizz.pl/n001/" />
-            <id>https://www.grizz.pl/n001/</id>
+            <link rel="alternate" type="text/html" href="https://grizz.pl/n001/" />
+            <id>https://grizz.pl/n001/</id>
             <updated>2020-12-30T20:20:23&#43;01:00</updated>
             <published>2020-12-30T20:20:23&#43;01:00</published>
             <author>
@@ -452,7 +612,7 @@ Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie
 &lt;h2 id=&#34;różne&#34;&gt;Różne&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://thetruesize.com&#34;&gt;The true size of &amp;hellip;&lt;/a&gt; [EN] Interaktywna mapa pozwalająca porównać wielkość krajów - Czyli jak wygląda Polska i Kolumbia na tle Grenlandii bez uroków &lt;a href=&#34;https://pl.wikipedia.org/wiki/Odwzorowanie_walcowe_r%C3%B3wnok%C4%85tne&#34;&gt;odwzorowania Merkatora&lt;/a&gt;? Spoiler! Tak:
-&lt;img src=&#34;https://www.grizz.pl/014/true-size.png&#34; alt=&#34;true size screenshot&#34;&gt;&lt;/li&gt;
+&lt;img src=&#34;https://grizz.pl/014/true-size.png&#34; alt=&#34;true size screenshot&#34;&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://kulturawplot.pl/2018/03/28/zabytki-rekonstrukcja/&#34;&gt;Zabytki starożytności. Jak wyglądały naprawdę?&lt;/a&gt; [PL] [2018] - jak w tytule.&lt;/li&gt;
 &lt;/ol&gt;</content>
             
@@ -466,7 +626,7 @@ Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/napotkane/" term="napotkane" label="napotkane" />
+                                <category scheme="https://grizz.pl/napotkane/" term="napotkane" label="napotkane" />
                             
                         
                     
@@ -476,7 +636,7 @@ Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/napotkane/" term="napotkane" label="napotkane" />
+                                <category scheme="https://grizz.pl/tags/napotkane/" term="napotkane" label="napotkane" />
                             
                         
                     
@@ -486,8 +646,8 @@ Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie
     
         <entry>
             <title type="text">Konwersja jpg gif do pdf - jak okiełznać zeskanowaną książkę</title>
-            <link rel="alternate" type="text/html" href="https://www.grizz.pl/konwersja-jpg-gif-do-pdf/" />
-            <id>https://www.grizz.pl/konwersja-jpg-gif-do-pdf/</id>
+            <link rel="alternate" type="text/html" href="https://grizz.pl/konwersja-jpg-gif-do-pdf/" />
+            <id>https://grizz.pl/konwersja-jpg-gif-do-pdf/</id>
             <updated>2014-11-03T20:20:31&#43;01:00</updated>
             <published>2014-11-03T20:20:31&#43;01:00</published>
             <author>
@@ -562,7 +722,7 @@ Opcje -scale również najlepiej dobrać pod konkretny przyadek w zależności o
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tech/" term="tech" label="tech" />
                             
                         
                     
@@ -572,37 +732,37 @@ Opcje -scale również najlepiej dobrać pod konkretny przyadek w zależności o
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tags/tech/" term="tech" label="tech" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/shell/" term="shell" label="shell" />
+                                <category scheme="https://grizz.pl/tags/shell/" term="shell" label="shell" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/linux/" term="linux" label="linux" />
+                                <category scheme="https://grizz.pl/tags/linux/" term="linux" label="linux" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/oprogramowanie/" term="oprogramowanie" label="oprogramowanie" />
+                                <category scheme="https://grizz.pl/tags/oprogramowanie/" term="oprogramowanie" label="oprogramowanie" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/programowanie/" term="programowanie" label="programowanie" />
+                                <category scheme="https://grizz.pl/tags/programowanie/" term="programowanie" label="programowanie" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/grafika/" term="grafika" label="grafika" />
+                                <category scheme="https://grizz.pl/tags/grafika/" term="grafika" label="grafika" />
                             
                         
                     
@@ -612,23 +772,23 @@ Opcje -scale również najlepiej dobrać pod konkretny przyadek w zależności o
     
         <entry>
             <title type="text">Zsh i git - wyświetlanie gałęzi (brancha) i zmian</title>
-            <link rel="alternate" type="text/html" href="https://www.grizz.pl/zsh-i-git-wyswietlanie-galezi-brancha-i-zmian/" />
-            <id>https://www.grizz.pl/zsh-i-git-wyswietlanie-galezi-brancha-i-zmian/</id>
+            <link rel="alternate" type="text/html" href="https://grizz.pl/zsh-i-git-wyswietlanie-galezi-brancha-i-zmian/" />
+            <id>https://grizz.pl/zsh-i-git-wyswietlanie-galezi-brancha-i-zmian/</id>
             <updated>2014-10-27T20:20:31&#43;01:00</updated>
             <published>2014-10-27T20:20:31&#43;01:00</published>
             <author>
                     <name>grizz</name>
                     <uri>https://www.grizz.pl/</uri>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</rights><summary type="html">&lt;p&gt;Pracując z gitem, często zapominamy na jakiej aktualnie gałęzi (brancha) się znajdujemy, zaś wpisywanie git branch jest po prostu meczące. Oczywiście możemy to obejść jakimś dwuliterowym, zgrabnym aliasem &lt;a href=&#34;https://www.grizz.pl/aliasy-czyli-jak-ulatwic-sobie-prace-w-konsoli/&#34;&gt;(tutaj artykuł o nich)&lt;/a&gt;, jednak wygodniej skorzystać z dobrodziejstwa zsh i otrzymać bezpośrednio i automatycznie ładną informację o tym w jakiej gałęzi się znajdujemy, oraz o tym czy nastąpiły jakieś niezatwierdzone zmiany.&lt;/p&gt;
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</rights><summary type="html">&lt;p&gt;Pracując z gitem, często zapominamy na jakiej aktualnie gałęzi (brancha) się znajdujemy, zaś wpisywanie git branch jest po prostu meczące. Oczywiście możemy to obejść jakimś dwuliterowym, zgrabnym aliasem &lt;a href=&#34;https://grizz.pl/aliasy-czyli-jak-ulatwic-sobie-prace-w-konsoli/&#34;&gt;(tutaj artykuł o nich)&lt;/a&gt;, jednak wygodniej skorzystać z dobrodziejstwa zsh i otrzymać bezpośrednio i automatycznie ładną informację o tym w jakiej gałęzi się znajdujemy, oraz o tym czy nastąpiły jakieś niezatwierdzone zmiany.&lt;/p&gt;
 &lt;h2 id=&#34;przykłady&#34;&gt;Przykłady&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.grizz.pl/012/zsh-git-1.png&#34; alt=&#34;Przykład działania informacji w git&#34;&gt;&lt;/p&gt;</summary>
+&lt;p&gt;&lt;img src=&#34;https://grizz.pl/012/zsh-git-1.png&#34; alt=&#34;Przykład działania informacji w git&#34;&gt;&lt;/p&gt;</summary>
             
-                <content type="html">&lt;p&gt;Pracując z gitem, często zapominamy na jakiej aktualnie gałęzi (brancha) się znajdujemy, zaś wpisywanie git branch jest po prostu meczące. Oczywiście możemy to obejść jakimś dwuliterowym, zgrabnym aliasem &lt;a href=&#34;https://www.grizz.pl/aliasy-czyli-jak-ulatwic-sobie-prace-w-konsoli/&#34;&gt;(tutaj artykuł o nich)&lt;/a&gt;, jednak wygodniej skorzystać z dobrodziejstwa zsh i otrzymać bezpośrednio i automatycznie ładną informację o tym w jakiej gałęzi się znajdujemy, oraz o tym czy nastąpiły jakieś niezatwierdzone zmiany.&lt;/p&gt;
+                <content type="html">&lt;p&gt;Pracując z gitem, często zapominamy na jakiej aktualnie gałęzi (brancha) się znajdujemy, zaś wpisywanie git branch jest po prostu meczące. Oczywiście możemy to obejść jakimś dwuliterowym, zgrabnym aliasem &lt;a href=&#34;https://grizz.pl/aliasy-czyli-jak-ulatwic-sobie-prace-w-konsoli/&#34;&gt;(tutaj artykuł o nich)&lt;/a&gt;, jednak wygodniej skorzystać z dobrodziejstwa zsh i otrzymać bezpośrednio i automatycznie ładną informację o tym w jakiej gałęzi się znajdujemy, oraz o tym czy nastąpiły jakieś niezatwierdzone zmiany.&lt;/p&gt;
 &lt;h2 id=&#34;przykłady&#34;&gt;Przykłady&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.grizz.pl/012/zsh-git-1.png&#34; alt=&#34;Przykład działania informacji w git&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.grizz.pl/012/zsh-git-2.png&#34; alt=&#34;Przykład działania informacji w git - zmiana brancha&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.grizz.pl/012/zsh-git-3.png&#34; alt=&#34;Przykład działania informacji w git - zaznaczenie istnienia zmian&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://grizz.pl/012/zsh-git-1.png&#34; alt=&#34;Przykład działania informacji w git&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://grizz.pl/012/zsh-git-2.png&#34; alt=&#34;Przykład działania informacji w git - zmiana brancha&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://grizz.pl/012/zsh-git-3.png&#34; alt=&#34;Przykład działania informacji w git - zaznaczenie istnienia zmian&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;konfiguracja&#34;&gt;Konfiguracja&lt;/h2&gt;
 &lt;p&gt;Konfiguracja bazuje na tej z artykułu Floriana Krienera &lt;a href=&#34;http://kriener.org/articles/2009/06/04/zsh-prompt-magic&#34;&gt;http://kriener.org/articles/2009/06/04/zsh-prompt-magic&lt;/a&gt; (strona już niedostępna - kopia na &lt;a href=&#34;http://web.archive.org/web/20100706035606/http://kriener.org/articles/2009/06/04/zsh-prompt-magic&#34;&gt;web.archive.org&lt;/a&gt;), jednak zaaplikowałem kilka zmian:&lt;/p&gt;
 &lt;ul&gt;
@@ -792,7 +952,7 @@ rprompt &lt;span class=&#34;s1&#34;&gt;&amp;#39;  &amp;#39;&lt;/span&gt; &lt;spa
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tech/" term="tech" label="tech" />
                             
                         
                     
@@ -802,37 +962,37 @@ rprompt &lt;span class=&#34;s1&#34;&gt;&amp;#39;  &amp;#39;&lt;/span&gt; &lt;spa
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tags/tech/" term="tech" label="tech" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/linux/" term="linux" label="linux" />
+                                <category scheme="https://grizz.pl/tags/linux/" term="linux" label="linux" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/oprogramowanie/" term="oprogramowanie" label="oprogramowanie" />
+                                <category scheme="https://grizz.pl/tags/oprogramowanie/" term="oprogramowanie" label="oprogramowanie" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/programowanie/" term="programowanie" label="programowanie" />
+                                <category scheme="https://grizz.pl/tags/programowanie/" term="programowanie" label="programowanie" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/shell/" term="shell" label="shell" />
+                                <category scheme="https://grizz.pl/tags/shell/" term="shell" label="shell" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/git/" term="git" label="git" />
+                                <category scheme="https://grizz.pl/tags/git/" term="git" label="git" />
                             
                         
                     
@@ -842,8 +1002,8 @@ rprompt &lt;span class=&#34;s1&#34;&gt;&amp;#39;  &amp;#39;&lt;/span&gt; &lt;spa
     
         <entry>
             <title type="text">Google inbox i google wave</title>
-            <link rel="alternate" type="text/html" href="https://www.grizz.pl/google-inbox-i-google-wave/" />
-            <id>https://www.grizz.pl/google-inbox-i-google-wave/</id>
+            <link rel="alternate" type="text/html" href="https://grizz.pl/google-inbox-i-google-wave/" />
+            <id>https://grizz.pl/google-inbox-i-google-wave/</id>
             <updated>2014-10-23T20:20:31&#43;01:00</updated>
             <published>2014-10-23T20:20:31&#43;01:00</published>
             <author>
@@ -878,7 +1038,7 @@ grizz, śr., 2009-11-11 21:18&lt;/p&gt;
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tech/" term="tech" label="tech" />
                             
                         
                     
@@ -888,19 +1048,19 @@ grizz, śr., 2009-11-11 21:18&lt;/p&gt;
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tags/tech/" term="tech" label="tech" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/przemyslenia/" term="przemyślenia" label="przemyślenia" />
+                                <category scheme="https://grizz.pl/tags/przemyslenia/" term="przemyślenia" label="przemyślenia" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/krotko/" term="krótko" label="krótko" />
+                                <category scheme="https://grizz.pl/tags/krotko/" term="krótko" label="krótko" />
                             
                         
                     
@@ -910,8 +1070,8 @@ grizz, śr., 2009-11-11 21:18&lt;/p&gt;
     
         <entry>
             <title type="text">Kwadratowe miniatury - python PIL i ImageMagick - wydajność</title>
-            <link rel="alternate" type="text/html" href="https://www.grizz.pl/kwadratowe-miniatury-python-pil-i-imagemagick-wydajnosc/" />
-            <id>https://www.grizz.pl/kwadratowe-miniatury-python-pil-i-imagemagick-wydajnosc/</id>
+            <link rel="alternate" type="text/html" href="https://grizz.pl/kwadratowe-miniatury-python-pil-i-imagemagick-wydajnosc/" />
+            <id>https://grizz.pl/kwadratowe-miniatury-python-pil-i-imagemagick-wydajnosc/</id>
             <updated>2014-10-21T20:20:31&#43;01:00</updated>
             <published>2014-10-21T20:20:31&#43;01:00</published>
             <author>
@@ -1136,7 +1296,7 @@ git checkout -b imagemagick origin/imagemagick
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tech/" term="tech" label="tech" />
                             
                         
                     
@@ -1146,37 +1306,37 @@ git checkout -b imagemagick origin/imagemagick
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tags/tech/" term="tech" label="tech" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/python/" term="python" label="python" />
+                                <category scheme="https://grizz.pl/tags/python/" term="python" label="python" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/linux/" term="linux" label="linux" />
+                                <category scheme="https://grizz.pl/tags/linux/" term="linux" label="linux" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/shell/" term="shell" label="shell" />
+                                <category scheme="https://grizz.pl/tags/shell/" term="shell" label="shell" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/programowanie/" term="programowanie" label="programowanie" />
+                                <category scheme="https://grizz.pl/tags/programowanie/" term="programowanie" label="programowanie" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/grafika/" term="grafika" label="grafika" />
+                                <category scheme="https://grizz.pl/tags/grafika/" term="grafika" label="grafika" />
                             
                         
                     
@@ -1186,8 +1346,8 @@ git checkout -b imagemagick origin/imagemagick
     
         <entry>
             <title type="text">Aliasy - czyli jak ułatwić sobie pracę w konsoli</title>
-            <link rel="alternate" type="text/html" href="https://www.grizz.pl/aliasy-czyli-jak-ulatwic-sobie-prace-w-konsoli/" />
-            <id>https://www.grizz.pl/aliasy-czyli-jak-ulatwic-sobie-prace-w-konsoli/</id>
+            <link rel="alternate" type="text/html" href="https://grizz.pl/aliasy-czyli-jak-ulatwic-sobie-prace-w-konsoli/" />
+            <id>https://grizz.pl/aliasy-czyli-jak-ulatwic-sobie-prace-w-konsoli/</id>
             <updated>2014-10-14T20:20:31&#43;01:00</updated>
             <published>2014-10-14T20:20:31&#43;01:00</published>
             <author>
@@ -1455,7 +1615,7 @@ Podziel się nim w komentarzu. Dziękuję.&lt;/p&gt;</content>
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tech/" term="tech" label="tech" />
                             
                         
                     
@@ -1465,25 +1625,25 @@ Podziel się nim w komentarzu. Dziękuję.&lt;/p&gt;</content>
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/linux/" term="linux" label="linux" />
+                                <category scheme="https://grizz.pl/tags/linux/" term="linux" label="linux" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/oprogramowanie/" term="oprogramowanie" label="oprogramowanie" />
+                                <category scheme="https://grizz.pl/tags/oprogramowanie/" term="oprogramowanie" label="oprogramowanie" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tags/tech/" term="tech" label="tech" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/shell/" term="shell" label="shell" />
+                                <category scheme="https://grizz.pl/tags/shell/" term="shell" label="shell" />
                             
                         
                     
@@ -1493,8 +1653,8 @@ Podziel się nim w komentarzu. Dziękuję.&lt;/p&gt;</content>
     
         <entry>
             <title type="text">sshfs - podmontowywanie katalogów z innych komputerów</title>
-            <link rel="alternate" type="text/html" href="https://www.grizz.pl/sshfs-podmontowywanie-katalogow-z-innych-komputerow/" />
-            <id>https://www.grizz.pl/sshfs-podmontowywanie-katalogow-z-innych-komputerow/</id>
+            <link rel="alternate" type="text/html" href="https://grizz.pl/sshfs-podmontowywanie-katalogow-z-innych-komputerow/" />
+            <id>https://grizz.pl/sshfs-podmontowywanie-katalogow-z-innych-komputerow/</id>
             <updated>2014-09-28T20:20:31&#43;01:00</updated>
             <published>2014-09-28T20:20:31&#43;01:00</published>
             <author>
@@ -1611,7 +1771,7 @@ crw-rw-rw- &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root fuse 10, &lt;span c
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tech/" term="tech" label="tech" />
                             
                         
                     
@@ -1621,31 +1781,31 @@ crw-rw-rw- &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root fuse 10, &lt;span c
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tags/tech/" term="tech" label="tech" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/linux/" term="linux" label="linux" />
+                                <category scheme="https://grizz.pl/tags/linux/" term="linux" label="linux" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/sieci/" term="sieci" label="sieci" />
+                                <category scheme="https://grizz.pl/tags/sieci/" term="sieci" label="sieci" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/shell/" term="shell" label="shell" />
+                                <category scheme="https://grizz.pl/tags/shell/" term="shell" label="shell" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/oprogramowanie/" term="oprogramowanie" label="oprogramowanie" />
+                                <category scheme="https://grizz.pl/tags/oprogramowanie/" term="oprogramowanie" label="oprogramowanie" />
                             
                         
                     
@@ -1655,8 +1815,8 @@ crw-rw-rw- &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root fuse 10, &lt;span c
     
         <entry>
             <title type="text">STAR WARS w wersji ASCII</title>
-            <link rel="alternate" type="text/html" href="https://www.grizz.pl/star-wars-w-wersji-ascii/" />
-            <id>https://www.grizz.pl/star-wars-w-wersji-ascii/</id>
+            <link rel="alternate" type="text/html" href="https://grizz.pl/star-wars-w-wersji-ascii/" />
+            <id>https://grizz.pl/star-wars-w-wersji-ascii/</id>
             <updated>2013-01-13T20:20:31&#43;01:00</updated>
             <published>2013-01-13T20:20:31&#43;01:00</published>
             <author>
@@ -1698,7 +1858,7 @@ crw-rw-rw- &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root fuse 10, &lt;span c
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/rozne/" term="rożne" label="rożne" />
+                                <category scheme="https://grizz.pl/rozne/" term="rożne" label="rożne" />
                             
                         
                     
@@ -1708,43 +1868,43 @@ crw-rw-rw- &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root fuse 10, &lt;span c
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/linux/" term="linux" label="linux" />
+                                <category scheme="https://grizz.pl/tags/linux/" term="linux" label="linux" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/oprogramowanie/" term="oprogramowanie" label="oprogramowanie" />
+                                <category scheme="https://grizz.pl/tags/oprogramowanie/" term="oprogramowanie" label="oprogramowanie" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tags/tech/" term="tech" label="tech" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/shell/" term="shell" label="shell" />
+                                <category scheme="https://grizz.pl/tags/shell/" term="shell" label="shell" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/rozne/" term="różne" label="różne" />
+                                <category scheme="https://grizz.pl/tags/rozne/" term="różne" label="różne" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/rozrywka/" term="rozrywka" label="rozrywka" />
+                                <category scheme="https://grizz.pl/tags/rozrywka/" term="rozrywka" label="rozrywka" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/krotko/" term="krótko" label="krótko" />
+                                <category scheme="https://grizz.pl/tags/krotko/" term="krótko" label="krótko" />
                             
                         
                     
@@ -1754,8 +1914,8 @@ crw-rw-rw- &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root fuse 10, &lt;span c
     
         <entry>
             <title type="text">Skróty klawiszowe w konsoli</title>
-            <link rel="alternate" type="text/html" href="https://www.grizz.pl/skroty-klawiszowe-w-konsoli/" />
-            <id>https://www.grizz.pl/skroty-klawiszowe-w-konsoli/</id>
+            <link rel="alternate" type="text/html" href="https://grizz.pl/skroty-klawiszowe-w-konsoli/" />
+            <id>https://grizz.pl/skroty-klawiszowe-w-konsoli/</id>
             <updated>2013-01-04T15:10:31&#43;01:00</updated>
             <published>2013-01-04T15:10:31&#43;01:00</published>
             <author>
@@ -1826,7 +1986,7 @@ bindkey &lt;span class=&#34;s2&#34;&gt;&amp;#34;^[[B&amp;#34;&lt;/span&gt; histo
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tech/" term="tech" label="tech" />
                             
                         
                     
@@ -1836,25 +1996,25 @@ bindkey &lt;span class=&#34;s2&#34;&gt;&amp;#34;^[[B&amp;#34;&lt;/span&gt; histo
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/linux/" term="linux" label="linux" />
+                                <category scheme="https://grizz.pl/tags/linux/" term="linux" label="linux" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/oprogramowanie/" term="oprogramowanie" label="oprogramowanie" />
+                                <category scheme="https://grizz.pl/tags/oprogramowanie/" term="oprogramowanie" label="oprogramowanie" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tags/tech/" term="tech" label="tech" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/shell/" term="shell" label="shell" />
+                                <category scheme="https://grizz.pl/tags/shell/" term="shell" label="shell" />
                             
                         
                     
@@ -1864,8 +2024,8 @@ bindkey &lt;span class=&#34;s2&#34;&gt;&amp;#34;^[[B&amp;#34;&lt;/span&gt; histo
     
         <entry>
             <title type="text">Polski słownik dla androida - lista najpopularniejszych słów języka polskiego</title>
-            <link rel="alternate" type="text/html" href="https://www.grizz.pl/polski-slownik-dla-androida-lista-najpopularniejszych-slow-jezyka-polskiego/" />
-            <id>https://www.grizz.pl/polski-slownik-dla-androida-lista-najpopularniejszych-slow-jezyka-polskiego/</id>
+            <link rel="alternate" type="text/html" href="https://grizz.pl/polski-slownik-dla-androida-lista-najpopularniejszych-slow-jezyka-polskiego/" />
+            <id>https://grizz.pl/polski-slownik-dla-androida-lista-najpopularniejszych-slow-jezyka-polskiego/</id>
             <updated>2012-12-17T20:20:31&#43;01:00</updated>
             <published>2012-12-17T20:20:31&#43;01:00</published>
             <author>
@@ -1965,7 +2125,7 @@ Dla uzyskania wersji smsowej (bez krzaczków) wykonujemy komendę na pliku końc
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tech/" term="tech" label="tech" />
                             
                         
                     
@@ -1975,25 +2135,25 @@ Dla uzyskania wersji smsowej (bez krzaczków) wykonujemy komendę na pliku końc
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/linux/" term="linux" label="linux" />
+                                <category scheme="https://grizz.pl/tags/linux/" term="linux" label="linux" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/oprogramowanie/" term="oprogramowanie" label="oprogramowanie" />
+                                <category scheme="https://grizz.pl/tags/oprogramowanie/" term="oprogramowanie" label="oprogramowanie" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tags/tech/" term="tech" label="tech" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/android/" term="android" label="android" />
+                                <category scheme="https://grizz.pl/tags/android/" term="android" label="android" />
                             
                         
                     
@@ -2003,8 +2163,8 @@ Dla uzyskania wersji smsowej (bez krzaczków) wykonujemy komendę na pliku końc
     
         <entry>
             <title type="text">Nowe życie htc g1 - Android</title>
-            <link rel="alternate" type="text/html" href="https://www.grizz.pl/nowe-zycie-htc-g1/" />
-            <id>https://www.grizz.pl/nowe-zycie-htc-g1/</id>
+            <link rel="alternate" type="text/html" href="https://grizz.pl/nowe-zycie-htc-g1/" />
+            <id>https://grizz.pl/nowe-zycie-htc-g1/</id>
             <updated>2011-03-05T11:32:48&#43;01:00</updated>
             <published>2011-03-05T11:32:48&#43;01:00</published>
             <author>
@@ -2036,7 +2196,7 @@ Klikam ostatnio na rozliczne statystyki i&amp;hellip; stwierdzam, że Android wy
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tech/" term="tech" label="tech" />
                             
                         
                     
@@ -2046,19 +2206,19 @@ Klikam ostatnio na rozliczne statystyki i&amp;hellip; stwierdzam, że Android wy
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/oprogramowanie/" term="oprogramowanie" label="oprogramowanie" />
+                                <category scheme="https://grizz.pl/tags/oprogramowanie/" term="oprogramowanie" label="oprogramowanie" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tags/tech/" term="tech" label="tech" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/android/" term="android" label="android" />
+                                <category scheme="https://grizz.pl/tags/android/" term="android" label="android" />
                             
                         
                     
@@ -2068,8 +2228,8 @@ Klikam ostatnio na rozliczne statystyki i&amp;hellip; stwierdzam, że Android wy
     
         <entry>
             <title type="text">gfo gallery generator</title>
-            <link rel="alternate" type="text/html" href="https://www.grizz.pl/gfo-gallery-generator/" />
-            <id>https://www.grizz.pl/gfo-gallery-generator/</id>
+            <link rel="alternate" type="text/html" href="https://grizz.pl/gfo-gallery-generator/" />
+            <id>https://grizz.pl/gfo-gallery-generator/</id>
             <updated>2010-05-15T10:33:14&#43;01:00</updated>
             <published>2009-10-02T18:24:53&#43;01:00</published>
             <author>
@@ -2119,7 +2279,7 @@ Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tech/" term="tech" label="tech" />
                             
                         
                     
@@ -2129,25 +2289,25 @@ Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/programowanie/" term="programowanie" label="programowanie" />
+                                <category scheme="https://grizz.pl/tags/programowanie/" term="programowanie" label="programowanie" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tags/tech/" term="tech" label="tech" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/foto/" term="foto" label="foto" />
+                                <category scheme="https://grizz.pl/tags/foto/" term="foto" label="foto" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/python/" term="python" label="python" />
+                                <category scheme="https://grizz.pl/tags/python/" term="python" label="python" />
                             
                         
                     
@@ -2157,8 +2317,8 @@ Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie
     
         <entry>
             <title type="text">STAR WARS DAY!</title>
-            <link rel="alternate" type="text/html" href="https://www.grizz.pl/star-wars-day/" />
-            <id>https://www.grizz.pl/star-wars-day/</id>
+            <link rel="alternate" type="text/html" href="https://grizz.pl/star-wars-day/" />
+            <id>https://grizz.pl/star-wars-day/</id>
             <updated>2015-05-04T06:05:31&#43;01:00</updated>
             <published>2009-05-04T20:20:31&#43;01:00</published>
             <author>
@@ -2199,7 +2359,7 @@ Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/rozne/" term="rożne" label="rożne" />
+                                <category scheme="https://grizz.pl/rozne/" term="rożne" label="rożne" />
                             
                         
                     
@@ -2209,13 +2369,13 @@ Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/rozne/" term="różne" label="różne" />
+                                <category scheme="https://grizz.pl/tags/rozne/" term="różne" label="różne" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/rozrywka/" term="rozrywka" label="rozrywka" />
+                                <category scheme="https://grizz.pl/tags/rozrywka/" term="rozrywka" label="rozrywka" />
                             
                         
                     
@@ -2225,8 +2385,8 @@ Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie
     
         <entry>
             <title type="text">Arch→PLD</title>
-            <link rel="alternate" type="text/html" href="https://www.grizz.pl/arch-pld/" />
-            <id>https://www.grizz.pl/arch-pld/</id>
+            <link rel="alternate" type="text/html" href="https://grizz.pl/arch-pld/" />
+            <id>https://grizz.pl/arch-pld/</id>
             <updated>2008-06-03T17:39:38&#43;01:00</updated>
             <published>2008-02-17T19:47:04&#43;01:00</published>
             <author>
@@ -2252,7 +2412,7 @@ Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tech/" term="tech" label="tech" />
                             
                         
                     
@@ -2262,19 +2422,19 @@ Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/linux/" term="linux" label="linux" />
+                                <category scheme="https://grizz.pl/tags/linux/" term="linux" label="linux" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/pld/" term="pld" label="pld" />
+                                <category scheme="https://grizz.pl/tags/pld/" term="pld" label="pld" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/arch/" term="arch" label="arch" />
+                                <category scheme="https://grizz.pl/tags/arch/" term="arch" label="arch" />
                             
                         
                     
@@ -2284,8 +2444,8 @@ Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie
     
         <entry>
             <title type="text">PLD→Arch</title>
-            <link rel="alternate" type="text/html" href="https://www.grizz.pl/pld-arch/" />
-            <id>https://www.grizz.pl/pld-arch/</id>
+            <link rel="alternate" type="text/html" href="https://grizz.pl/pld-arch/" />
+            <id>https://grizz.pl/pld-arch/</id>
             <updated>2007-03-12T22:23:35&#43;01:00</updated>
             <published>2007-03-12T22:23:35&#43;01:00</published>
             <author>
@@ -2313,7 +2473,7 @@ Jak na razie tylko jedna rzecz jest denerwująca&amp;hellip; menadżer pakietów
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tech/" term="tech" label="tech" />
                             
                         
                     
@@ -2323,19 +2483,19 @@ Jak na razie tylko jedna rzecz jest denerwująca&amp;hellip; menadżer pakietów
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/linux/" term="linux" label="linux" />
+                                <category scheme="https://grizz.pl/tags/linux/" term="linux" label="linux" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/pld/" term="pld" label="pld" />
+                                <category scheme="https://grizz.pl/tags/pld/" term="pld" label="pld" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/arch/" term="arch" label="arch" />
+                                <category scheme="https://grizz.pl/tags/arch/" term="arch" label="arch" />
                             
                         
                     
@@ -2345,8 +2505,8 @@ Jak na razie tylko jedna rzecz jest denerwująca&amp;hellip; menadżer pakietów
     
         <entry>
             <title type="text">Kradzież bezprzewodowego dostepu do Internetu</title>
-            <link rel="alternate" type="text/html" href="https://www.grizz.pl/kradziez-bezprzewodowego-dostepu-do-internetu/" />
-            <id>https://www.grizz.pl/kradziez-bezprzewodowego-dostepu-do-internetu/</id>
+            <link rel="alternate" type="text/html" href="https://grizz.pl/kradziez-bezprzewodowego-dostepu-do-internetu/" />
+            <id>https://grizz.pl/kradziez-bezprzewodowego-dostepu-do-internetu/</id>
             <updated>2014-10-06T20:20:31&#43;01:00</updated>
             <published>2006-08-09T21:25:04&#43;01:00</published>
             <author>
@@ -2369,7 +2529,7 @@ Jak na razie tylko jedna rzecz jest denerwująca&amp;hellip; menadżer pakietów
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tech/" term="tech" label="tech" />
                             
                         
                     
@@ -2379,197 +2539,37 @@ Jak na razie tylko jedna rzecz jest denerwująca&amp;hellip; menadżer pakietów
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/tech/" term="tech" label="tech" />
+                                <category scheme="https://grizz.pl/tags/tech/" term="tech" label="tech" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/krotko/" term="krótko" label="krótko" />
+                                <category scheme="https://grizz.pl/tags/krotko/" term="krótko" label="krótko" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/linux/" term="linux" label="linux" />
+                                <category scheme="https://grizz.pl/tags/linux/" term="linux" label="linux" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/rozrywka/" term="rozrywka" label="rozrywka" />
+                                <category scheme="https://grizz.pl/tags/rozrywka/" term="rozrywka" label="rozrywka" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/sieci/" term="sieci" label="sieci" />
+                                <category scheme="https://grizz.pl/tags/sieci/" term="sieci" label="sieci" />
                             
                         
                             
                             
                             
-                                <category scheme="https://www.grizz.pl/tags/oprogramowanie/" term="oprogramowanie" label="oprogramowanie" />
-                            
-                        
-                    
-                
-            
-        </entry>
-    
-        <entry>
-            <title type="text">AutoHotkey - wstęp</title>
-            <link rel="alternate" type="text/html" href="https://www.grizz.pl/ahk/" />
-            <id>https://www.grizz.pl/ahk/</id>
-            <updated>2021-02-12T16:45:05&#43;01:00</updated>
-            <published>0001-01-01T00:00:00&#43;00:00</published>
-            <author>
-                    <name>grizz</name>
-                    <uri>https://www.grizz.pl/</uri>
-                    </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</rights><summary type="html">&lt;p&gt;&lt;a href=&#34;https://www.autohotkey.com/&#34;&gt;AutoHotkey&lt;/a&gt; to jak sam się przedstawia - Potężny. Łatwy do nauki. Najlepszy język skryptowy do automatyzacji dla systemu Windows - zdecydowanie zgodzę się z tym pierwszym. Co do reszty, to poglądy są różne, ale nie zmienia to faktu, że jest to dla mnie jedno z kluczowych narzędzi na Windowsa, które pozwala ułatwić codzienną pracę w stopniu niezmiernym.&lt;/p&gt;
-&lt;p&gt;AHK może:&lt;/p&gt;</summary>
-            
-                <content type="html">&lt;p&gt;&lt;a href=&#34;https://www.autohotkey.com/&#34;&gt;AutoHotkey&lt;/a&gt; to jak sam się przedstawia - Potężny. Łatwy do nauki. Najlepszy język skryptowy do automatyzacji dla systemu Windows - zdecydowanie zgodzę się z tym pierwszym. Co do reszty, to poglądy są różne, ale nie zmienia to faktu, że jest to dla mnie jedno z kluczowych narzędzi na Windowsa, które pozwala ułatwić codzienną pracę w stopniu niezmiernym.&lt;/p&gt;
-&lt;p&gt;AHK może:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Usprawnić wpisywanie tekstu np. zamiast &lt;em&gt;o ile dobrze pamiętam&lt;/em&gt; wystarczy wpisać &lt;em&gt;]oidp&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;Budować skróty klawiszowe(obsługuje też mysz) - proste np. zamknięcie okna klawiszem &lt;code&gt;F4&lt;/code&gt; jak i bardziej zaawansowane np. &lt;code&gt;CAPSLOCK&lt;/code&gt;+&lt;code&gt;G&lt;/code&gt; przywoła nam przeglądarkę i przełączy na kartę Gmaila, a jeżeli ta jest aktywna, to zminimalizuje okno; &lt;code&gt;RButton&lt;/code&gt;&amp;amp;&lt;code&gt;WheelUp&lt;/code&gt; - Przytrzymanie prawego przycisku myszki i ruch rolką w górę, przełączy kartę przeglądarki.&lt;/li&gt;
-&lt;li&gt;Tworzyć proste interfejsy użytkownika np. okienko dodawania do pliku tekstowego - dla błyskawicznych notatek, wybór tekstu do wpisania z listy.&lt;/li&gt;
-&lt;li&gt;Operować uruchomionymi programami i oknami - np. automatycznie zmienić położenie i rozmiar okna.&lt;/li&gt;
-&lt;li&gt;Automatyzować powtarzalne czynności - np. otworzyć stronę, błyskawicznie wypełnić na niej pola, wysłać dane i zamknąć okno.&lt;/li&gt;
-&lt;li&gt;Sterować ustawieniami systemowymi - np. wprowadzić push to talk - automatyczne wyciszenie mikrofonu o ile nie trzymamy określonego klawisza.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Poniżej przedstawię kilka założeń ogólnych dla zachęty, jednak nie jest moja intencją tworzenie tutoriala, bo &lt;a href=&#34;https://www.autohotkey.com/docs/Tutorial.htm&#34;&gt;dokumentacja AHK&lt;/a&gt; jest bardzo przystępna, a wpisanie w Google &lt;code&gt;ahk problem X&lt;/code&gt; przeważnie daje nam konkretne rozwiązania.&lt;/p&gt;
-&lt;p&gt;W kolejnych artykułach postaram się pokazać praktyczne przykłady zastosowania AHK. Skróty, które sprawdziły się u mnie w boju.&lt;/p&gt;
-&lt;p&gt;Wszystkie przykłady z artykułów, wraz z komentarzami będą uaktualniane w &lt;a href=&#34;https://github.com/grizz-pl/autohotkey-scripts&#34;&gt;repozytorium na GitHubie&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;instalacja&#34;&gt;Instalacja&lt;/h2&gt;
-&lt;p&gt;Program można pobrać stąd &lt;a href=&#34;https://www.autohotkey.com/download/&#34;&gt;https://www.autohotkey.com/download/&lt;/a&gt; instalacja nie jest wymagana, wystarczy rozpakować archiwum zip.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Jeszcze lepszym pomysłem jest skorzystanie z programu &lt;a href=&#34;https://scoop.sh/&#34;&gt;scoop&lt;/a&gt; wydajemy polecenie &lt;code&gt;scoop install autohotkey&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;hotstringi-i-hotkeye&#34;&gt;Hotstringi i hotkeye&lt;/h2&gt;
-&lt;p&gt;Skrypty AHK opierają się na dwóch głównych składowych:&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;hotstring&lt;/strong&gt; - rozwinięcie/zastąpienie wpisywanego tekstu, np. wpisanie &lt;code&gt;@@&lt;/code&gt; zostanie zamienione na &lt;em&gt;&lt;a href=&#34;mailto:Jan.Kowalski@mojadomena12.pl&#34;&gt;Jan.Kowalski@mojadomena12.pl&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;hotkey&lt;/strong&gt; - skrót klawiszowy, np wciśnięcie &lt;code&gt;ALT&lt;/code&gt;+&lt;code&gt;.&lt;/code&gt; wpisze &lt;em&gt;…&lt;/em&gt; (wielokropek) a wciśnięcie &lt;code&gt;F1&lt;/code&gt; przełączy kartę w firefoxie czy chrome na wcześniejszą (wygodniejsze rozwiązanie niż łamanie palców na &lt;code&gt;CTRL&lt;/code&gt;+&lt;code&gt;SHIFT&lt;/code&gt;+&lt;code&gt;TAB&lt;/code&gt;)&lt;/p&gt;
-&lt;h2 id=&#34;pierwszy-skrypt&#34;&gt;Pierwszy skrypt&lt;/h2&gt;
-&lt;h3 id=&#34;hotstring&#34;&gt;Hotstring&lt;/h3&gt;
-&lt;p&gt;Tworzymy plik &lt;code&gt;main.ahk&lt;/code&gt; o zawartości:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-autohotkey&#34; data-lang=&#34;autohotkey&#34;&gt;::]c::  ;;Cześć
-(
-Cześć,
-
-)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Zapisujemy i odpalamy go. Jeżeli używamy aplikacji z rozpakowanego archiwum, do otwarcia wskażmy &lt;code&gt;AutoHotkeyU64.exe&lt;/code&gt;. Skrypt odpali się i będzie rezydował w zasobniku (trayu).&lt;/p&gt;
-&lt;p&gt;Następnie otwórzmy np. notatnik i wpiszmy w nim &lt;code&gt;]c&lt;/code&gt; a następnie &lt;strong&gt;spację&lt;/strong&gt; lub &lt;strong&gt;enter&lt;/strong&gt;. Wpisany tekst &lt;em&gt;]c&lt;/em&gt; zostanie zastąpiony przez &lt;em&gt;Cześć&lt;/em&gt; i linię odstępu. Tym sposobem mamy skrót do rozpoczynania maili. Dla kompletu dodajmy jeszcze zakończenie.&lt;/p&gt;
-&lt;p&gt;Hotstringi dobrze jest rozpoczynać w określony sposób, żeby uniknąć ich przypadkowego aktywowania. Ja zaczynam je jak widać od zamykającej klamry kwadratowej &lt;em&gt;]c&lt;/em&gt; popularne jest też stosowanie  średnika &lt;em&gt;;c&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.grizz.pl/018/ahk1.png&#34; alt=&#34;AHK tray&#34;&gt;
-Klikamy prawym przyciskiem myszy na na ikonce w trayu i z menu wybieramy &lt;strong&gt;Edit This Script&lt;/strong&gt;. Otworzy się notatnik ze skryptem (domyślny program możemy zmienić w standardowy sposób - przypisując inny program do plików z tym rozszerzeniem).&lt;/p&gt;
-&lt;p&gt;dodajemy do skryptu:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-autohotkey&#34; data-lang=&#34;autohotkey&#34;&gt;::]p::  ;;Pozdrawiam Jk
-(
-
-Pozdrawiam
-  Jan Kowaski
-)
-:*:@@::Jan.Kowalski@mojadomena12.pl ;; mail
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;i tu jeszcze wyjaśnienie zastosowanej składni:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;()&lt;/code&gt; Objęcie wyrażenia w nawiasy okrągłe pozwala nam wstawiać wyrażenia wieloliniowe.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;:*:&lt;/code&gt; dodanie gwiazdki przy definiowaniu hotstringa powoduje, ze jego aktywowanie nastąpi automatycznie po wpisaniu ostatniego znaku. Nie trzeba wciskać spacji czy entera. Wpisanie &lt;code&gt;@@&lt;/code&gt; podstawi adres e-mail.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;;&lt;/code&gt; Od średnika zaczynamy komentarze. W powyższym przykładzie podwójny średnik nie jest przypadkiem - wyjaśnię to w kolejnych artykułach.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Zapisujemy plik i klikamy prawym przyciskiem myszy na na ikonce w trayu i z menu wybieramy &lt;strong&gt;Reload This Script&lt;/strong&gt;. Od tego momentu działają zmiany, które wprowadziliśmy.&lt;/p&gt;
-&lt;h3 id=&#34;hotkey&#34;&gt;Hotkey&lt;/h3&gt;
-&lt;p&gt;Dodajemy do pliku&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-ahk&#34; data-lang=&#34;ahk&#34;&gt;!.::  ;; wielokropek
-Send …
-Return
-
-F1::Send {Ctrl Down}{PgUp}{Ctrl Up} ;;ff - poprzednia karta
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Przeładowujemy skrypt i teraz:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;wciśnięcie &lt;code&gt;ALT&lt;/code&gt;+&lt;code&gt;.&lt;/code&gt; (alt i kropka) wpisze &lt;em&gt;…&lt;/em&gt; (wielokropek). Opis modyfikatorów klawiszy niżej.&lt;/li&gt;
-&lt;li&gt;wciśnięcie &lt;code&gt;F1&lt;/code&gt; przełączy kartę na wcześniejszą (wygodniejsze rozwiązanie niż łamanie palców na &lt;code&gt;CTRL&lt;/code&gt;+&lt;code&gt;SHIFT&lt;/code&gt;+&lt;code&gt;TAB&lt;/code&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Skróty zadziałają we wszystkich programach - potem przedstawię, jak limitować działanie skrótu tylko do obrębu jednej aplikacji, albo tylko jednego okna.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Tutaj też widzimy jedną z bolączek AHK - składnia lubi być dziwaczna i niejednoznaczna - możemy pisać polecenia w jednej linii, albo kolejnej, ale kończymy je za pomocą &lt;em&gt;Return&lt;/em&gt; - możemy też stosować nawiasy klamrowe. Czasami po poleceniach wpisujemy przecinek, czasami nie, przy zmiennych może pojawiać się &lt;em&gt;%&lt;/em&gt; albo i nie. Jako, że większość rozwiązań tworzyłem, wyszukiwałem, przerabiałem ad-hoc to nie pilnowałem składni. Działa, więc po co ruszać :).&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&#34;modyfikatory-klawiszy&#34;&gt;Modyfikatory klawiszy&lt;/h4&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Skrót&lt;/th&gt;
-&lt;th&gt;klawisz&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;#&lt;/td&gt;
-&lt;td&gt;Win&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;!&lt;/td&gt;
-&lt;td&gt;Alt&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;^&lt;/td&gt;
-&lt;td&gt;Ctrl&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;+&lt;/td&gt;
-&lt;td&gt;Shift&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Czyli &lt;code&gt;^+w::Hello World!&lt;/code&gt; oznacza - wciśnięcie &lt;code&gt;CTRL&lt;/code&gt;+&lt;code&gt;SHIFT&lt;/code&gt;+&lt;code&gt;w&lt;/code&gt; wypisze &lt;em&gt;Hello World&lt;/em&gt;!*&lt;/p&gt;
-&lt;p&gt;Pełna lista klawiszy dostępna jest w &lt;a href=&#34;https://www.autohotkey.com/docs/commands/Send.htm#keynames&#34;&gt;dokumentacji&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;kompilacja-skryptu-do-pliku-wykonywalnego-exe&#34;&gt;Kompilacja skryptu do pliku wykonywalnego exe&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.grizz.pl/018/ahk2.png&#34; alt=&#34;AHK kompilacja&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Do działania skryptu potrzebujemy jedynie pliku wykonywalnego AHK (wspomniany wyżej &lt;code&gt;AutoHotkeyU64.exe&lt;/code&gt;) i pliku skryptu, ale możemy również kliknąć prawym przyciskiem myszy na pliku skryptu i wybrać opcję &lt;strong&gt;Compile script&lt;/strong&gt; w wyniku czego otrzymamy nasz skrypt w postaci pojedynczego pliku &lt;strong&gt;.exe&lt;/strong&gt;!&lt;/p&gt;
-&lt;h2 id=&#34;repozytorium-z-przykładami---github&#34;&gt;Repozytorium z przykładami - github&lt;/h2&gt;
-&lt;p&gt;Jak już zaznaczyłem wyżej, wszystkie przykłady z artykułów, wraz z komentarzami będą uaktualniane w &lt;a href=&#34;https://github.com/grizz-pl/autohotkey-scripts&#34;&gt;repozytorium na GitHubie&lt;/a&gt;.&lt;/p&gt;</content>
-            
-            
-            
-            
-            
-                
-                    
-                        
-                            
-                            
-                            
-                                <category scheme="https://www.grizz.pl/tech/" term="tech" label="tech" />
-                            
-                        
-                    
-                
-                    
-                        
-                            
-                            
-                            
-                                <category scheme="https://www.grizz.pl/tags/tech/" term="tech" label="tech" />
-                            
-                        
-                            
-                            
-                            
-                                <category scheme="https://www.grizz.pl/tags/ahk/" term="ahk" label="ahk" />
-                            
-                        
-                            
-                            
-                            
-                                <category scheme="https://www.grizz.pl/tags/windows/" term="windows" label="windows" />
-                            
-                        
-                            
-                            
-                            
-                                <category scheme="https://www.grizz.pl/tags/software/" term="software" label="software" />
+                                <category scheme="https://grizz.pl/tags/oprogramowanie/" term="oprogramowanie" label="oprogramowanie" />
                             
                         
                     
