@@ -19,7 +19,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
         
-        <lastBuildDate>Sun, 21 Feb 2021 17:25:22 &#43;0100</lastBuildDate>
+        <lastBuildDate>Mon, 22 Feb 2021 17:20:00 &#43;0100</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://grizz.pl/rss.xml" />
         
@@ -2079,6 +2079,98 @@ Dla uzyskania wersji smsowej (bez krzaczków) wykonujemy komendę na pliku końc
             </item>
         
             <item>
+                <title>Mirlight - plany wesji 0.9</title>
+                <link>https://grizz.pl/mirlight-plany-09/</link>
+                <guid isPermaLink="true">https://grizz.pl/mirlight-plany-09/</guid>
+                <pubDate>Tue, 09 Aug 2011 17:08:45 &#43;0100</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;p&gt;Pomalutku, powolutku klarują sie nowe funkcje w programie mirlighta (&lt;a href=&#34;http://mirley.firlej.org/mirlight2&#34;&gt;strona sprzętu&lt;/a&gt;):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Autostart&lt;/li&gt;
+&lt;li&gt;minimalizacja po starcie&lt;/li&gt;
+&lt;li&gt;tryb filmowy (czyli tak jak dotychczas)&lt;/li&gt;
+&lt;li&gt;tryb pasywny/statyczny - cały czas wyświetlanie jednego koloru na danym kanale (czyli tryb pracy idealny dla każdych zajęć przy, których miganie podświetlania byłoby denerwujące)&lt;/li&gt;
+&lt;li&gt;regulacja jasności&lt;/li&gt;
+&lt;li&gt;kalibracja&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Na dzisiaj (tj. 7 marca 2011) powstał nowy interfejs oraz tryb pojedynczego koloru w stanie pasywnym.&lt;/p&gt;
+&lt;p&gt;Klikamy na przycisk &lt;strong&gt;all&lt;/strong&gt; wybieramy kolor. Klikamy &lt;strong&gt;Start Passive mode&lt;/strong&gt;.
+Potem już możemy zmieniać kolor klikając w &lt;strong&gt;all&lt;/strong&gt; bez konieczności zatrzymywania działania podświetlania.&lt;/p&gt;
+&lt;p&gt;Reszta nowych kontrolek nie działa, więc nie krzyczeć ;), ale gdyby, ktoś chciał pomóc, to bardzo proszę o ściągniecie nowej wersji i testowanie oraz zgłąszanie problemów, uwag i pomysłów.&lt;/p&gt;
+&lt;h3 id=&#34;aktualizacja-2011-08-09-1708&#34;&gt;Aktualizacja 2011-08-09 17:08:&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/grizz-pl/mirlight/tree/test&#34;&gt;W gałęzi testowej&lt;/a&gt; zamieściłem właśnie wersję z obsługą ikonki w zasobniku (system tray).
+Dwuklik włącza/wyłącza tryb aktywny. Przycisk środkowy przywołuje okno.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Zobacz inne wpisy na temat&lt;/strong&gt; &lt;a href=&#34;https://grizz.pl/tags/mirlight&#34;&gt;mirlighta&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tech/">tech</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/mirlight/">mirlight</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/linux/">linux</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/windows/">windows</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/oprogramowanie/">oprogramowanie</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/tech/">tech</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/python/">python</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/programowanie/">programowanie</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
                 <title>Nowe życie htc g1 - Android</title>
                 <link>https://grizz.pl/nowe-zycie-htc-g1/</link>
                 <guid isPermaLink="true">https://grizz.pl/nowe-zycie-htc-g1/</guid>
@@ -2130,6 +2222,282 @@ Klikam ostatnio na rozliczne statystyki i&amp;hellip; stwierdzam, że Android wy
                                 
                                 
                                     <category domain="https://grizz.pl/tags/android/">android</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Elektronika Praktyczna - mirlight</title>
+                <link>https://grizz.pl/elektronika-praktyczna-mirlight/</link>
+                <guid isPermaLink="true">https://grizz.pl/elektronika-praktyczna-mirlight/</guid>
+                <pubDate>Fri, 04 Feb 2011 13:28:38 &#43;0100</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;p&gt;Miło mi poinformować, że w najnowszym numerze Elektroniki Praktycznej (tj. EP 02/2011), znajdziecie artykuł autorstwa &lt;a href=&#34;http://mirley.firlej.org&#34;&gt;Mirleya&lt;/a&gt; opisujący &lt;a href=&#34;https://grizz.pl/tags/mirlight&#34;&gt;mirlight&amp;rsquo;a&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Link do strony czasopisma: &lt;a href=&#34;https://ep.com.pl/archiwum/2011/13306-luty-2011&#34;&gt;https://ep.com.pl/archiwum/2011/13306-luty-2011&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Przy okazji, zapraszam do &lt;em&gt;polubienia&lt;/em&gt; stron &lt;a href=&#34;https://www.facebook.com/firlej&#34;&gt;niniejszego serwisu&lt;/a&gt; jak i strony &lt;a href=&#34;https://www.facebook.com/mirley.firlej.org&#34;&gt;mirlej.firlej.org&lt;/a&gt; na facebooku.&lt;/p&gt;
+&lt;!-- Links --&gt;
+&lt;!--break--&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tech/">tech</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/mirlight/">mirlight</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/linux/">linux</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/windows/">windows</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/oprogramowanie/">oprogramowanie</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/tech/">tech</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/python/">python</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/programowanie/">programowanie</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Mirlight ver.0.8</title>
+                <link>https://grizz.pl/mirlight-ver08/</link>
+                <guid isPermaLink="true">https://grizz.pl/mirlight-ver08/</guid>
+                <pubDate>Sat, 11 Sep 2010 12:30:03 &#43;0100</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;p&gt;&lt;img src=&#34;../../static/000/mirlight08-7.jpg&#34; alt=&#34;Mirlight&#34;&gt;&lt;/p&gt;
+&lt;p&gt;W ostatnim czasie Mirlight (wersja zrób to sam gadżetu oparta luźno na koncepcji ambilight) otrzymał kilka nowych funkcji, kilka starych zostało ulepszonych.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Wszystkomająca binarka na Windowsa&lt;/li&gt;
+&lt;li&gt;Polska wersja językowa&lt;/li&gt;
+&lt;li&gt;Zapisywanie/Ładowanie schematów ułożenia pól&lt;/li&gt;
+&lt;li&gt;Ikonka&lt;/li&gt;
+&lt;li&gt;Lepszy podgląd ułożenia pól - można nim operować nawet na włączonym filmie&lt;/li&gt;
+&lt;li&gt;Automatyczne odnajdywanie portu, do którego podłączone jest urządzenie&lt;/li&gt;
+&lt;li&gt;Kosmetyczne zmiany wyglądu&lt;/li&gt;
+&lt;li&gt;Kilka mniejszych zmian pod maską&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;wymagania-i-pobieranie-plików&#34;&gt;Wymagania i pobieranie plików&lt;/h2&gt;
+&lt;p&gt;W kwestii wymagań nic od &lt;a href=&#34;https://grizz.pl/tags/mirlight&#34;&gt;poprzednich wpisów&lt;/a&gt; się nie zmieniło. Instrukcja instalacji znajduje się we wspomnianym wpisie jak i na &lt;a href=&#34;https://github.com/grizz-pl/mirlight&#34;&gt;stronie projektu&lt;/a&gt; na githubie. Tam też znajdziecie pliki do pobrania - dział &lt;a href=&#34;https://github.com/grizz-pl/mirlight/downloads&#34;&gt;downloads&lt;/a&gt; .&lt;/p&gt;
+&lt;p&gt;Strona dotycząca budowy sprzętu (nowej wersji!) &lt;a href=&#34;http://mirley.firlej.org/mirlight2&#34;&gt;http://mirley.firlej.org/mirlight2&lt;/a&gt; i (starej) &lt;a href=&#34;http://mirley.firlej.org/mirlight&#34;&gt;http://mirley.firlej.org/mirlight&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;zrzuty&#34;&gt;Zrzuty&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;../../static/000/mirlight08-1.png&#34; alt=&#34;Mirlight&#34;&gt;
+&lt;img src=&#34;../../static/000/mirlight08-2.png&#34; alt=&#34;Mirlight&#34;&gt;
+&lt;img src=&#34;../../static/000/mirlight08-3.png&#34; alt=&#34;Mirlight&#34;&gt;
+&lt;img src=&#34;../../static/000/mirlight08-4.png&#34; alt=&#34;Mirlight&#34;&gt;
+&lt;img src=&#34;../../static/000/mirlight08-5.png&#34; alt=&#34;Mirlight&#34;&gt;
+&lt;img src=&#34;../../static/000/mirlight08-6.png&#34; alt=&#34;Mirlight&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Zobacz inne wpisy na temat&lt;/strong&gt; &lt;a href=&#34;https://grizz.pl/tags/mirlight&#34;&gt;mirlighta&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- Links --&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tech/">tech</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/mirlight/">mirlight</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/linux/">linux</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/windows/">windows</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/oprogramowanie/">oprogramowanie</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/tech/">tech</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/python/">python</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/programowanie/">programowanie</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Mirlight ver.0.5</title>
+                <link>https://grizz.pl/mirlight-ver05/</link>
+                <guid isPermaLink="true">https://grizz.pl/mirlight-ver05/</guid>
+                <pubDate>Thu, 04 Mar 2010 17:37:28 &#43;0100</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;p&gt;Od &lt;a href=&#34;https://grizz.pl/mirlight&#34;&gt;ostatniego wpisu&lt;/a&gt; na temat mirlighta minęło już trochę czasu, w którym program został gruntownie przetestowany, doczekał się też kilku zmian (głównie wymuszonych zmianą po stronie sprzętowej [ &lt;a href=&#34;http://mirley.firlej.org/mirlight&#34;&gt;Info&lt;/a&gt; ] ).&lt;br&gt;
+Wreszcie dostępna jest, skompilowana w jeden plik &lt;strong&gt;.exe&lt;/strong&gt; wersja na system Windows.&lt;/p&gt;
+&lt;h2 id=&#34;cechy&#34;&gt;Cechy&lt;/h2&gt;
+&lt;p&gt;(zmiany zaznaczono pogrubieniem)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;8 niezależnych kanałów&lt;/li&gt;
+&lt;li&gt;regulacja interwału skanowania ekranu&lt;/li&gt;
+&lt;li&gt;automatyczne ułożenie kanałów w zależności od rozdzielczości (z możliwością dodatkowej modyfikacji)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Lepszy algorytm wyświetlania kolorów&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;swobodna manipulacja położeniem, i rozmiarem kanałów&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;tryb gadatliwy&lt;/strong&gt;: przydatny przy rozwiązywaniu problemów, posiada trzy stopnie (odpowiednio -v -vv -vvv podane jako argument)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;zrzuty-ekranu&#34;&gt;Zrzuty ekranu&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://grizz.pl/000/mirlight5.jpg&#34; alt=&#34;Mirlight w akcji&#34;&gt;
+&lt;img src=&#34;https://grizz.pl/000/mirlight3.jpg&#34; alt=&#34;Mirlight w akcji&#34;&gt;
+&lt;img src=&#34;https://grizz.pl/000/mirlight1.jpg&#34; alt=&#34;Działanie podglądu&#34;&gt;
+&lt;img src=&#34;https://grizz.pl/000/mirlight05b2-preview.png&#34; alt=&#34;Okno podglądu koloru obszarów&#34;&gt;
+&lt;img src=&#34;https://grizz.pl/000/mirlight05b3-settings.png&#34; alt=&#34;Okno ustawień&#34;&gt;
+&lt;img src=&#34;https://grizz.pl/000/mirlight05b4-about.png&#34; alt=&#34;Okno o programie&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;wymagania-i-pobieranie-plików&#34;&gt;Wymagania i pobieranie plików&lt;/h2&gt;
+&lt;p&gt;W kwestii wymagań nic od &lt;a href=&#34;https://grizz.pl/mirlight&#34;&gt;poprzedniego wpisu&lt;/a&gt; się nie zmieniło. Instrukcja instalacji znajduje się we wspomnianym wpisie jak i na &lt;a href=&#34;https://github.com/grizz-pl/mirlight&#34;&gt;stronie projektu&lt;/a&gt; na githubie. Tamże znajdziecie pliki do pobrania - dział &lt;a href=&#34;https://github.com/grizz-pl/mirlight/downloads&#34;&gt;downloads&lt;/a&gt; .&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Zobacz inne wpisy na temat&lt;/strong&gt; &lt;a href=&#34;https://grizz.pl/tags/mirlight&#34;&gt;mirlighta&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- Links --&gt;
+</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tech/">tech</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/mirlight/">mirlight</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/linux/">linux</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/windows/">windows</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/oprogramowanie/">oprogramowanie</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/tech/">tech</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/python/">python</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/programowanie/">programowanie</category>
                                 
                             
                         
@@ -2215,6 +2583,147 @@ Sugestie / problemy można zgłaszać poniżej w komentarzach, bądź na stronie
                                 
                                 
                                     <category domain="https://grizz.pl/tags/python/">python</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Mirlight DIY ambilight</title>
+                <link>https://grizz.pl/mirlight/</link>
+                <guid isPermaLink="true">https://grizz.pl/mirlight/</guid>
+                <pubDate>Fri, 22 May 2009 22:23:39 &#43;0100</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;p&gt;&lt;strong&gt;Krótko: trochę cyny, kabelków, diód, rurki pcv i pythona wraz z Qt4 i mamy pięknie działający domowej roboty ambilight, który sprawia, ze oglądanie filmów i codzienna praca jest przyjemniejsza.&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;cechy&#34;&gt;Cechy&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;(na podstawie wersji deweloperskiej z 2009-05-22)&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;8 niezależnych kanałów&lt;/li&gt;
+&lt;li&gt;regulacja interwału skanowania ekranu&lt;/li&gt;
+&lt;li&gt;regulacja czasu przejścia pomiędzy kolorami&lt;/li&gt;
+&lt;li&gt;automatyczne ułożenie kanałów w zależności od rozdzielczości (z możliwością dodatkowej modyfikacji)&lt;/li&gt;
+&lt;li&gt;swobodna manipulacja położeniem, i rozmiarem kanałów&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;https://grizz.pl/mirlight/#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;obsługa zdalnego sterowania za pomocą pilota telewizyjnego&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;https://grizz.pl/mirlight/#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;zapisywanie/wczytywanie predefiniowanych ustawień kanałów &lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;https://grizz.pl/mirlight/#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;i zapewne jeszcze nowe funkcjonalności się pojawią :D&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;działanie&#34;&gt;Działanie&lt;/h2&gt;
+&lt;p&gt;Obraz mówi więcej niż tysiąc słów, a więc:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://grizz.pl/000/mirlight4.jpg&#34; alt=&#34;mirlight4&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://grizz.pl/000/mirlight1.jpg&#34; alt=&#34;mirlight1&#34;&gt;&lt;img src=&#34;https://grizz.pl/000/mirlight2.jpg&#34; alt=&#34;mirlight2&#34;&gt;&lt;img src=&#34;https://grizz.pl/000/mirlight3.jpg&#34; alt=&#34;mirlight3&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Filmik (niestety jakość średnia - miganie jest wynikiem ułomności sprzetu nagrywającego, a nie wadliwością mirlighta)
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/mNkUQyCh2ew&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;hardware-czyli-sprzęt&#34;&gt;Hardware czyli sprzęt&lt;/h2&gt;
+&lt;p&gt;Cześć sprzętowa opisana jest na stronie &lt;a href=&#34;http://mirley.firlej.org&#34;&gt;Mirleya&lt;/a&gt; o tutaj: &lt;a href=&#34;http://mirley.firlej.org/mirlight&#34;&gt;http://mirley.firlej.org/mirlight&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;program&#34;&gt;Program&lt;/h2&gt;
+&lt;h3 id=&#34;wymagania-sprzętowe&#34;&gt;Wymagania sprzętowe&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;python 2.6&lt;/li&gt;
+&lt;li&gt;Qt 4.5&lt;/li&gt;
+&lt;li&gt;pyQt&lt;/li&gt;
+&lt;li&gt;pyserial &lt;a href=&#34;https://sourceforge.net/projects/pyserial/&#34;&gt;https://sourceforge.net/projects/pyserial/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;uwagi&#34;&gt;Uwagi&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Pamiętajmy, żeby użytkownik miał dostęp do odpowiedniego portu com! Dodajmy go do grupy odpowiedniej (zazwyczaj &lt;strong&gt;tty&lt;/strong&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;szybki-start-dla-użytkowników-windows&#34;&gt;Szybki start dla użytkowników Windows®&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Ściągnij i zainstaluj &lt;a href=&#34;http://www.activestate.com/store/download.aspx?prdGUID=b08b04e0-6872-4d9d-a722-7a0c2dea2758&#34;&gt;ActivePython&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Ściągnij i zainstaluj &lt;a href=&#34;http://www.riverbankcomputing.co.uk/software/pyqt/download&#34;&gt;PyQt4&lt;/a&gt; Pobieramy oczywiście &lt;em&gt;Windows Installer&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Ściągnij i zainstaluj &lt;a href=&#34;http://sourceforge.net/projects/pyserial/files/&#34;&gt;Pyserial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Pobierz &lt;strong&gt;mirlight&lt;/strong&gt; używając &lt;code&gt;git clone git://github.com/grizz-pl/mirlight.git&lt;/code&gt; &lt;a href=&#34;http://github.com/guides/using-git-and-github-for-the-windows-for-newbies&#34;&gt;HowTo&lt;/a&gt; albo pobierz archiwum używając linków z zakładek u góry strony.&lt;/li&gt;
+&lt;li&gt;Wejdź w katalog &lt;strong&gt;mirlight&lt;/strong&gt; i uruchom &lt;code&gt;mirlight.bat&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;download&#34;&gt;Download&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;git clone git://github.com/grizz-pl/mirlight.git&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;todo-i-bugtracker&#34;&gt;Todo i bugtracker&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;http://github.com/grizz-pl/mirlight/issues&#34;&gt;http://github.com/grizz-pl/mirlight/issues&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Zobacz inne wpisy na temat&lt;/strong&gt; &lt;a href=&#34;https://grizz.pl/tags/mirlight&#34;&gt;mirlighta&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- Notes --&gt;
+&lt;!-- Links --&gt;
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Jak na razie tylko przez bezpośrednią edycję pliku konfiguracyjnego &lt;a href=&#34;https://grizz.pl/mirlight/#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Wkrótce &lt;a href=&#34;https://grizz.pl/mirlight/#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;patrz przypis 2 &lt;a href=&#34;https://grizz.pl/mirlight/#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tech/">tech</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/mirlight/">mirlight</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/linux/">linux</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/windows/">windows</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/oprogramowanie/">oprogramowanie</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/tech/">tech</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/python/">python</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/programowanie/">programowanie</category>
                                 
                             
                         
