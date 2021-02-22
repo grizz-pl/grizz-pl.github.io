@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="pl">
     <title type="text"># grizz.pl</title>
     <subtitle type="html"># grizz.pl - blog o różnościach napotkanych…</subtitle>
-    <updated>2021-02-22T17:20:00&#43;01:00</updated>
+    <updated>2021-02-22T20:57:14&#43;01:00</updated>
     <id>https://grizz.pl/</id>
     <link rel="alternate" type="text/html" href="https://grizz.pl/" />
     <link rel="self" type="application/atom&#43;xml" href="https://grizz.pl/atom.xml" />
@@ -2453,12 +2453,12 @@ Przy okazji, zapraszam do polubienia stron niniejszego serwisu jak i strony mirl
 &lt;p&gt;W kwestii wymagań nic od &lt;a href=&#34;https://grizz.pl/tags/mirlight&#34;&gt;poprzednich wpisów&lt;/a&gt; się nie zmieniło. Instrukcja instalacji znajduje się we wspomnianym wpisie jak i na &lt;a href=&#34;https://github.com/grizz-pl/mirlight&#34;&gt;stronie projektu&lt;/a&gt; na githubie. Tam też znajdziecie pliki do pobrania - dział &lt;a href=&#34;https://github.com/grizz-pl/mirlight/downloads&#34;&gt;downloads&lt;/a&gt; .&lt;/p&gt;
 &lt;p&gt;Strona dotycząca budowy sprzętu (nowej wersji!) &lt;a href=&#34;http://mirley.firlej.org/mirlight2&#34;&gt;http://mirley.firlej.org/mirlight2&lt;/a&gt; i (starej) &lt;a href=&#34;http://mirley.firlej.org/mirlight&#34;&gt;http://mirley.firlej.org/mirlight&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;zrzuty&#34;&gt;Zrzuty&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;../../static/000/mirlight08-1.png&#34; alt=&#34;Mirlight&#34;&gt;
-&lt;img src=&#34;../../static/000/mirlight08-2.png&#34; alt=&#34;Mirlight&#34;&gt;
-&lt;img src=&#34;../../static/000/mirlight08-3.png&#34; alt=&#34;Mirlight&#34;&gt;
-&lt;img src=&#34;../../static/000/mirlight08-4.png&#34; alt=&#34;Mirlight&#34;&gt;
-&lt;img src=&#34;../../static/000/mirlight08-5.png&#34; alt=&#34;Mirlight&#34;&gt;
-&lt;img src=&#34;../../static/000/mirlight08-6.png&#34; alt=&#34;Mirlight&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://grizz.pl/000/mirlight08-1.png&#34; alt=&#34;Mirlight&#34;&gt;
+&lt;img src=&#34;https://grizz.pl/000/mirlight08-2.png&#34; alt=&#34;Mirlight&#34;&gt;
+&lt;img src=&#34;https://grizz.pl/000/mirlight08-3.png&#34; alt=&#34;Mirlight&#34;&gt;
+&lt;img src=&#34;https://grizz.pl/000/mirlight08-4.png&#34; alt=&#34;Mirlight&#34;&gt;
+&lt;img src=&#34;https://grizz.pl/000/mirlight08-5.png&#34; alt=&#34;Mirlight&#34;&gt;
+&lt;img src=&#34;https://grizz.pl/000/mirlight08-6.png&#34; alt=&#34;Mirlight&#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Zobacz inne wpisy na temat&lt;/strong&gt; &lt;a href=&#34;https://grizz.pl/tags/mirlight&#34;&gt;mirlighta&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
