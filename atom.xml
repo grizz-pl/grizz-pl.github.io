@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="pl">
     <title type="text"># grizz.pl</title>
     <subtitle type="html"># grizz.pl - blog o różnościach napotkanych…</subtitle>
-    <updated>2021-02-22T20:57:14&#43;01:00</updated>
+    <updated>2021-02-23T06:54:04&#43;01:00</updated>
     <id>https://grizz.pl/</id>
     <link rel="alternate" type="text/html" href="https://grizz.pl/" />
     <link rel="self" type="application/atom&#43;xml" href="https://grizz.pl/atom.xml" />
@@ -2424,7 +2424,7 @@ Przy okazji, zapraszam do polubienia stron niniejszego serwisu jak i strony mirl
                     <name>grizz</name>
                     <uri>https://www.grizz.pl/</uri>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</rights><summary type="html">&lt;p&gt;&lt;img src=&#34;../../static/000/mirlight08-7.jpg&#34; alt=&#34;Mirlight&#34;&gt;&lt;/p&gt;
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</rights><summary type="html">&lt;p&gt;&lt;img src=&#34;https://grizz.pl/000/mirlight08-7.jpg&#34; alt=&#34;Mirlight&#34;&gt;&lt;/p&gt;
 &lt;p&gt;W ostatnim czasie Mirlight (wersja zrób to sam gadżetu oparta luźno na koncepcji ambilight) otrzymał kilka nowych funkcji, kilka starych zostało ulepszonych.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Wszystkomająca binarka na Windowsa&lt;/li&gt;
@@ -2437,7 +2437,7 @@ Przy okazji, zapraszam do polubienia stron niniejszego serwisu jak i strony mirl
 &lt;li&gt;Kilka mniejszych zmian pod maską&lt;/li&gt;
 &lt;/ul&gt;</summary>
             
-                <content type="html">&lt;p&gt;&lt;img src=&#34;../../static/000/mirlight08-7.jpg&#34; alt=&#34;Mirlight&#34;&gt;&lt;/p&gt;
+                <content type="html">&lt;p&gt;&lt;img src=&#34;https://grizz.pl/000/mirlight08-7.jpg&#34; alt=&#34;Mirlight&#34;&gt;&lt;/p&gt;
 &lt;p&gt;W ostatnim czasie Mirlight (wersja zrób to sam gadżetu oparta luźno na koncepcji ambilight) otrzymał kilka nowych funkcji, kilka starych zostało ulepszonych.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Wszystkomająca binarka na Windowsa&lt;/li&gt;
