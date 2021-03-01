@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="pl">
     <title type="text"># grizz.pl</title>
     <subtitle type="html"># grizz.pl - blog o różnościach napotkanych…</subtitle>
-    <updated>2021-02-24T17:34:39&#43;01:00</updated>
+    <updated>2021-03-01T18:29:11&#43;01:00</updated>
     <id>https://grizz.pl/</id>
     <link rel="alternate" type="text/html" href="https://grizz.pl/" />
     <link rel="self" type="application/atom&#43;xml" href="https://grizz.pl/atom.xml" />
@@ -14,6 +14,172 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</rights>
     <generator uri="https://gohugo.io/" version="0.79.0">Hugo</generator>
+        <entry>
+            <title type="text">AutoHotkey - hotstrings</title>
+            <link rel="alternate" type="text/html" href="https://grizz.pl/ahk-hotstrings/" />
+            <id>https://grizz.pl/ahk-hotstrings/</id>
+            <updated>2021-03-01T18:28:35&#43;01:00</updated>
+            <published>2021-03-01T16:45:35&#43;01:00</published>
+            <author>
+                    <name>grizz</name>
+                    <uri>https://www.grizz.pl/</uri>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</rights><summary type="html">&lt;p&gt;&lt;a href=&#34;https://grizz.pl/ahk/&#34;&gt;Ostatnio ogólnie przedstawiłem AHK, opisując możliwości i podając podstawowe przykłady&lt;/a&gt;.
+Poniżej trochę więcej o &lt;strong&gt;hotstringach&lt;/strong&gt; - rozwinięciu/zastąpieniu wpisywanego tekstu, np. wpisanie &lt;code&gt;@@&lt;/code&gt; zostanie zamienione na &lt;em&gt;&lt;a href=&#34;mailto:Jan.Kowalski@mojadomena12.pl&#34;&gt;Jan.Kowalski@mojadomena12.pl&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</summary>
+            
+                <content type="html">&lt;p&gt;&lt;a href=&#34;https://grizz.pl/ahk/&#34;&gt;Ostatnio ogólnie przedstawiłem AHK, opisując możliwości i podając podstawowe przykłady&lt;/a&gt;.
+Poniżej trochę więcej o &lt;strong&gt;hotstringach&lt;/strong&gt; - rozwinięciu/zastąpieniu wpisywanego tekstu, np. wpisanie &lt;code&gt;@@&lt;/code&gt; zostanie zamienione na &lt;em&gt;&lt;a href=&#34;mailto:Jan.Kowalski@mojadomena12.pl&#34;&gt;Jan.Kowalski@mojadomena12.pl&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;podstawy&#34;&gt;Podstawy&lt;/h2&gt;
+&lt;p&gt;Trochę przypomnienia:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-autohotkey&#34; data-lang=&#34;autohotkey&#34;&gt;::]gm::Good morning! ;; Good morning!
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;po wpisaniu &lt;code&gt;]gm&lt;/code&gt; i wciśnięciu klawisza kończącego&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;https://grizz.pl/ahk-hotstrings/#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; otrzymamy: &lt;em&gt;Good morning!&lt;/em&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-autohotkey&#34; data-lang=&#34;autohotkey&#34;&gt;::]h::  ;;hi - with empty line after
+(
+hi,
+
+)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;po wpisaniu &lt;code&gt;]gm&lt;/code&gt; i wciśnięciu klawisza kończącego otrzymamy: &lt;em&gt;hi,&lt;/em&gt; i &lt;strong&gt;wolną linię&lt;/strong&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;hi,&lt;br&gt;
+ &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code class=&#34;language-autohotkey&#34; data-lang=&#34;autohotkey&#34;&gt;::]p::  ;;regards Jk
+(
+
+Regards
+  Jan Kowaski
+)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;po wpisaniu &lt;code&gt;]p&lt;/code&gt; i wciśnięciu klawisza kończącego otrzymamy: &lt;strong&gt;wolną linię&lt;/strong&gt;, pozdrowienia, wcięcie i podpis.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt; &lt;br&gt;
+Regards&lt;br&gt;
+  Jan Kowaski&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code class=&#34;language-autohotkey&#34; data-lang=&#34;autohotkey&#34;&gt;:*:@@::Jan.Kowalski@mojadomena12.pl ;; mail - :*: expand imediately 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Wpisanie &lt;code&gt;@@&lt;/code&gt; podstawi adres e-mail - &lt;strong&gt;bez wciskania klawisza kończącego&lt;/strong&gt;, czyli natychmiast po wciśnięciu drugi raz małpy - to na skutek gwiazdki po pierwszym dwukropku.&lt;/p&gt;
+&lt;h3 id=&#34;jeszcze-kilka-przykładów&#34;&gt;Jeszcze kilka przykładów&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-autohotkey&#34; data-lang=&#34;autohotkey&#34;&gt;::atp::a tak przy okazji
+::oidp::o ile dobrze pamiętam
+::mz::moim zdaniem
+::btw::by the way
+::imho::in my humble opinion
+::asap::as soon as possible
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Można sobie też pomóc w sprawach bardziej technicznych, np. wstawić komentarz rozdzielający podsumowanie w pelicanie&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-autohotkey&#34; data-lang=&#34;autohotkey&#34;&gt;::]ps::&amp;lt;!-- PELICAN_BEGIN_SUMMARY --&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Możemy wstawić 72 kreski po wpisaniu jedynie trzech&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-autohotkey&#34; data-lang=&#34;autohotkey&#34;&gt;::---:: ;;72 dashes
+(
+------------------------------------------------------------------------
+)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Co możemy też zapisać krócej:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-autohotkey&#34; data-lang=&#34;autohotkey&#34;&gt;::---:: ;;72 dashes
+Send, {- 72}
+return
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;data-i-czas&#34;&gt;Data i czas&lt;/h2&gt;
+&lt;p&gt;Poniżej podstawowe hotstringi dla podstawiania daty i czasu.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-autohotkey&#34; data-lang=&#34;autohotkey&#34;&gt;::]te:: ;; 18-07-2015 17:24
+FormatTime, CurrentDateTime,, dd.MM.yyyy r. HH:mm
+SendInput %CurrentDateTime%
+return 
+::]ter:: ;; 2015-07-18 17:24
+FormatTime, CurrentDateTime,, yyyy-MM-dd HH:mm
+SendInput %CurrentDateTime%
+return 
+::]dz:: ;; 18-07-2015
+FormatTime, CurrentDateTime,, dd.MM.yyyy r.
+SendInput %CurrentDateTime%
+return
+::]dzr:: ;; 2015-07-18
+FormatTime, CurrentDateTime,, yyyy-MM-dd
+SendInput %CurrentDateTime%
+return
+::]h:: ;; HH:mm
+FormatTime, CurrentDateTime,, HH:mm
+SendInput %CurrentDateTime%
+return
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Jeżeli powyższe przykłady nie wystarczą, czas i datę, formatować możemy &lt;a href=&#34;https://www.autohotkey.com/docs/commands/FormatTime.htm&#34;&gt;zgodnie z dokumentacją&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I jak wspominałem AHK ma przypadłość robienia tych samych rzeczy na kilka sposobów.&lt;/p&gt;
+&lt;p&gt;Datę/czas możemy wstawić też za pomocą &lt;a href=&#34;https://www.autohotkey.com/docs/Variables.htm#date&#34;&gt;wbudowanych zmiennych&lt;/a&gt; (tutaj razem z formatowaniem nagłówka, co wykorzystuję do wpisów dziennika)&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-autohotkey&#34; data-lang=&#34;autohotkey&#34;&gt;::]ww:: ;;journal entry
+{
+SendRaw, `n`n`b### %A_Hour%:%A_Min%`n`t
+}
+Return
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;wysyłanie-wciśnięć-klawiszy&#34;&gt;Wysyłanie wciśnięć klawiszy&lt;/h2&gt;
+&lt;p&gt;Hotstringi mogą nie tylko wypisywać tekst, ale przeprowadzać i inne operacje np. symulować wciśnięcie innych klawiszy:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-autohotkey&#34; data-lang=&#34;autohotkey&#34;&gt;::]r::[COLOR=&amp;quot;{#}FF0000&amp;quot;][/COLOR]‎{Left 8}
+::]q::
+Send [QUOTE]^v[/QUOTE]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;W pierwszym przykładzie - wpisanie &lt;code&gt;]r&lt;/code&gt; wstawi nam tagi bbCode i cofnie kursor w miejsce pomiędzy nie.&lt;/p&gt;
+&lt;p&gt;W drugim przykładzie otrzymamy tagi bbCode cytowania - z zawartością schowka pomiędzy nimi (wstawionej za pomocą &lt;code&gt;CTRL&lt;/code&gt;+&lt;code&gt;v&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://grizz.pl/ahk/#modyfikatory-klawiszy&#34;&gt;Modyfikatory klawiszy opisywałem wcześniej&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;schowek&#34;&gt;Schowek&lt;/h2&gt;
+&lt;p&gt;Do zawartości schowka możemy odwoływać się, jak w przykładzie wyżej, poprzez wywołanie skrótu wklejania &lt;code&gt;CTRL&lt;/code&gt;+&lt;code&gt;v&lt;/code&gt;, albo poprzez zmienną &lt;code&gt;Clipboard&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-autohotkey&#34; data-lang=&#34;autohotkey&#34;&gt;::]q::
+Send [QUOTE]^v[/QUOTE]
+
+::]pj:: ;; wklej nagłówek z godziną i datą a potem zawartoś schowka 
+  {
+    SendRaw, `n`n`b### %A_Hour%:%A_Min%`n`t%Clipboard%
+  }
+Return
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;repozytorium-z-przykładami---github&#34;&gt;Repozytorium z przykładami - github&lt;/h2&gt;
+&lt;p&gt;Jak już zaznaczyłem wyżej, wszystkie przykłady z artykułów, wraz z komentarzami będą uaktualniane w &lt;a href=&#34;https://github.com/grizz-pl/autohotkey-scripts&#34;&gt;repozytorium na GitHubie&lt;/a&gt;.&lt;/p&gt;
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;&lt;code&gt;SPACJA&lt;/code&gt; &lt;code&gt;TAB&lt;/code&gt; &lt;code&gt;ENTER&lt;/code&gt; &lt;code&gt;-&lt;/code&gt; &lt;code&gt;(&lt;/code&gt; &lt;code&gt;)&lt;/code&gt; &lt;code&gt;[&lt;/code&gt; &lt;code&gt;]&lt;/code&gt; &lt;code&gt;{&lt;/code&gt; &lt;code&gt;}&lt;/code&gt; &lt;code&gt;&#39;&lt;/code&gt; &lt;code&gt;:&lt;/code&gt; &lt;code&gt;;&lt;/code&gt; &lt;code&gt;&amp;quot;&lt;/code&gt; &lt;code&gt;/&lt;/code&gt; &lt;code&gt;\&lt;/code&gt; &lt;code&gt;,&lt;/code&gt; &lt;code&gt;.&lt;/code&gt; &lt;code&gt;?&lt;/code&gt; &lt;code&gt;!&lt;/code&gt; - &lt;a href=&#34;https://www.autohotkey.com/docs/Hotstrings.htm#EndChars&#34;&gt;konfiguracja opisana w dokumentacji&lt;/a&gt;. &lt;a href=&#34;https://grizz.pl/ahk-hotstrings/#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;</content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://grizz.pl/tech/" term="tech" label="tech" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://grizz.pl/tags/tech/" term="tech" label="tech" />
+                            
+                        
+                            
+                            
+                            
+                                <category scheme="https://grizz.pl/tags/ahk/" term="ahk" label="ahk" />
+                            
+                        
+                            
+                            
+                            
+                                <category scheme="https://grizz.pl/tags/windows/" term="windows" label="windows" />
+                            
+                        
+                            
+                            
+                            
+                                <category scheme="https://grizz.pl/tags/software/" term="software" label="software" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">Napotkane [004]</title>
             <link rel="alternate" type="text/html" href="https://grizz.pl/napotkane-004/" />
