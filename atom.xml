@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="pl">
     <title type="text"># grizz.pl</title>
     <subtitle type="html"># grizz.pl - blog o różnościach napotkanych…</subtitle>
-    <updated>2021-03-01T18:29:11&#43;01:00</updated>
+    <updated>2021-03-08T17:48:19&#43;01:00</updated>
     <id>https://grizz.pl/</id>
     <link rel="alternate" type="text/html" href="https://grizz.pl/" />
     <link rel="self" type="application/atom&#43;xml" href="https://grizz.pl/atom.xml" />
@@ -14,6 +14,76 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</rights>
     <generator uri="https://gohugo.io/" version="0.79.0">Hugo</generator>
+        <entry>
+            <title type="text">Napotkane [005]</title>
+            <link rel="alternate" type="text/html" href="https://grizz.pl/n005/" />
+            <id>https://grizz.pl/n005/</id>
+            <updated>2021-03-08T17:43:42&#43;01:00</updated>
+            <published>2021-03-08T17:43:42&#43;01:00</published>
+            <author>
+                    <name>grizz</name>
+                    <uri>https://www.grizz.pl/</uri>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</rights><summary type="html">&lt;p&gt;Koty, fish, prawa rządzące projektami i góry lodowe. Ach i dlaczego ten bluetooth nie działa.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Napotkane&lt;/strong&gt;&lt;/em&gt; to zbiór linków wraz z krótkim opisem - rozliczne rzeczy, na które natrafiłem podczas codziennych prasówek. Nie tylko nowości, ale i wpisy, które nadal są ciekawe mimo upływu czasu. Mocno subiektywne.&lt;/p&gt;</summary>
+            
+                <content type="html">&lt;p&gt;Koty, fish, prawa rządzące projektami i góry lodowe. Ach i dlaczego ten bluetooth nie działa.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Napotkane&lt;/strong&gt;&lt;/em&gt; to zbiór linków wraz z krótkim opisem - rozliczne rzeczy, na które natrafiłem podczas codziennych prasówek. Nie tylko nowości, ale i wpisy, które nadal są ciekawe mimo upływu czasu. Mocno subiektywne.&lt;/p&gt;
+&lt;h2 id=&#34;tech&#34;&gt;Tech&lt;/h2&gt;
+&lt;h3 id=&#34;oprogramowanie&#34;&gt;Oprogramowanie&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/starship/starship&#34;&gt;GitHub - starship/starship: ☄🌌️ The minimal, blazing-fast, and infinitely customizable prompt for any shell!&lt;/a&gt; [EN] Uniwersalny prompt - obsługuje m.in bash, fish, zsh, powerShell&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/PatrickF1/fzf.fish&#34;&gt;GitHub - PatrickF1/fzf.fish: Augment your fish command line with fzf key bindings.&lt;/a&gt; [EN] jak połączyć fish i fzf - czyli jeszcze bardziej usprawnić poruszanie się w powłoce systemowej&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://excalidraw.com/&#34;&gt;Excalidraw&lt;/a&gt; [EN] Bardzo zgrabne narzędzie do rysowania diagramów.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;sieci&#34;&gt;Sieci&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;😉 &lt;a href=&#34;https://http.cat/&#34;&gt;HTTP Cats&lt;/a&gt; 404 Miau! ;)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;czytanie&#34;&gt;Czytanie&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.netmeister.org/blog/software-engineering-laws.html&#34;&gt;10 Software Engineering Laws Everybody Loves to Ignore&lt;/a&gt; [EN] Zbiór praw dotyczących rozwoju oprogramowania, sprzętu i nie tylko. Prawo Parkinsona, Conowaya, Zawińskiego i osiem innych.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://bugzilla.mozilla.org/show_bug.cgi?id=259640&#34;&gt;259640 - Find Toolbar&amp;rsquo;s highlight mode should show matches next to or on top of scrollbar&lt;/a&gt; Niedawno dodano funkcjonalność do firefoxa. Funkcjonalność o którą proszono od 17 lat ;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://habr.com/en/post/456182/&#34;&gt;Audio over Bluetooth most detailed information about profiles, codecs, and devices&lt;/a&gt; [EN] Zbiór informacji o tym dlaczego dźwięk przez Bluetooth potrafi być tak zakręconą sprawą. Mamy ekhm, kilkanaście „standardów.”&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;sprzęt&#34;&gt;Sprzęt&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://chadaustin.me/2021/02/wired-sculpt/&#34;&gt;Microsoft Sculpt Wired Conversion Mod | Chad Austin&lt;/a&gt; [EN] Jak przerobić klawiaturę Microsoft Sculpt na wersję przewodową - przydaje się, jako, że dongli nie można wymieniać, a niestety lubią się psuć.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;różne&#34;&gt;Różne&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://softskills.audio/&#34;&gt;Soft Skills Engineering Podcast&lt;/a&gt;. [EN] Podcast dotyczący umiejętności miękkich&lt;/li&gt;
+&lt;li&gt;😉 &lt;a href=&#34;https://joshdata.me/iceberger.html&#34;&gt;Iceberger&lt;/a&gt; Narysuj górę lodową i zobacz jak będzie się unosić&lt;/li&gt;
+&lt;/ol&gt;</content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://grizz.pl/napotkane/" term="napotkane" label="napotkane" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://grizz.pl/tags/napotkane/" term="napotkane" label="napotkane" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">AutoHotkey - hotstrings</title>
             <link rel="alternate" type="text/html" href="https://grizz.pl/ahk-hotstrings/" />
@@ -182,8 +252,8 @@ Return
     
         <entry>
             <title type="text">Napotkane [004]</title>
-            <link rel="alternate" type="text/html" href="https://grizz.pl/napotkane-004/" />
-            <id>https://grizz.pl/napotkane-004/</id>
+            <link rel="alternate" type="text/html" href="https://grizz.pl/n004/" />
+            <id>https://grizz.pl/n004/</id>
             <updated>2021-02-24T17:26:42&#43;01:00</updated>
             <published>2021-02-24T17:26:42&#43;01:00</published>
             <author>

@@ -4,7 +4,37 @@
   
   <url>
     <loc>https://grizz.pl/</loc>
-    <lastmod>2021-03-01T18:28:35+01:00</lastmod>
+    <lastmod>2021-03-08T17:43:42+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://grizz.pl/categories/</loc>
+    <lastmod>2021-03-08T17:43:42+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://grizz.pl/tags/napotkane/</loc>
+    <lastmod>2021-03-08T17:43:42+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://grizz.pl/napotkane/</loc>
+    <lastmod>2021-03-08T17:43:42+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://grizz.pl/n005/</loc>
+    <lastmod>2021-03-08T17:43:42+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://grizz.pl/posts/</loc>
+    <lastmod>2021-03-08T17:43:42+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://grizz.pl/tags/</loc>
+    <lastmod>2021-03-08T17:43:42+01:00</lastmod>
   </url>
   
   <url>
@@ -18,22 +48,7 @@
   </url>
   
   <url>
-    <loc>https://grizz.pl/categories/</loc>
-    <lastmod>2021-03-01T18:28:35+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://grizz.pl/posts/</loc>
-    <lastmod>2021-03-01T18:28:35+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://grizz.pl/tags/software/</loc>
-    <lastmod>2021-03-01T18:28:35+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://grizz.pl/tags/</loc>
     <lastmod>2021-03-01T18:28:35+01:00</lastmod>
   </url>
   
@@ -53,17 +68,7 @@
   </url>
   
   <url>
-    <loc>https://grizz.pl/tags/napotkane/</loc>
-    <lastmod>2021-02-24T17:26:42+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://grizz.pl/napotkane/</loc>
-    <lastmod>2021-02-24T17:26:42+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://grizz.pl/napotkane-004/</loc>
+    <loc>https://grizz.pl/n004/</loc>
     <lastmod>2021-02-24T17:26:42+01:00</lastmod>
   </url>
   
