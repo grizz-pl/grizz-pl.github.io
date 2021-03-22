@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="pl">
     <title type="text"># grizz.pl</title>
     <subtitle type="html"># grizz.pl - blog o różnościach napotkanych…</subtitle>
-    <updated>2021-03-08T17:48:19&#43;01:00</updated>
+    <updated>2021-03-22T17:03:29&#43;01:00</updated>
     <id>https://grizz.pl/</id>
     <link rel="alternate" type="text/html" href="https://grizz.pl/" />
     <link rel="self" type="application/atom&#43;xml" href="https://grizz.pl/atom.xml" />
@@ -14,6 +14,69 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</rights>
     <generator uri="https://gohugo.io/" version="0.79.0">Hugo</generator>
+        <entry>
+            <title type="text">Napotkane [006]</title>
+            <link rel="alternate" type="text/html" href="https://grizz.pl/n006/" />
+            <id>https://grizz.pl/n006/</id>
+            <updated>2021-03-22T17:02:42&#43;01:00</updated>
+            <published>2021-03-22T17:02:02&#43;01:00</published>
+            <author>
+                    <name>grizz</name>
+                    <uri>https://www.grizz.pl/</uri>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</rights><summary type="html">&lt;p&gt;Jak posortowanie plików zmniejsza rozmiar archiwum 15x. Kosmos w fotografii. I Bitcoin.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Napotkane&lt;/strong&gt;&lt;/em&gt; to zbiór linków wraz z krótkim opisem - rozliczne rzeczy, na które natrafiłem podczas codziennych prasówek. Nie tylko nowości, ale i wpisy, które nadal są ciekawe mimo upływu czasu. Mocno subiektywne.&lt;/p&gt;</summary>
+            
+                <content type="html">&lt;p&gt;Jak posortowanie plików zmniejsza rozmiar archiwum 15x. Kosmos w fotografii. I Bitcoin.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Napotkane&lt;/strong&gt;&lt;/em&gt; to zbiór linków wraz z krótkim opisem - rozliczne rzeczy, na które natrafiłem podczas codziennych prasówek. Nie tylko nowości, ale i wpisy, które nadal są ciekawe mimo upływu czasu. Mocno subiektywne.&lt;/p&gt;
+&lt;h2 id=&#34;tech&#34;&gt;Tech&lt;/h2&gt;
+&lt;h3 id=&#34;czytanie&#34;&gt;Czytanie&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.statista.com/statistics/881541/bitcoin-energy-consumption-transaction-comparison-visa/&#34;&gt;Bitcoin vs. VISA energy consumption per transaction 2020  Statista&lt;/a&gt; [EN] Porównanie zużycia energii przez BTC i transakcje kartowe&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.bbc.com/news/technology-56012952&#34;&gt;Bitcoin consumes &amp;lsquo;more electricity than Argentina&amp;rsquo; - BBC News&lt;/a&gt; [EN] Bitcoin zużywa olbrzymie ilości energii elektrycznej - więcej niż niektóre duże kraje.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://news.ycombinator.com/item?id=26459184&#34;&gt;Why are tar.xz files 15x smaller when using Python&amp;rsquo;s tar compared to macOS tar&lt;/a&gt; [EN] Ciekawa dyskusja o archiwizowaniu i kompresji. M.in. dlaczego posortowanie plików przed pakowaniem, może kilkunastokrotnie zmienić rozmiar archiwum.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.notboring.co/p/excel-never-dies&#34;&gt;Excel Never Dies&lt;/a&gt; [EN] Excel nie umrze nigdy. Troszkę hisorii i przemyśleń.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;narzędzia&#34;&gt;Narzędzia&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://gtmetrix.com/&#34;&gt;GTmetrix | Website Speed and Performance Optimization&lt;/a&gt; [EN] weryfikacja wydajności stron www&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.goodui.org/&#34;&gt;http://www.goodui.org/&lt;/a&gt; [EN] Zbiór dobrych praktyk przy projektowaniu stron www. Z przykładami i testami A/B.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;foto&#34;&gt;Foto&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://astroanarchy.blogspot.com/2021/03/gigapixel-mosaic-of-milky-way-1250.html&#34;&gt;Milky Way, 12 years, 1250 hours of exposures and 125 x 22 degrees of sky&lt;/a&gt; [EN] 12 lat robienia zdjęć Drogi Mlecznej i co zz tego wyszło.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://orion2020v5b.spaceforeverybody.com/&#34;&gt;Project Orion by Matt Harbison&lt;/a&gt; A tutaj mega zdjęcie Oriona. Polecam zoom na głowę konia :) opis: &lt;a href=&#34;https://space4everybody.com/about-the-project/&#34;&gt;About the Project -&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;😉 &lt;a href=&#34;http://www.boredpanda.com/miniature-star-wars-figurine-photography-zahir-batin/&#34;&gt;Star Wars Adventures By Zahir Batin | Bored Panda&lt;/a&gt; [EN] Zdjęcia z figurkami StarWars. Pomysły na zabawę foto.&lt;/li&gt;
+&lt;/ol&gt;</content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://grizz.pl/napotkane/" term="napotkane" label="napotkane" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://grizz.pl/tags/napotkane/" term="napotkane" label="napotkane" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">Napotkane [005]</title>
             <link rel="alternate" type="text/html" href="https://grizz.pl/n005/" />
