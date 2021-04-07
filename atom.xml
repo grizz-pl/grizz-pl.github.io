@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="pl">
     <title type="text"># grizz.pl</title>
     <subtitle type="html"># grizz.pl - blog o różnościach napotkanych…</subtitle>
-    <updated>2021-03-22T17:03:29&#43;01:00</updated>
+    <updated>2021-04-07T17:00:59&#43;02:00</updated>
     <id>https://grizz.pl/</id>
     <link rel="alternate" type="text/html" href="https://grizz.pl/" />
     <link rel="self" type="application/atom&#43;xml" href="https://grizz.pl/atom.xml" />
@@ -14,6 +14,173 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</rights>
     <generator uri="https://gohugo.io/" version="0.79.0">Hugo</generator>
+        <entry>
+            <title type="text">AutoHotkey - hotkeys</title>
+            <link rel="alternate" type="text/html" href="https://grizz.pl/ahk-hotkeys/" />
+            <id>https://grizz.pl/ahk-hotkeys/</id>
+            <updated>2021-04-07T16:59:35&#43;02:00</updated>
+            <published>2021-04-07T16:59:35&#43;02:00</published>
+            <author>
+                    <name>grizz</name>
+                    <uri>https://www.grizz.pl/</uri>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</rights><summary type="html">&lt;p&gt;Teraz o jednej z moich ulubionych funkcji w AHK - skrótach klawiszowych - tzw. &lt;strong&gt;hotkeys&lt;/strong&gt;&lt;/p&gt;</summary>
+            
+                <content type="html">&lt;p&gt;Teraz o jednej z moich ulubionych funkcji w AHK - skrótach klawiszowych - tzw. &lt;strong&gt;hotkeys&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Dla przypomnienia: &lt;a href=&#34;https://grizz.pl/ahk/&#34;&gt;ogólnie o AHK - możliwości i podstawowe przykłady&lt;/a&gt; i &lt;a href=&#34;https://grizz.pl/ahk-hotstrings/&#34;&gt;o &lt;strong&gt;hotstringach&lt;/strong&gt; - rozwinięciu/zastąpieniu wpisywanego tekstu&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;modyfikatory-klawiszy&#34;&gt;Modyfikatory klawiszy&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Skrót&lt;/th&gt;
+&lt;th&gt;klawisz&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;#&lt;/td&gt;
+&lt;td&gt;Win&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;!&lt;/td&gt;
+&lt;td&gt;Alt&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;^&lt;/td&gt;
+&lt;td&gt;Ctrl&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;+&lt;/td&gt;
+&lt;td&gt;Shift&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Czyli &lt;code&gt;^+w::Hello World!&lt;/code&gt; oznacza - wciśnięcie &lt;code&gt;CTRL&lt;/code&gt;+&lt;code&gt;SHIFT&lt;/code&gt;+&lt;code&gt;w&lt;/code&gt; wypisze &lt;em&gt;Hello World&lt;/em&gt;!*&lt;/p&gt;
+&lt;p&gt;Pełna lista klawiszy dostępna jest w &lt;a href=&#34;https://www.autohotkey.com/docs/commands/Send.htm#keynames&#34;&gt;dokumentacji&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;podstawy&#34;&gt;Podstawy&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-autohotkey&#34; data-lang=&#34;autohotkey&#34;&gt;!.::  ;; wielokropek
+Send …
+Return
+
+F1::Send {Ctrl Down}{PgUp}{Ctrl Up} ;;ff - poprzednia karta
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;konfiguracja-klawisza-capslock&#34;&gt;Konfiguracja klawisza CapsLock&lt;/h2&gt;
+&lt;p&gt;Bardzo wygodnym rozwiązaniem jest używanie klawisza CapsLock jako kolejnego klawisza modyfikatora. Jest on w poręcznym miejscu i w sumie na co dzień nie jest używany. Szkoda, żeby się marnował. By takie rozwiązanie działało sprawnie, na początku naszego pliku polecam dodać linię, która ustawi CapsLock zawsze na wyłączony - dzięki temu klawisz będzie działał jak zwykły i wciśnięcie skrótu nie będzie nam przełączało jego stanu.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-autohotkey&#34; data-lang=&#34;autohotkey&#34;&gt;SetCapsLockState, AlwaysOff ;; set CapsLock to be always off. Usefull for use it as moddifier
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;zawieszanie-działania-skryptu&#34;&gt;Zawieszanie działania skryptu&lt;/h2&gt;
+&lt;p&gt;Czasami ustawione skróty mogą nam kolidować z tymi z którejś aplikacji. By to zweryfikować, możemy zamknąć skrypt poprzez menu w zasobniku. Możemy też zawiesić działanie samych skrótów - opcja &lt;strong&gt;Suspend Hotkeys&lt;/strong&gt; dostępna w tym samym menu.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://grizz.pl/023/ahk1.png&#34; alt=&#34;AHK tray&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Możemy też użyć skrótu:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-autohotkey&#34; data-lang=&#34;autohotkey&#34;&gt;^#s::Suspend
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;CTRL&lt;/code&gt;+&lt;code&gt;WIN&lt;/code&gt;+&lt;code&gt;s&lt;/code&gt; Zawiesi działanie kolejnych skrótów. Dla wznowienia musimy się posłużyć menu.&lt;/p&gt;
+&lt;h2 id=&#34;nadpisywanie-skrótów-programów&#34;&gt;Nadpisywanie skrótów programów&lt;/h2&gt;
+&lt;p&gt;AHK możemy użyć do prostego nadpisywania skrótów w danym programie (albo skrótów globalnych jeżeli program takie oferuje) - przydatne jeżeli, sam program nie pozwala na modyfikacje skrótów, albo modyfikacja ta jest ograniczona.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-autohotkey&#34; data-lang=&#34;autohotkey&#34;&gt;CapsLock &amp;amp; q:: 	;; wysyła ^+a dla wywołania okna quick add ticktick
+Send ^+a
+Return
+
+CapsLock &amp;amp; w:: 	;; wysyła ^+o dla wywołania okna zadań ticktick
+Send ^+o
+Return
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Czyli wciśnięcie &lt;code&gt;CAPSLOCK&lt;/code&gt;+&lt;code&gt;q&lt;/code&gt; wyśle nam skrót &lt;code&gt;CTRL&lt;/code&gt;+&lt;code&gt;SHIFT&lt;/code&gt;+&lt;code&gt;a&lt;/code&gt; co spowoduje przywołanie okna szybkiego dodawania zadania w aplikacji &lt;a href=&#34;https://ticktick.com/r?c=u131gur3&#34;&gt;ticktick&lt;/a&gt;. (link polecający do świetnej aplikacji do organizacji zadań).
+Drugi skrót przywoła nam okno z listą zadań.&lt;/p&gt;
+&lt;h2 id=&#34;przywołanie-aplikacji-i-wykonanie-akcjiskrótu&#34;&gt;Przywołanie aplikacji i wykonanie akcji/skrótu&lt;/h2&gt;
+&lt;p&gt;Jeżeli aplikacja sama w sobie, nie oferuje skrótów globalnych, nic straconego. Możemy to łatwo osiągnąć.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-autohotkey&#34; data-lang=&#34;autohotkey&#34;&gt;CapsLock &amp;amp; 1::  ;; aktywowanie okna chrome i pierwszej karty
+IfWinActive ahk_exe chrome.exe
+	{
+	Send ^1
+	return
+	}
+IfWinExist ahk_exe chrome.exe
+	{
+	WinActivate
+	Send ^1
+	}
+else
+	{
+	Run C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --profile-directory=&amp;quot;Profile 1&amp;quot;
+	}
+return
+
+
+CapsLock &amp;amp; 2::  ;; activate/run chrome and go to second tab
+SetTitleMatchMode, 2
+IfWinActive  Google Chrome
+	{
+	Send ^2
+	return
+	}
+IfWinExist  Google Chrome
+	{
+	WinActivate
+	Send ^2
+	}
+else
+	{
+	Run C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --profile-directory=&amp;quot;Profile 1&amp;quot;
+	}
+return
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Czyli jeżeli założymy, że używamy przeglądarki chrome, i mamy tam otwartą pierwszą kartę zawierającą mail i drugą zawierającą kalendarz, to dzięki powyższym skrótom błyskawicznie przełączymy się w odpowiednie miejsce. Dokładniej - jeżeli mamy uruchomioną i aktywną przeglądarkę, to &lt;code&gt;CAPSLOCK&lt;/code&gt;+&lt;code&gt;1&lt;/code&gt; przeniesie nas do pierwszej karty wysyłając skrót &lt;code&gt;CTRL&lt;/code&gt;+&lt;code&gt;1&lt;/code&gt;. Jeżeli okno, nie jest aktywne, ale przeglądarka jest uruchomiona (zobacz uwagi niżej), to ww. skrót aktywuje nam okno przeglądarki i przeniesie nas do pierwszej karty. Jeżeli przeglądarka nie jest uruchomiona, to ją uruchomimy (tutaj z określonym profilem). Jednak z uwagi na, to, że proces ten może potrwać nie wykonuje już dalszych operacji.&lt;/p&gt;
+&lt;h3 id=&#34;ograniczanie-działania-skrótuhotstringa-do-określonej-aplikacji--okna&#34;&gt;Ograniczanie działania skrótu/hotstringa do określonej aplikacji / okna&lt;/h3&gt;
+&lt;p&gt;Działanie hotkeys (i hotstringów też) możemy ograniczyć tylko do określonych programów / okien o danym tytule, albo okien danej klasy. Możemy też sprawdzić czy określone okno jest aktywne.
+Podstawowa składnia zaprezentowana jest w rozdziale wyżej. Parametry dotyczące okna możemy zobaczyć za pomocą programu &lt;strong&gt;Window Spy&lt;/strong&gt; dostępnego w zasobniku systemowym.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;SetTitleMatchMode, 2&lt;/code&gt; Pozwala nam określić jak ma być sprawdzany tytuł okna. Możliwe opcje, to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1 = Tytuł okna musi zaczynać się od podanego ciągu.&lt;/li&gt;
+&lt;li&gt;2 = Tytuł okna musi zawierać podany ciąg.&lt;/li&gt;
+&lt;li&gt;3 = Tytuł okna musi dokładnie odpowiadać podanemu ciągowi.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Możemy też użyć RegExp - &lt;a href=&#34;https://www.autohotkey.com/docs/commands/SetTitleMatchMode.htm&#34;&gt;SetTitleMatchMode - Syntax &amp;amp; Usage&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Uwaga na aplikacje electrona np. vscode czy teams, które wszystkie przedstawiają się jak chrome.exe - trzeba odwoływać się wtedy do tytułu okna, albo pełnej ścieżki programu.&lt;/p&gt;
+&lt;h2 id=&#34;repozytorium-z-przykładami---github&#34;&gt;Repozytorium z przykładami - github&lt;/h2&gt;
+&lt;p&gt;Jak już zaznaczyłem wyżej, wszystkie przykłady z artykułów, wraz z komentarzami będą uaktualniane w &lt;a href=&#34;https://github.com/grizz-pl/autohotkey-scripts&#34;&gt;repozytorium na GitHubie&lt;/a&gt;.&lt;/p&gt;</content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://grizz.pl/tech/" term="tech" label="tech" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://grizz.pl/tags/tech/" term="tech" label="tech" />
+                            
+                        
+                            
+                            
+                            
+                                <category scheme="https://grizz.pl/tags/ahk/" term="ahk" label="ahk" />
+                            
+                        
+                            
+                            
+                            
+                                <category scheme="https://grizz.pl/tags/windows/" term="windows" label="windows" />
+                            
+                        
+                            
+                            
+                            
+                                <category scheme="https://grizz.pl/tags/software/" term="software" label="software" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">Napotkane [006]</title>
             <link rel="alternate" type="text/html" href="https://grizz.pl/n006/" />
