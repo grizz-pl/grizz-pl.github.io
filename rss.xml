@@ -10,7 +10,7 @@
         <title># grizz.pl</title>
         <link>https://grizz.pl/</link>
         <description># grizz.pl - blog o różnościach napotkanych…</description>
-        <generator>Hugo 0.79.0 https://gohugo.io/</generator>
+        <generator>Hugo 0.80.0 https://gohugo.io/</generator>
         
             <language>pl</language>
         
@@ -19,10 +19,72 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
         
-        <lastBuildDate>Wed, 07 Apr 2021 17:00:59 &#43;0200</lastBuildDate>
+        <lastBuildDate>Wed, 16 Feb 2022 15:33:40 &#43;0100</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://grizz.pl/rss.xml" />
         
+        
+            <item>
+                <title>Napotkane [007]</title>
+                <link>https://grizz.pl/n007/</link>
+                <guid isPermaLink="true">https://grizz.pl/n007/</guid>
+                <pubDate>Wed, 16 Feb 2022 15:30:02 &#43;0100</pubDate>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl)</copyright>
+                
+                    <description>&lt;p&gt;Przemyślenia z rozwoju oprogramowania, zbiór dokumentacji, wyciąganie tabelek z grafik, pomysły na zdjęcia z Gwiezdnych Wojen i piierwsze 2h MTV.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Napotkane&lt;/strong&gt;&lt;/em&gt; to zbiór linków wraz z krótkim opisem - rozliczne rzeczy, na które natrafiłem podczas codziennych prasówek. Nie tylko nowości, ale i wpisy, które nadal są ciekawe mimo upływu czasu. Mocno subiektywne.&lt;/p&gt;
+&lt;h2 id=&#34;tech&#34;&gt;Tech&lt;/h2&gt;
+&lt;h3 id=&#34;czytanie&#34;&gt;Czytanie&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.kowalczyk.info/article/2f72237a4230410a888acbfce3dc0864/lessons-learned-from-15-years-of-sumatrapdf-an-open-source-windows-app.html&#34;&gt;Lessons learned from 15 years of SumatraPDF, an open source Windows app&lt;/a&gt; [EN] Zbiór doświadczeń z rozwoju jednego z ciekawszych programów do przeglądania PDF - SumatraPDF&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.simplethread.com/20-things-ive-learned-in-my-20-years-as-a-software-engineer/&#34;&gt;20 Things I&amp;rsquo;ve Learned in my 20 Years as a Software Engineer&lt;/a&gt; [EN] Zbiór doświadczeń z perspektywy dwóch dekad tworzenia oprogramowania.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;narzędzia&#34;&gt;Narzędzia&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://devdocs.io/&#34;&gt;http://devdocs.io/&lt;/a&gt; [EN] Zbiór dokumentacji dziesiatek narzędzi i bibliotek zebrany w jeden błyskawiczny do przeszukiwania serwis.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://extract-table.com/&#34;&gt;Extract Table&lt;/a&gt; [EN] Narzędzie pozwalające odczytać dane z tabel umieszczonych w PDF czy na zdjęciach.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;foto&#34;&gt;Foto&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boredpanda.com/miniature-star-wars-figurine-photography-zahir-batin/&#34;&gt;Star Wars Adventures By Zahir Batin | Bored Panda&lt;/a&gt; [EN] Zdjecia z figurkami StarWars. Pomysły na zabawę foto.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;różne&#34;&gt;Różne&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=PJtiPRDIqtI&#34;&gt;The Very First Two Hours Of MTV&lt;/a&gt; 
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/PJtiPRDIqtI&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+ [EN] Pierwsze 2h MTV - &lt;a href=&#34;https://news.ycombinator.com/item?id=28106020&#34;&gt;komentarze na HackerNews&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/napotkane/">napotkane</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://grizz.pl/tags/napotkane/">napotkane</category>
+                                
+                            
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>AutoHotkey - hotkeys</title>
